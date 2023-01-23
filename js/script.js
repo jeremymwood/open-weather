@@ -27,7 +27,7 @@
             // $('#coordinates').addClass("d-inline-flex");
             coordinates.style.display = 'block';
             coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: &nbsp&nbsp&nbsp&nbsp&nbsp${lngLat.lat}`;
-            $('#coordinates').delay(2000).fadeOut(1000);
+            $('#coordinates').delay(2500).fadeOut(1000);
             // $('#coordinates').addClass("d-none");
             // $('#coordinates').removeClass("d-inline-flex");
 
