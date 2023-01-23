@@ -17,17 +17,24 @@
 
         const coordinates = document.getElementById('coordinates');
         function onDragEnd() {
-            const lngLat = marker.getLngLat();
+            let lngLat = marker.getLngLat();
             coordinates.style.display = 'block';
             coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
+            // lngLat = [lngLat.lng, lngLat.lat];
+            // center: [lngLat];
+
 
             const coordinateDiv = document.getElementById("coordinates");
             coordinateDiv.classList.remove("d-none");
             setTimeout(()=> {
                 coordinateDiv.classList.add("d-none");
             },(2000));
-        }
 
+            map.flyTo({
+                center: [lngLat.lng, lngLat.lat]
+                // center: e.features[0].geometry.coordinates
+            });
+        }
         marker.on('dragend', onDragEnd);
 
         // const markerDurationIncrement = 200;
