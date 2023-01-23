@@ -1,6 +1,7 @@
 (function () {
 
     $(document).ready(function () {
+
     mapboxgl.accessToken = MAPBOX_API_KEY;
 
     //create map
@@ -109,26 +110,26 @@
 
     // show all the pretty http response codes
 
-    function getQuote() {
-        $("#anime").text("");
-        $("#character").text("");
-        $("#quote").text("");
-        $("#loading-pic").removeClass("d-none");
-        $.ajax("https://animechan.vercel.app/api/random")
-            .done(function(data) {
-                console.log(data);
-                $("#anime").text(data.anime);
-                $("#character").text(data.character);
-                $("#quote").text(data.quote);
-
-            }).fail(function(error) {
-            console.log("RATS! an error");
-        }).always(function() {
-            $("#loading-pic").addClass("d-none");
-        })
-    }
-
-    $("#get-quote").click(getQuote);
+    // function getQuote() {
+    //     $("#anime").text("");
+    //     $("#character").text("");
+    //     $("#quote").text("");
+    //     $("#loading-pic").removeClass("d-none");
+    //     $.ajax("https://animechan.vercel.app/api/random")
+    //         .done(function(data) {
+    //             console.log(data);
+    //             $("#anime").text(data.anime);
+    //             $("#character").text(data.character);
+    //             $("#quote").text(data.quote);
+    //
+    //         }).fail(function(error) {
+    //         console.log("RATS! an error");
+    //     }).always(function() {
+    //         $("#loading-pic").addClass("d-none");
+    //     })
+    // }
+    //
+    // $("#get-quote").click(getQuote);
 
     // $.ajax("https://pokeapi.co/api/v2/pokemon/charmander")
     //     .done(function(data) {
@@ -195,4 +196,4 @@
     // https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript
 
     // what about the weather icon??? check out .daily[x].weather[0].icon
-});
+})();
