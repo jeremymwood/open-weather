@@ -1,25 +1,60 @@
 (function () {
-
     $(document).ready(function () {
 
-    mapboxgl.accessToken = MAPBOX_API_KEY;
+        // use imperial units
+        //will need to convert unix time
+        //use draggable marker to update forecast
+        //drag end event listener for marker
+        // or dblclick on map
+        //dropdown for map themes, or light/dark mode
+        //use reverse geocode for city and state
 
-    //create map
-    const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/dark-v10',
-        zoom: 10,
-        center: [-98.39371378157797, 29.515156939194544]
-    });
+        // TODO:
+        // play with openweather api
+        // get mapbox starter map
+        // make a function for fetching 5 day forecast
 
-    const markerDurationInit = 400;
-    const marker = new mapboxgl.Marker({"color": "red"});
-    marker.setLngLat([-98.39371378157797, 29.515156939194544]);
+        let startingLatitude = 29.515156939194544;
+        let startingLongitude = -98.39371378157797;
+        //
+        // for (let i = 0; i < restaurants.length; i++) {
+        //     lats.push(`${restaurants[i].latitude}`);
+        //     longs.push(`${restaurants[i].longitude}`);
+        //     latsSum += parseFloat(restaurants[i].latitude);
+        //     longsSum += parseFloat(restaurants[i].longitude);
+        // }
+        //
+        // const latsAvg = latsSum / restaurants.length;
+        // const longsAvg = longsSum / restaurants.length;
+        // const centroid = [longsAvg, latsAvg];
+        //
+        // //create map
+        // const map = new mapboxgl.Map({
+        //     container: 'map',
+        //     style: 'mapbox://styles/mapbox/dark-v10',
+        //     zoom: zoomFactor,
+        //     center: centroid
+        // });
+        //
 
-    // const markerDurationIncrement = 200;
-    setTimeout(()=> {
-        marker.addTo(map);
-    },(markerDurationInit));
+        mapboxgl.accessToken = MAPBOX_API_KEY;
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/dark-v10',
+            zoom: 10,
+            center: [startingLongitude, startingLatitude]
+        });
+
+        const markerDurationInit = 400;
+        const marker = new mapboxgl.Marker({"color": "red"});
+        marker.setLngLat([startingLongitude, startingLatitude]);
+
+        // const markerDurationIncrement = 200;
+        setTimeout(()=> {
+            marker.addTo(map);
+        },(markerDurationInit));
+
+        map.addControl(new mapboxgl.NavigationControl());
 
         //TODO: sample popup
 
@@ -35,6 +70,19 @@
         //     `);
         //
         // marker.setPopup(popup);
+
+        $.get("http://api.openweathermap.org/data/2.5/onecall", {
+            APPID: OPENWEATHER_API_KEY,
+            lat:    startingLatitude,
+            lon:   startingLongitude,
+            units: "imperial"
+        }).done(function(data) {
+            console.log(data)
+            // console.log('The entire response:', data);
+            // console.log('Diving in - here is current information: ', data.current);
+            // console.log('A step further - information for tomorrow: ', data.daily[1]);
+        });
+
     });
 
 
@@ -45,7 +93,6 @@
     //         marker.addTo(map);
     //     });
     // }
-    map.addControl(new mapboxgl.NavigationControl());
 
     // introduce .ajax()
     // go over request/response architecture
@@ -152,30 +199,7 @@
     // show JS object and talk about how it may not be usable outside of JS
     // show JSON equivalent
 
-    // use imperial units
-    //will need to convert unix time
-    //use draggable marker to update forecast
-    //drag end event listener for marker
-    // or dblclick on map
-    //dropdown for map themes, or light/dark mode
-    //use reverse geocode for city and state
 
-    // TODO:
-    // play with openweather api
-    // get mapbox starter map
-    // make a function for fetching 5 day forecast
-
-    $.get("http://api.openweathermap.org/data/2.5/onecall", {
-        APPID: OPENWEATHER_API_KEY,
-        lat:    29.515156939194544,
-        lon:   -98.39371378157797,
-        units: "imperial"
-    }).done(function(data) {
-        console.log(data)
-        // console.log('The entire response:', data);
-        // console.log('Diving in - here is current information: ', data.current);
-        // console.log('A step further - information for tomorrow: ', data.daily[1]);
-    });
 
     // no cors problems THANK GOD!
 
