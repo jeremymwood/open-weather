@@ -13,3 +13,26 @@ root {
 .my-data {
     font-weight:bolder;
 }
+
+#map {
+    width: 100%;
+    height: 500px;
+}
+.mapboxgl-ctrl-logo, .mapboxgl-ctrl {
+    opacity: 20%;
+}
+.mapboxgl-ctrl-logo, .mapboxgl-ctrl:hover {
+    opacity: 100%;
+}
+.mapboxgl-popup-content {
+    /*display: flex;*/
+}
+.centroidMarker {
+    opacity: 20%;
+}
+.centroidMarker:hover {
+    opacity: 100%;
+}
+.fa-icon {
+    /*TODO: add hover and scaling*/
+}
