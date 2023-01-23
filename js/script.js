@@ -1,41 +1,7 @@
 (function () {
     $(document).ready(function () {
-
-        // use imperial units
-        //will need to convert unix time
-        //use draggable marker to update forecast
-        //drag end event listener for marker
-        // or dblclick on map
-        //dropdown for map themes, or light/dark mode
-        //use reverse geocode for city and state
-
-        // TODO:
-        // play with openweather api
-        // get mapbox starter map
-        // make a function for fetching 5 day forecast
-
         let startingLatitude = 29.515156939194544;
         let startingLongitude = -98.39371378157797;
-        //
-        // for (let i = 0; i < restaurants.length; i++) {
-        //     lats.push(`${restaurants[i].latitude}`);
-        //     longs.push(`${restaurants[i].longitude}`);
-        //     latsSum += parseFloat(restaurants[i].latitude);
-        //     longsSum += parseFloat(restaurants[i].longitude);
-        // }
-        //
-        // const latsAvg = latsSum / restaurants.length;
-        // const longsAvg = longsSum / restaurants.length;
-        // const centroid = [longsAvg, latsAvg];
-        //
-        // //create map
-        // const map = new mapboxgl.Map({
-        //     container: 'map',
-        //     style: 'mapbox://styles/mapbox/dark-v10',
-        //     zoom: zoomFactor,
-        //     center: centroid
-        // });
-        //
 
         mapboxgl.accessToken = MAPBOX_API_KEY;
         const map = new mapboxgl.Map({
@@ -46,8 +12,23 @@
         });
 
         const markerDurationInit = 400;
-        const marker = new mapboxgl.Marker({"color": "red"});
+        const marker = new mapboxgl.Marker({"color": "red", draggable: true});
         marker.setLngLat([startingLongitude, startingLatitude]);
+
+        const coordinates = document.getElementById('coordinates');
+        function onDragEnd() {
+            const lngLat = marker.getLngLat();
+            coordinates.style.display = 'block';
+            coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
+
+            const coordinateDiv = document.getElementById("coordinates");
+            coordinateDiv.classList.remove("d-none");
+            setTimeout(()=> {
+                coordinateDiv.classList.add("d-none");
+            },(2000));
+        }
+
+        marker.on('dragend', onDragEnd);
 
         // const markerDurationIncrement = 200;
         setTimeout(()=> {
@@ -77,11 +58,31 @@
             lon:   startingLongitude,
             units: "imperial"
         }).done(function(data) {
-            console.log(data)
             // console.log('The entire response:', data);
             // console.log('Diving in - here is current information: ', data.current);
             // console.log('A step further - information for tomorrow: ', data.daily[1]);
+        console.log(data.current);
+
+        //formatted time
+        const unix_timestamp = data.current.dt;
+        const date = new Date(unix_timestamp * 1000);
+        const hours = date.getHours();
+        const minutes = "0" + date.getMinutes();
+        const seconds = "0" + date.getSeconds();
+        const formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+        console.log(formattedTime);
+
+        // TODO:
+        //use draggable marker to update forecast
+        //drag end event listener for marker
+        // or dblclick on map
+        //dropdown for map themes, or light/dark mode
+        //use reverse geocode for city and state
+        // make a function for fetching 5 day forecast
+
         });
+
 
     });
 
