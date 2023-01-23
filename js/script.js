@@ -15,15 +15,17 @@
         const marker = new mapboxgl.Marker({"color": "red", draggable: true});
         marker.setLngLat([startingLongitude, startingLatitude]);
 
+        // $('#map').append('div#coordinates')
+
+        let e = $('<div id="coordinates" class="coordinates border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
+        $('body').append(e);
+
         const coordinates = document.getElementById('coordinates');
         function onDragEnd() {
             let lngLat = marker.getLngLat();
             coordinates.style.display = 'block';
-            coordinates.innerHTML = `Longitude: ${lngLat.lng}<br /><br />Latitude: ${lngLat.lat}`;
-            // lngLat = [lngLat.lng, lngLat.lat];
-            // center: [lngLat];
-
-            // $('#coordinates').delay(2000).fadeOut(2000);
+            coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: &nbsp&nbsp&nbsp&nbsp&nbsp${lngLat.lat}`;
+            $('#coordinates').delay(2000).fadeOut(1000);
 
             map.flyTo({
                 center: [lngLat.lng, lngLat.lat]
