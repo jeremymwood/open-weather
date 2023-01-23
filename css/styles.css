@@ -36,7 +36,7 @@ root {
 .fa-icon {
     /*TODO: add hover and scaling*/
 }
-.coordinates {
+#coordinates {
     /*background: rgba(0, 0, 0, 0.5);*/
     /*color: #fff;*/
     /*position: absolute;*/

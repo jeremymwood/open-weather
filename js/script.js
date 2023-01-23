@@ -17,17 +17,19 @@
 
         // $('#map').append('div#coordinates')
 
-        let e = $('<div id="coordinates" class="coordinates border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2 d-none d-inline-flex"></div>');
+        let e = $('<div id="coordinates" class="coordinates border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
         $('body').append(e);
 
         const coordinates = document.getElementById('coordinates');
         function onDragEnd() {
             let lngLat = marker.getLngLat();
-            $('#coordinates').removeClass("d-none");
+            // $('#coordinates').removeClass("d-none");
+            // $('#coordinates').addClass("d-inline-flex");
             coordinates.style.display = 'block';
             coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: &nbsp&nbsp&nbsp&nbsp&nbsp${lngLat.lat}`;
             $('#coordinates').delay(2000).fadeOut(1000);
             // $('#coordinates').addClass("d-none");
+            // $('#coordinates').removeClass("d-inline-flex");
 
             map.flyTo({
                 center: [lngLat.lng, lngLat.lat]
@@ -69,7 +71,7 @@
         console.log(data);
 
         //formatted time
-        //doesn't work with 5 day openwerather plan
+        //doesn't work with 5 day open werather plan
         // const unix_timestamp = data.current.dt;
         // const date = new Date(unix_timestamp * 1000);
         // const hours = date.getHours();
