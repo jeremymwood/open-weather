@@ -49,6 +49,58 @@
                 const minutes = "0" + date.getMinutes();
                 const seconds = "0" + date.getSeconds();
                 const formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+                const rawWind = Math.round(data.list[0].wind.deg);
+                function windDirection() {
+                    if (rawWind <= 22.5) {
+                        return "NNE";
+                    }
+                    if (rawWind <= 45) {
+                        return "NE";
+                    }
+                    if (rawWind <= 67.5) {
+                        return "ENE";
+                    }
+                    if (rawWind <= 90) {
+                        return "E";
+                    }
+                    if (rawWind <= 122.5) {
+                        return "ESE";
+                    }
+                    if (rawWind <= 135) {
+                        return "SE";
+                    }
+                    if (rawWind <= 157.5) {
+                        return "SSE";
+                    }
+                    if (rawWind <= 180) {
+                        return "S";
+                    }
+                    if (rawWind <= 202.5) {
+                        return "SSW";
+                    }
+                    if (rawWind <= 225) {
+                        return "SW";
+                    }
+                    if (rawWind <= 247.5) {
+                        return "WSW";
+                    }
+                    if (rawWind <= 270) {
+                        return "W";
+                    }
+                    if (rawWind <= 292.5) {
+                        return "WNW";
+                    }
+                    if (rawWind <= 315) {
+                        return "NW";
+                    }
+                    if (rawWind <= 337.5) {
+                        return "NNW";
+                    }
+                    if (rawWind <= 360) {
+                        return "N";
+                    }
+                }
+
 
                 // console.log(formattedTime);
                 // console.log(dayOfWeek);
@@ -62,21 +114,21 @@
                     <br />
                     Day of the week: ${dayOfWeek}
                     <br />
-                    Feels like: ${Math.round(data.list[0].main.feels_like)}
+                    Feels like: ${Math.round(data.list[0].main.feels_like)}&#176;
                     <br />
-                    Today: ${data.list[0].main.feels_like}
+                    Humidity: ${data.list[0].main.humidity}%
                     <br />
-                    Today: ${data.list[0].main.temp}
+                    Temperature: ${Math.round(data.list[0].main.temp)}&#176
                     <br />
-                    Today: ${data.list[0].main.temp}
+                    High: ${Math.round(data.list[0].main.temp_max)}&#176
                     <br />
-                    Today: ${data.list[0].main.temp}
+                    Low: ${Math.round(data.list[0].main.temp_min)}&#176
                     <br />
-                    Today: ${data.list[0].main.temp}
+                    General: ${data.list[0].weather[0].description}
                     <br />
-                    Today: ${data.list[0].main.temp}
+                    Wind: ${Math.round(data.list[0].wind.speed)} mph (${windDirection()})
                     <br />
-                    Today: ${data.list[0].main.temp}
+                    Wind gust: ${Math.round(data.list[0].wind.gust)} mph
                     <br />
                     Today: ${data.list[0].main.temp}
                     <br />
