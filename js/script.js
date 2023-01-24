@@ -15,50 +15,23 @@
         const marker = new mapboxgl.Marker({"color": "red", draggable: true});
         marker.setLngLat([startingLongitude, startingLatitude]);
 
-        $.get("http://api.openweathermap.org/data/2.5/forecast", {
-            APPID: OPENWEATHER_API_KEY,
-            lat:    startingLatitude,
-            lon:   startingLongitude,
-            units: "imperial"
-        }).done(function(data) {
-            // console.log('The entire response:', data);
-            // console.log('Diving in - here is current information: ', data.current);
-            // console.log('A step further - information for tomorrow: ', data.daily[1]);
-            console.log(data);
-            console.log(`Location: ${data.city.name}, ${data.city.country}`);
-
-        let f = $('<div id="currentData" class="currentData border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
-        $('body').append(f);
-        const currentData = document.getElementById('currentData');
-        // currentData.innerHTML = `Location: ${data.city.name}`;
-        currentData.innerHTML = `Location: ${data.city.name}, ${data.city.country}<br />Population: ${data.city.population}`;
-        });
-
-        let e = $('<div id="coordinates" class="coordinates border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
-        $('body').append(e);
-
-        const coordinates = document.getElementById('coordinates');
-        function onDragEnd() {
-            let lngLat = marker.getLngLat();
-            coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: &nbsp&nbsp&nbsp&nbsp&nbsp${lngLat.lat}`;
-            coordinates.style.display = 'block';
-            $('#coordinates').delay(2500).fadeOut(1000);
-            map.flyTo({
-                center: [lngLat.lng, lngLat.lat]
-            });
-
+        function openWeather(startingLongitude, startingLatitude) {
             $.get("http://api.openweathermap.org/data/2.5/forecast", {
                 APPID: OPENWEATHER_API_KEY,
-                lat:    lngLat.lat,
-                lon:   lngLat.lng,
+                lat:    startingLatitude,
+                lon:   startingLongitude,
                 units: "imperial"
             }).done(function(data) {
-                // console.log('The entire response:', data);
-                // console.log('Diving in - here is current information: ', data.current);
-                // console.log('A step further - information for tomorrow: ', data.daily[1]);
-                console.log(data);
-                console.log(`Location: ${data.city.name}, ${data.city.country}`);
+                // console.log(data);
 
+                // testData.innerHTML = `Location: ${data.city.name}, ${data.city.country}<br />Population: ${data.city.population}`;
+
+                testData.innerHTML = `Location: ${data.city.name}, ${data.city.country}
+                <br />
+                Population: ${data.city.population}
+                <br />
+                Longitude: ${startingLongitude}
+                <br />Latitude: &nbsp&nbsp&nbsp&nbsp&nbsp${startingLatitude}`;
                 //formatted time
                 //doesn't work with 5 day open werather plan
                 // const unix_timestamp = data.current.dt;
@@ -79,6 +52,26 @@
                 // make a function for fetching 5 day forecast
 
             });
+        };
+
+        openWeather(startingLongitude, startingLatitude);
+        let d = $('<div id="testData" class="currentData border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
+        $('body').append(d);
+
+        let e = $('<div id="coordinates" class="coordinates border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
+        $('body').append(e);
+
+        const coordinates = document.getElementById('coordinates');
+        function onDragEnd() {
+            let lngLat = marker.getLngLat();
+            coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: &nbsp&nbsp&nbsp&nbsp&nbsp${lngLat.lat}`;
+            coordinates.style.display = 'block';
+            $('#coordinates').delay(2500).fadeOut(1000);
+            map.flyTo({
+                center: [lngLat.lng, lngLat.lat]
+            });
+
+            openWeather(lngLat.lng, lngLat.lat);
         }
         marker.on('dragend', onDragEnd);
 
