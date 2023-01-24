@@ -22,13 +22,15 @@
                 lon:   startingLongitude,
                 units: "imperial"
             }).done(function(data) {
+
+                // display all data
                 // console.log(data);
 
                 // testData.innerHTML = `Location: ${data.city.name}, ${data.city.country}<br />Population: ${data.city.population}`;
 
                 testData.innerHTML = `Location: ${data.city.name}, ${data.city.country}
                 <br />
-                Population: ${data.city.population}
+                Population: ${data.city.population.toLocaleString('en-US')}
                 <br />
                 Longitude: ${startingLongitude}
                 <br />Latitude: &nbsp&nbsp&nbsp&nbsp&nbsp${startingLatitude}`;
