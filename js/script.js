@@ -1,6 +1,6 @@
 (function () {
     $(document).ready(function () {
-        let d = $('<div class="contianer currentData border border-2 border-white text-white rounded-3 bg-dark fs-6 my-2 p-2"><div id="testData" className="column"></div></div>');
+        let d = $('<div class="container border border-2 border-white text-white rounded-3 bg-dark fs-6 m-auto"><div id="testData" class="row"></div></div>');
         $('body').prepend(d);
 
         let c = $('<h1 class="text-white text-center pb-3">Openweather API</h1>');
@@ -21,6 +21,7 @@
         //toggle detailed 4 hour, daily, and 5 day forecast
         //temp graphs
         //template margins to access for innerHTMl
+        // fix latlong deck margin
 
         let startingLatitude = 29.515156939194544;
         let startingLongitude = -98.39371378157797;
@@ -49,12 +50,12 @@
                 console.log(data);
 
                 testData
-                    .innerHTML = `Location: ${data.city.name}, ${data.city.country}
+                    .innerHTML = `<div class="col-6 m-0">Location: ${data.city.name}, ${data.city.country}
                 <br />
                 Population: ${data.city.population.toLocaleString('en-US')}
-                <br />
+                </div><div class="col-6 m-0">
                 Longitude: ${startingLongitude}
-                <br />Latitude: &nbsp&nbsp&nbsp&nbsp&nbsp${startingLatitude}`;
+                <br />Latitude: &nbsp&nbsp&nbsp&nbsp&nbsp${startingLatitude}</div>`;
 
                 //formatted time
                 const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
