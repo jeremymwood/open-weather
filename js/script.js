@@ -161,7 +161,8 @@
                     document.getElementById(fiveDayId).append(`day ${i + 1}`);
 
 
-                    fiveDayId.innerHTML = `
+
+                    let fiveDayContent = `
                         ${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}
                         <br />
                         Feels like: ${Math.round(data.list[i].main.feels_like)}&#176;
@@ -176,6 +177,7 @@
                         <br />                      
                         Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[i].wind.gust)} mph)
                     `;
+                    document.getElementById(fiveDayId).append(fiveDayContent);
 
                 }
             });
@@ -185,16 +187,6 @@
 
         let fiveDayContainer = $('<div class="container m-auto d-flex" id="fiveDayContainer"></div>');
         $('body').append(fiveDayContainer);
-
-        // for (let i = 0; i <= 4; i++) {
-        //     let fiveDayId = 'day' + i + 'Forecast';
-        //
-        //     let forecast = $('<div class="fiveDayForecast border border-2 border-white text-white text-center rounded-3 bg-dark fs-6 m-2 p-2 flex-grow-1"></div>');
-        //     forecast.attr('id', fiveDayId);
-        //     $('#fiveDayContainer').append(forecast);
-        //
-        //     document.getElementById(fiveDayId).append(`day ${i +1}`);
-        // }
 
         let e = $('<div id="testForecast" class="currentData border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
         $('body').append(e);
