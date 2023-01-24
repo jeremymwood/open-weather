@@ -166,8 +166,23 @@
 
         openWeather(startingLongitude, startingLatitude);
 
-        let e = $('<div id="testForecast" class="currentData border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
-        $('body').append(e);
+        const fiveDayForecast = function () {
+            for (let i = 0; i <= 4; i++) {
+                let fiveDayId = 'day' + i + 'Forecast';
+                console.log(fiveDayId);
+
+                let forecast = $('<div class="border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
+                forecast.attr('id', fiveDayId);
+                $('body').append(forecast);
+            }
+
+
+        }
+        fiveDayForecast();
+
+        // let e = $('<div id="testForecast" class="currentData border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
+        // $('body').append(e);
+
 
         let f = $('<div id="coordinates" class="coordinates border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
         $('body').append(f);
