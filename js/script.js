@@ -50,62 +50,72 @@
                 const seconds = "0" + date.getSeconds();
                 const formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
                 const rawWind = Math.round(data.list[0].wind.deg);
+
+                //shorten with array and for loop
+                const windAbbreviations = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "NW", "NNW"];
+                let windMin = 0;
+                let windMax = 11.25;
+                let windIncrement = 22.5
+                console.log(windAbbreviations.length)
+
                 function windDirection() {
-                    if (rawWind <= 22.5) {
-                        return "NNE";
+                    for (let i = 0; i < windAbbreviations.length; i++) {
+                        if (rawWind >= windMin && rawWind <= windMax) {
+                            return windAbbreviations[i];
+                        } else {
+                            windMin = windMin + windIncrement;
+                            windMax = windMax + windIncrement;
+                        }
                     }
-                    if (rawWind <= 45) {
-                        return "NE";
-                    }
-                    if (rawWind <= 67.5) {
-                        return "ENE";
-                    }
-                    if (rawWind <= 90) {
-                        return "E";
-                    }
-                    if (rawWind <= 122.5) {
-                        return "ESE";
-                    }
-                    if (rawWind <= 135) {
-                        return "SE";
-                    }
-                    if (rawWind <= 157.5) {
-                        return "SSE";
-                    }
-                    if (rawWind <= 180) {
-                        return "S";
-                    }
-                    if (rawWind <= 202.5) {
-                        return "SSW";
-                    }
-                    if (rawWind <= 225) {
-                        return "SW";
-                    }
-                    if (rawWind <= 247.5) {
-                        return "WSW";
-                    }
-                    if (rawWind <= 270) {
-                        return "W";
-                    }
-                    if (rawWind <= 292.5) {
-                        return "WNW";
-                    }
-                    if (rawWind <= 315) {
-                        return "NW";
-                    }
-                    if (rawWind <= 337.5) {
-                        return "NNW";
-                    }
-                    if (rawWind <= 360) {
-                        return "N";
-                    }
+                    // if (rawWind <= 22.5) {
+                    //     return "NNE";
+                    // }
+                    // if (rawWind <= 45) {
+                    //     return "NE";
+                    // }
+                    // if (rawWind <= 67.5) {
+                    //     return "ENE";
+                    // }
+                    // if (rawWind <= 90) {
+                    //     return "E";
+                    // }
+                    // if (rawWind <= 122.5) {
+                    //     return "ESE";
+                    // }
+                    // if (rawWind <= 135) {
+                    //     return "SE";
+                    // }
+                    // if (rawWind <= 157.5) {
+                    //     return "SSE";
+                    // }
+                    // if (rawWind <= 180) {
+                    //     return "S";
+                    // }
+                    // if (rawWind <= 202.5) {
+                    //     return "SSW";
+                    // }
+                    // if (rawWind <= 225) {
+                    //     return "SW";
+                    // }
+                    // if (rawWind <= 247.5) {
+                    //     return "WSW";
+                    // }
+                    // if (rawWind <= 270) {
+                    //     return "W";
+                    // }
+                    // if (rawWind <= 292.5) {
+                    //     return "WNW";
+                    // }
+                    // if (rawWind <= 315) {
+                    //     return "NW";
+                    // }
+                    // if (rawWind <= 337.5) {
+                    //     return "NNW";
+                    // }
+                    // if (rawWind <= 360) {
+                    //     return "N";
+                    // }
                 }
-
-
-                // console.log(formattedTime);
-                // console.log(dayOfWeek);
-                // console.log(date);
-                // console.log(dayOfMonth);
 
                 testForecast.innerHTML = `
                     Today:
@@ -134,8 +144,9 @@
                     <br />
                 `;
 
-
                 // TODO:
+                //wind and temp widget
+                //mobile responsive
                 //drag end event listener for marker
                 // or dblclick on map
                 //dropdown for map themes, or light/dark mode
