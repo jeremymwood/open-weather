@@ -56,7 +56,6 @@
                 let windMin = 0;
                 let windMax = 11.25;
                 let windIncrement = 22.5
-                console.log(windAbbreviations.length)
 
                 function windDirection() {
                     for (let i = 0; i < windAbbreviations.length; i++) {
@@ -136,12 +135,7 @@
                     <br />
                     General: ${data.list[0].weather[0].description}
                     <br />
-                    Wind: ${Math.round(data.list[0].wind.speed)} mph (${windDirection()})
-                    <br />
-                    Wind gust: ${Math.round(data.list[0].wind.gust)} mph
-                    <br />
-                    Today: ${data.list[0].main.temp}
-                    <br />
+                    Wind: ${Math.round(data.list[0].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[0].wind.gust)} mph)
                 `;
 
                 // TODO:
