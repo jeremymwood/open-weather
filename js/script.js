@@ -1,5 +1,26 @@
 (function () {
     $(document).ready(function () {
+        let d = $('<div id="testData" class="currentData border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
+        $('body').prepend(d);
+
+        let c = $('<h1 class="text-white text-center pb-3">Openweather API</h1>');
+        $('body').prepend(c);
+
+        // TODO:
+        //5 day forecast
+        //use reverse geocode for city and state
+        //general weather icons
+        //fix wind direction
+
+        //wind and temp widget
+        //mobile responsive
+        //drag end event listener for marker
+        //dropdown for light/dark mode
+        //footer
+        //nav bar
+        //toggle detailed 4 hour, daily, and 5 day forecast
+        //temp graphs
+
         let startingLatitude = 29.515156939194544;
         let startingLongitude = -98.39371378157797;
 
@@ -137,22 +158,10 @@
                     <br />
                     Wind: ${Math.round(data.list[0].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[0].wind.gust)} mph)
                 `;
-
-                // TODO:
-                //wind and temp widget
-                //mobile responsive
-                //drag end event listener for marker
-                // or dblclick on map
-                //dropdown for map themes, or light/dark mode
-                //use reverse geocode for city and state
-                // make a function for fetching 5 day forecast
-
             });
         };
 
         openWeather(startingLongitude, startingLatitude);
-        let d = $('<div id="testData" class="currentData border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
-        $('body').append(d);
 
         let e = $('<div id="testForecast" class="currentData border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
         $('body').append(e);
