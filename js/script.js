@@ -167,13 +167,23 @@
 
         openWeather(startingLongitude, startingLatitude);
 
+        let fiveDayContainer = $('<div class="container m-auto d-flex" id="fiveDayContainer"></div>');
+        $('body').append(fiveDayContainer);
+
         const fiveDayForecast = function () {
             for (let i = 0; i <= 4; i++) {
                 let fiveDayId = 'day' + i + 'Forecast';
 
-                let forecast = $('<div class="border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
+                let forecast = $('<div class="fiveDayForecast border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2 flex-grow-1"></div>');
                 forecast.attr('id', fiveDayId);
-                $('body').append(forecast);
+                $('#fiveDayContainer').append(forecast);
+
+                let innerFiveDay = $('<p>test</p>');
+                $('.fiveDayForecast').append(innerFiveDay);
+                // let innerFiveDay = document.getElementsByClassName("fiveDayForecast");
+                // innerFiveDay.innerText = 'test';
+
+                // forecast.innerText = `<p>test</p>`;
             }
         }
         fiveDayForecast();
