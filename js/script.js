@@ -91,54 +91,6 @@
                             windMax = windMax + windIncrement;
                         }
                     }
-                    // if (rawWind <= 22.5) {
-                    //     return "NNE";
-                    // }
-                    // if (rawWind <= 45) {
-                    //     return "NE";
-                    // }
-                    // if (rawWind <= 67.5) {
-                    //     return "ENE";
-                    // }
-                    // if (rawWind <= 90) {
-                    //     return "E";
-                    // }
-                    // if (rawWind <= 122.5) {
-                    //     return "ESE";
-                    // }
-                    // if (rawWind <= 135) {
-                    //     return "SE";
-                    // }
-                    // if (rawWind <= 157.5) {
-                    //     return "SSE";
-                    // }
-                    // if (rawWind <= 180) {
-                    //     return "S";
-                    // }
-                    // if (rawWind <= 202.5) {
-                    //     return "SSW";
-                    // }
-                    // if (rawWind <= 225) {
-                    //     return "SW";
-                    // }
-                    // if (rawWind <= 247.5) {
-                    //     return "WSW";
-                    // }
-                    // if (rawWind <= 270) {
-                    //     return "W";
-                    // }
-                    // if (rawWind <= 292.5) {
-                    //     return "WNW";
-                    // }
-                    // if (rawWind <= 315) {
-                    //     return "NW";
-                    // }
-                    // if (rawWind <= 337.5) {
-                    //     return "NNW";
-                    // }
-                    // if (rawWind <= 360) {
-                    //     return "N";
-                    // }
                 }
 
                 testForecast.innerHTML = `
@@ -162,6 +114,70 @@
                     <br />
                     Wind: ${Math.round(data.list[0].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[0].wind.gust)} mph)
                 `;
+
+
+                // day0Forecast.innerHTML = `
+                //     ${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}
+                //     <br />
+                //     Feels like: ${Math.round(data.list[0].main.feels_like)}&#176;
+                //     <br />
+                //     Humidity: ${data.list[0].main.humidity}%
+                //     <br />
+                //     Temperature: ${Math.round(data.list[0].main.temp)}&#176
+                //     <br />
+                //     High: ${Math.round(data.list[0].main.temp_max)}&#176
+                //     <br />
+                //     Low: ${Math.round(data.list[0].main.temp_min)}&#176
+                //     <br />
+                //     General: ${data.list[0].weather[0].description}
+                //     <br />
+                //     Wind: ${Math.round(data.list[0].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[0].wind.gust)} mph)
+                // `;
+
+                for (let i = 0; i <= 4; i++) {
+                    const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+                    const months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
+
+                    let fiveDayId = 'day' + i + 'Forecast';
+
+                    let unix_timestamp = data.list[i].dt;
+                    let date = new Date(unix_timestamp * 1000);
+                    let day = date.getDay();
+                    let dayOfWeek = weekday[day];
+                    let dayOfMonth = date.getDate();
+                    let month = date.getMonth();
+                    let namedMonth = months[month];
+                    let year = date.getFullYear();
+                    let hours = date.getHours();
+                    let minutes = "0" + date.getMinutes();
+                    let seconds = "0" + date.getSeconds();
+                    let formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+                    let rawWind = Math.round(data.list[i].wind.deg);
+
+                    let forecast = $('<div class="fiveDayForecast border border-2 border-white text-white text-center rounded-3 bg-dark fs-6 m-2 p-2 flex-grow-1"></div>');
+                    forecast.attr('id', fiveDayId);
+                    $('#fiveDayContainer').append(forecast);
+
+                    document.getElementById(fiveDayId).append(`day ${i + 1}`);
+
+
+                    fiveDayId.innerHTML = `
+                        ${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}
+                        <br />
+                        Feels like: ${Math.round(data.list[i].main.feels_like)}&#176;
+                        <br />
+                        Humidity: ${data.list[i].main.humidity}%
+                        <br />
+                        Temperature: ${Math.round(data.list[i].main.temp)}&#176
+                        <br />
+                        High: ${Math.round(data.list[i].main.temp_max)}&#176
+                        <br />
+                        Low: ${Math.round(data.list[i].main.temp_min)}&#176
+                        <br />                      
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[i].wind.gust)} mph)
+                    `;
+
+                }
             });
         };
 
@@ -170,18 +186,15 @@
         let fiveDayContainer = $('<div class="container m-auto d-flex" id="fiveDayContainer"></div>');
         $('body').append(fiveDayContainer);
 
-        const fiveDayForecast = function () {
-            for (let i = 0; i <= 4; i++) {
-                let fiveDayId = 'day' + i + 'Forecast';
-
-                let forecast = $('<div class="fiveDayForecast border border-2 border-white text-white text-center rounded-3 bg-dark fs-6 m-2 p-2 flex-grow-1"></div>');
-                forecast.attr('id', fiveDayId);
-                $('#fiveDayContainer').append(forecast);
-
-                document.getElementById(fiveDayId).append(`day ${i +1}`);
-            }
-        }
-        fiveDayForecast();
+        // for (let i = 0; i <= 4; i++) {
+        //     let fiveDayId = 'day' + i + 'Forecast';
+        //
+        //     let forecast = $('<div class="fiveDayForecast border border-2 border-white text-white text-center rounded-3 bg-dark fs-6 m-2 p-2 flex-grow-1"></div>');
+        //     forecast.attr('id', fiveDayId);
+        //     $('#fiveDayContainer').append(forecast);
+        //
+        //     document.getElementById(fiveDayId).append(`day ${i +1}`);
+        // }
 
         let e = $('<div id="testForecast" class="currentData border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
         $('body').append(e);
