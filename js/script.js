@@ -174,16 +174,11 @@
             for (let i = 0; i <= 4; i++) {
                 let fiveDayId = 'day' + i + 'Forecast';
 
-                let forecast = $('<div class="fiveDayForecast border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2 flex-grow-1"></div>');
+                let forecast = $('<div class="fiveDayForecast border border-2 border-white text-white text-center rounded-3 bg-dark fs-6 m-2 p-2 flex-grow-1"></div>');
                 forecast.attr('id', fiveDayId);
                 $('#fiveDayContainer').append(forecast);
 
-                let innerFiveDay = $('<p>test</p>');
-                $('.fiveDayForecast').append(innerFiveDay);
-                // let innerFiveDay = document.getElementsByClassName("fiveDayForecast");
-                // innerFiveDay.innerText = 'test';
-
-                // forecast.innerText = `<p>test</p>`;
+                document.getElementById(fiveDayId).append(`day ${i +1}`);
             }
         }
         fiveDayForecast();
