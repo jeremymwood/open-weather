@@ -1,6 +1,6 @@
 (function () {
     $(document).ready(function () {
-        let d = $('<div class="container border border-2 border-white text-white rounded-3 bg-dark fs-6 m-auto"><div id="testData" class="row"></div></div>');
+        let d = $('<div class="container border border-2 border-white text-white rounded-3 bg-dark fs-6 m-auto"><div class="row" id="testData"></div></div>');
         $('body').prepend(d);
 
         let c = $('<h1 class="text-white text-center pb-3">Openweather API</h1>');
