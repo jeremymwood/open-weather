@@ -24,9 +24,7 @@
             }).done(function(data) {
 
                 // display all data
-                // console.log(data);
-
-                // testData.innerHTML = `Location: ${data.city.name}, ${data.city.country}<br />Population: ${data.city.population}`;
+                console.log(data);
 
                 testData.innerHTML = `Location: ${data.city.name}, ${data.city.country}
                 <br />
@@ -34,19 +32,58 @@
                 <br />
                 Longitude: ${startingLongitude}
                 <br />Latitude: &nbsp&nbsp&nbsp&nbsp&nbsp${startingLatitude}`;
+
                 //formatted time
-                //doesn't work with 5 day open werather plan
-                // const unix_timestamp = data.current.dt;
-                // const date = new Date(unix_timestamp * 1000);
-                // const hours = date.getHours();
-                // const minutes = "0" + date.getMinutes();
-                // const seconds = "0" + date.getSeconds();
-                // const formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-                //
+                const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+                const months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
+
+                const unix_timestamp = data.list[0].dt;
+                const date = new Date(unix_timestamp * 1000);
+                const day = date.getDay();
+                const dayOfWeek = weekday[day];
+                const dayOfMonth = date.getDate();
+                const month = date.getMonth();
+                const namedMonth = months[month];
+                const year = date.getFullYear();
+                const hours = date.getHours();
+                const minutes = "0" + date.getMinutes();
+                const seconds = "0" + date.getSeconds();
+                const formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
                 // console.log(formattedTime);
+                // console.log(dayOfWeek);
+                // console.log(date);
+                // console.log(dayOfMonth);
+
+                testForecast.innerHTML = `
+                    Today:
+                    <br />
+                    Date: ${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}
+                    <br />
+                    Day of the week: ${dayOfWeek}
+                    <br />
+                    Feels like: ${Math.round(data.list[0].main.feels_like)}
+                    <br />
+                    Today: ${data.list[0].main.feels_like}
+                    <br />
+                    Today: ${data.list[0].main.temp}
+                    <br />
+                    Today: ${data.list[0].main.temp}
+                    <br />
+                    Today: ${data.list[0].main.temp}
+                    <br />
+                    Today: ${data.list[0].main.temp}
+                    <br />
+                    Today: ${data.list[0].main.temp}
+                    <br />
+                    Today: ${data.list[0].main.temp}
+                    <br />
+                    Today: ${data.list[0].main.temp}
+                    <br />
+                `;
+
 
                 // TODO:
-                //use draggable marker to update forecast
                 //drag end event listener for marker
                 // or dblclick on map
                 //dropdown for map themes, or light/dark mode
@@ -60,8 +97,11 @@
         let d = $('<div id="testData" class="currentData border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
         $('body').append(d);
 
-        let e = $('<div id="coordinates" class="coordinates border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
+        let e = $('<div id="testForecast" class="currentData border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
         $('body').append(e);
+
+        let f = $('<div id="coordinates" class="coordinates border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
+        $('body').append(f);
 
         const coordinates = document.getElementById('coordinates');
         function onDragEnd() {
