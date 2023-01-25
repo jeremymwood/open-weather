@@ -1,11 +1,11 @@
 (function () {
     $(document).ready(function () {
+
         let c = $('<div class="container-fluid border border-2 border-white text-white rounded-3 bg-dark fs-6 m-auto"><div id="testData" class="row"></div></div>');
-        $('body').prepend(c);
+        $('#map').prepend(c);
 
         let d = $('<header><h1 class="text-white text-center pb-3">TetraCast</h1></header>');
         $('body').prepend(d);
-
 
         let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY" class="searchContainerParent"><div class="searchContainer m-0"><i class="fa-solid fa-magnifying-glass text-white" aria-hidden="true"></i><form><input id="search" class="search border border-2 border-white text-white rounded-3 bg-dark fs-6 px-5 py-1 mb-2" type="text" name="address" autocomplete="shipping street-address" placeholder="search location...">    <button id="myBtn" class="d-none" type="submit">button</button>\n</form></div></mapbox-address-autofill>');
         $('header').append(e);
@@ -61,16 +61,15 @@
                 console.log(data);
 
                 testData.innerHTML = `
-                <div class="col-6 m-0">
+                <div class="m-0">
                 Location: ${data.city.name}, ${data.city.country}
-                <br />
-                Population: ${data.city.population.toLocaleString('en-US')}
                 </div>
-                <div class="col-6 m-0">
+                <div class="m-0" id="coordinates">
                 Longitude: ${startingLongitude}
                 <br />
                 Latitude: &nbsp&nbsp&nbsp&nbsp&nbsp${startingLatitude}
                 </div>`;
+                // Population: ${data.city.population.toLocaleString('en-US')}
 
                 //formatted time
                 const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -289,8 +288,8 @@
 
         fiveDayIDMachina();
 
-        let g = $('<div id="coordinates" class="coordinates border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
-        $('body').append(g);
+        // let g = $('<div id="coordinates" class="coordinates border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
+        // $('body').append(g);
 
         let h = $('    <footer class="site-footer">\n' +
             '        <div class="container-fluid">\n' +
@@ -320,7 +319,7 @@
             '            </div>\n' +
             '            <hr>\n' +
             '        </div>\n' +
-            '        <div class="container">\n' +
+            '        <div class="container-fluid">\n' +
             '            <div class="row">\n' +
             '                <div class="col-md-8 col-sm-6 col-xs-12">\n' +
             '                    <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by\n' +
@@ -342,7 +341,7 @@
 
 
 
-        const coordinates = document.getElementById('coordinates');
+        const coordinates = document.getElementById('testData');
 
         function onDragEnd() {
             let lngLat = marker.getLngLat();
@@ -383,22 +382,12 @@
 
         marker.on('keypress', pinThatAddress);
 
-
-        // pinThatAddress("North Star Mall");
-        // pinThatAddress("Rackspace");
-
         //search bar on enter
         let data = document.getElementById("search");
         $('#search').on('keypress', function (e) {
             if (e.which == 13) {
                 e.preventDefault()
                 pinThatAddress(`${data.value}`);
-                // console.log(data.value);
-
-                // const marker = new mapboxgl.Marker();
-                // marker.setLngLat(data.value);
-                // marker.addTo(map);
-
                 data.value = "";
             }
         });
