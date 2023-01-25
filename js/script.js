@@ -99,130 +99,110 @@
                 }
 
                 day0ID.innerHTML =`
-                        Today:
+                        ${dayOfWeek}
                         <br />
-                        Date: ${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}
+                        ${namedMonth} ${dayOfMonth}, ${year}
                         <br />
-                        Day of the week: ${dayOfWeek}
-                        <br />
-                        Feels like: ${Math.round(data.list[i].main.feels_like)}°
-                        <br />
-                        Humidity: ${data.list[i].main.humidity}%
-                        <br />
-                        Temperature: ${Math.round(data.list[i].main.temp)}°
+                        Conditions: ${data.list[i].weather[0].description}
                         <br />
                         High: ${Math.round(data.list[i].main.temp_max)}°
                         <br />
                         Low: ${Math.round(data.list[i].main.temp_min)}°
                         <br />
-                        General: ${data.list[i].weather[0].description}
+                        Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[i].wind.gust)} mph)
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()}
+                        <br />
+                        Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
 
                 i = 1;
                 day1ID.innerHTML =`
-                        Today:
+                        ${dayOfWeek}
                         <br />
-                        Date: ${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}
+                        ${namedMonth} ${dayOfMonth}, ${year}
                         <br />
-                        Day of the week: ${dayOfWeek}
-                        <br />
-                        Feels like: ${Math.round(data.list[i].main.feels_like)}°
-                        <br />
-                        Humidity: ${data.list[i].main.humidity}%
-                        <br />
-                        Temperature: ${Math.round(data.list[i].main.temp)}°
+                        Conditions: ${data.list[i].weather[0].description}
                         <br />
                         High: ${Math.round(data.list[i].main.temp_max)}°
                         <br />
                         Low: ${Math.round(data.list[i].main.temp_min)}°
                         <br />
-                        General: ${data.list[i].weather[0].description}
+                        Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[i].wind.gust)} mph)
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()}
+                        <br />
+                        Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
 
                 i = 2;
                 day2ID.innerHTML =`
-                        Today:
+                        ${dayOfWeek}
                         <br />
-                        Date: ${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}
+                        ${namedMonth} ${dayOfMonth}, ${year}
                         <br />
-                        Day of the week: ${dayOfWeek}
-                        <br />
-                        Feels like: ${Math.round(data.list[i].main.feels_like)}°
-                        <br />
-                        Humidity: ${data.list[i].main.humidity}%
-                        <br />
-                        Temperature: ${Math.round(data.list[i].main.temp)}°
+                        Conditions: ${data.list[i].weather[0].description}
                         <br />
                         High: ${Math.round(data.list[i].main.temp_max)}°
                         <br />
                         Low: ${Math.round(data.list[i].main.temp_min)}°
                         <br />
-                        General: ${data.list[i].weather[0].description}
+                        Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[i].wind.gust)} mph)
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()}
+                        <br />
+                        Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
 
                 i = 3;
                 day3ID.innerHTML =`
-                        Today:
+                        ${dayOfWeek}
                         <br />
-                        Date: ${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}
+                        ${namedMonth} ${dayOfMonth}, ${year}
                         <br />
-                        Day of the week: ${dayOfWeek}
-                        <br />
-                        Feels like: ${Math.round(data.list[i].main.feels_like)}°
-                        <br />
-                        Humidity: ${data.list[i].main.humidity}%
-                        <br />
-                        Temperature: ${Math.round(data.list[i].main.temp)}°
+                        Conditions: ${data.list[i].weather[0].description}
                         <br />
                         High: ${Math.round(data.list[i].main.temp_max)}°
                         <br />
                         Low: ${Math.round(data.list[i].main.temp_min)}°
                         <br />
-                        General: ${data.list[i].weather[0].description}
+                        Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[i].wind.gust)} mph)
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()}
+                        <br />
+                        Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
 
                 i = 4;
                 day4ID.innerHTML =`
-                        Today:
+                        ${dayOfWeek}
                         <br />
-                        Date: ${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}
+                        ${namedMonth} ${dayOfMonth}, ${year}
                         <br />
-                        Day of the week: ${dayOfWeek}
-                        <br />
-                        Feels like: ${Math.round(data.list[i].main.feels_like)}°
-                        <br />
-                        Humidity: ${data.list[i].main.humidity}%
-                        <br />
-                        Temperature: ${Math.round(data.list[i].main.temp)}°
+                        Conditions: ${data.list[i].weather[0].description}
                         <br />
                         High: ${Math.round(data.list[i].main.temp_max)}°
                         <br />
                         Low: ${Math.round(data.list[i].main.temp_min)}°
                         <br />
-                        General: ${data.list[i].weather[0].description}
+                        Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[i].wind.gust)} mph)
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()}
+                        <br />
+                        Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
             });
         };
 
         openWeather(startingLongitude, startingLatitude);
 
-        let fiveDayContainer = $('<div class="container m-auto d-flex" id="fiveDayContainer"></div>');
+        let fiveDayContainer = $('<div class="container m-auto d-flex justify-content-center" id="fiveDayContainer"></div>');
         $('body').append(fiveDayContainer);
 
         function fiveDayIDMachina() {
             for (let i = 0; i <= 4; i++) {
                 let fiveDayId = `day${i}ID`;
-                let forecast = $('<div class="singleDayForecast border border-2 border-white text-white text-center rounded-3 bg-dark fs-6 m-2 p-2 flex-grow-1"></div>');
+                let forecast = $('<div class="singleDayForecast border border-2 border-white text-white text-center rounded-3 bg-dark fs-6 m-2 p-2 w-100"></div>');
                 forecast.attr('id', fiveDayId);
                 $('#fiveDayContainer').append(forecast);
             }
