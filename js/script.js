@@ -331,27 +331,23 @@
             }
         });
 
-        // function pinThatAddress(address) {
-        //     geocode(address, MAPBOX_API_KEY).then(function(result) {
-        //         result = document.getElementById("search").value
-        //         console.log(result);
-        //         // const marker = new mapboxgl.Marker();
-        //         // marker.setLngLat(result);
-        //         // marker.addTo(map);
-        //         //
-        //         // const popup = new mapboxgl.Popup();
-        //         // popup.setHTML(`<h3>${address}</h3>`);
-        //         // marker.setPopup(popup);
-        //
-        //
-        //
-        //     }).catch(function(error) {
-        //         console.log("Boom");
-        //     });
-        // }
-        //
-        // pinThatAddress("North Star Mall");
-        // pinThatAddress("Rackspace");
+        function pinThatAddress(address) {
+            geocode(address, MAPBOX_API_KEY).then(function(result) {
+                console.log(result);
+                const marker = new mapboxgl.Marker();
+                marker.setLngLat(result);
+                marker.addTo(map);
+
+                // const popup = new mapboxgl.Popup();
+                // popup.setHTML(`<h3>${address}</h3>`);
+                // marker.setPopup(popup);
+            }).catch(function(error) {
+                console.log("Boom");
+            });
+        }
+
+        pinThatAddress("North Star Mall");
+        pinThatAddress("Rackspace");
         // pinThatAddress();
 
         //nav button
