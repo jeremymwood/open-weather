@@ -7,17 +7,19 @@
         $('body').prepend(d);
 
 
-        let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY" class="searchContainerParent"><div class="searchContainer m-0"><i class="fa-solid fa-magnifying-glass text-white" aria-hidden="true"></i><form><input id="search" class="search border border-2 border-white text-white rounded-3 bg-dark fs-6 px-5 py-1 mb-2" type="text" name="address" autocomplete="shipping street-address" placeholder="search...">    <button id="myBtn" class="d-none" type="submit">button</button>\n</form></div></mapbox-address-autofill>');
+        let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY" class="searchContainerParent"><div class="searchContainer m-0"><i class="fa-solid fa-magnifying-glass text-white" aria-hidden="true"></i><form><input id="search" class="search border border-2 border-white text-white rounded-3 bg-dark fs-6 px-5 py-1 mb-2" type="text" name="address" autocomplete="shipping street-address" placeholder="search location...">    <button id="myBtn" class="d-none" type="submit">button</button>\n</form></div></mapbox-address-autofill>');
         $('header').append(e);
 
         // TODO:
-        //use reverse geocode for city and state
         //readme
         //fix wind direction or remove
         //general weather icons
         // add location, population and lat/long to map container
         // remove or repurpose vanishing div... maybe for lat long
         //hover card screen back text and prompt for detailed forecast?
+        //style cards, h4, h5, etc...
+        //add popups
+        //add badges
 
 
         //wind and temp widget
@@ -28,6 +30,8 @@
         //temp graphs
         //template margins to access for innerHTMl
         //animate searchbar appearing out of magnifying glass
+        //add pin to favorites
+        //add lat long search
         let startingLatitude = 29.507103833705532;
         let startingLongitude = -98.39395190355188;
 
@@ -287,6 +291,56 @@
 
         let g = $('<div id="coordinates" class="coordinates border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
         $('body').append(g);
+
+        let h = $('    <footer class="site-footer">\n' +
+            '        <div class="container-fluid">\n' +
+            '            <div class="row">\n' +
+            '                <div class="col-sm-12 col-md-6">\n' +
+            '                    <h6>About</h6>\n' +
+            '                    <p class="text-justify">TetraCast provides reliable weather forecasts on the go with a focus on customer service. We offer up-to-date weather data in four hour increments because hourly forecasts are excessive and that API option is cost prohibitive to our valued customers!</p>\n' +
+            '                </div>\n' +
+            '\n' +
+            '                <div class="col-xs-6 col-md-3">\n' +
+            '                    <h6>Categories</h6>\n' +
+            '                    <ul class="footer-links">\n' +
+            '                        <li><a href="https://codeup.com/">C</a></li>\n' +
+            '                        <li><a href="https://codeup.com/">UI Design</a></li>\n' +
+            '                        <li><a href="https://codeup.com/">Templates</a></li>\n' +
+            '                    </ul>\n' +
+            '                </div>\n' +
+            '\n' +
+            '                <div class="col-xs-6 col-md-3">\n' +
+            '                    <h6>Quick Links</h6>\n' +
+            '                    <ul class="footer-links">\n' +
+            '                        <li><a href="https://codeup.com/">About Us</a></li>\n' +
+            '                        <li><a href="https://codeup.com/">Contact Us</a></li>\n' +
+            '                        <li><a href="https://codeup.com/">Privacy Policy</a></li>\n' +
+            '                    </ul>\n' +
+            '                </div>\n' +
+            '            </div>\n' +
+            '            <hr>\n' +
+            '        </div>\n' +
+            '        <div class="container">\n' +
+            '            <div class="row">\n' +
+            '                <div class="col-md-8 col-sm-6 col-xs-12">\n' +
+            '                    <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by\n' +
+            '                        <a href="#">TetraCast</a>.\n' +
+            '                    </p>\n' +
+            '                </div>\n' +
+            '\n' +
+            '                <div class="col-md-4 col-sm-6 col-xs-12">\n' +
+            '                    <ul class="social-icons">\n' +
+            '                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>\n' +
+            '                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>\n' +
+            '                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>\n' +
+            '                    </ul>\n' +
+            '                </div>\n' +
+            '            </div>\n' +
+            '        </div>\n' +
+            '    </footer>');
+        $('body').append(h);
+
+
 
         const coordinates = document.getElementById('coordinates');
 
