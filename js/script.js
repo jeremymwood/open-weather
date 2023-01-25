@@ -1,6 +1,6 @@
 (function () {
     $(document).ready(function () {
-        let d = $('<div class="container border border-2 border-white text-white rounded-3 bg-dark fs-6 m-auto"><div id="testData" class="row"></div></div>');
+        let d = $('<div class="container-fluid border border-2 border-white text-white rounded-3 bg-dark fs-6 m-auto"><div id="testData" class="row"></div></div>');
         $('body').prepend(d);
 
         let c = $('<h1 class="text-white text-center pb-3">Openweather API</h1>');
@@ -34,6 +34,8 @@
             zoom: 10,
             center: [startingLongitude, startingLatitude]
         });
+
+        $("#map").addClass("container-fluid mx-auto")
 
         const markerDurationInit = 400;
         const marker = new mapboxgl.Marker({"color": "red", draggable: true});
@@ -103,7 +105,16 @@
                     }
                 }
 
-                windDirection(347);
+                // why does this fail after one occurrence?
+                windDirection(0);
+                windDirection(45);
+                windDirection(90);
+                windDirection(135);
+                windDirection(180);
+                windDirection(225);
+                windDirection(270);
+                windDirection(325);
+                windDirection(359);
 
                 day0ID.innerHTML =`
                         ${dayOfWeek}
@@ -118,7 +129,7 @@
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}°
                         <br />
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
@@ -137,7 +148,7 @@
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}°
                         <br />
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
@@ -156,7 +167,7 @@
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}°
                         <br />
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
@@ -175,7 +186,7 @@
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}°
                         <br />
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
@@ -194,7 +205,7 @@
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}°
                         <br />
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
@@ -203,13 +214,13 @@
 
         openWeather(startingLongitude, startingLatitude);
 
-        let fiveDayContainer = $('<div class="container m-auto d-flex justify-content-center" id="fiveDayContainer"></div>');
+        let fiveDayContainer = $('<div class="container-fluid m-auto p-0 d-flex justify-content-between" id="fiveDayContainer"></div>');
         $('body').append(fiveDayContainer);
 
         function fiveDayIDMachina() {
             for (let i = 0; i <= 4; i++) {
                 let fiveDayId = `day${i}ID`;
-                let forecast = $('<div class="singleDayForecast border border-2 border-white text-white text-center rounded-3 bg-dark fs-6 m-2 p-2 w-100"></div>');
+                let forecast = $('<div class="singleDayForecast border border-2 border-white text-white text-center rounded-3 bg-dark fs-6 p-2 w-100"></div>');
                 forecast.attr('id', fiveDayId);
                 $('#fiveDayContainer').append(forecast);
             }
