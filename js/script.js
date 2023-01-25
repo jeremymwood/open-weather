@@ -50,13 +50,17 @@
                 // display all data
                 console.log(data);
 
-                testData
-                    .innerHTML = `<div class="col-6 m-0">Location: ${data.city.name}, ${data.city.country}
+                testData.innerHTML = `
+                <div class="col-6 m-0">
+                Location: ${data.city.name}, ${data.city.country}
                 <br />
                 Population: ${data.city.population.toLocaleString('en-US')}
-                </div><div class="col-6 m-0">
+                </div>
+                <div class="col-6 m-0">
                 Longitude: ${startingLongitude}
-                <br />Latitude: &nbsp&nbsp&nbsp&nbsp&nbsp${startingLatitude}</div>`;
+                <br />
+                Latitude: &nbsp&nbsp&nbsp&nbsp&nbsp${startingLatitude}
+                </div>`;
 
                 //formatted time
                 const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -116,7 +120,7 @@
                         Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[i].wind.gust)} mph)
                         `;
 
-                i = 1;
+                let j = 1;
                 day1ID.innerHTML =`
                         Today:
                         <br />
@@ -124,19 +128,19 @@
                         <br />
                         Day of the week: ${dayOfWeek}
                         <br />
-                        Feels like: ${Math.round(data.list[i].main.feels_like)}°
+                        Feels like: ${Math.round(data.list[j].main.feels_like)}°
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Temperature: ${Math.round(data.list[i].main.temp)}°
+                        Temperature: ${Math.round(data.list[j].main.temp)}°
                         <br />
-                        High: ${Math.round(data.list[i].main.temp_max)}°
+                        High: ${Math.round(data.list[j].main.temp_max)}°
                         <br />
-                        Low: ${Math.round(data.list[i].main.temp_min)}°
+                        Low: ${Math.round(data.list[j].main.temp_min)}°
                         <br />
-                        General: ${data.list[i].weather[i].description}
+                        General: ${data.list[j].weather[j].description}
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[i].wind.gust)} mph)
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[j].wind.gust)} mph)
                         `;
             });
         };
