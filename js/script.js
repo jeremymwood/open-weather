@@ -27,6 +27,7 @@
         //toggle detailed 4 hour, daily, and 5 day forecast
         //temp graphs
         //template margins to access for innerHTMl
+        //animate searchbar appearing out of magnifying glass
         let startingLatitude = 29.507103833705532;
         let startingLongitude = -98.39395190355188;
 
@@ -307,34 +308,27 @@
             marker.addTo(map);
         }, (markerDurationInit));
 
-        //***doc rob snippet
-        // let mapBoxGeocoder = undefined;
-        // mapBoxGeocoder = new MapBoxGeocoder({
-        //     accessToken: mapboxgl.accessToken,
-        //     mapboxgl: mapboxgl,
-        //     flyto: false,
-        //     marker: false
-        // });
-        // map.addControl(mapBoxGeocoder);
-        //
-        // mapBoxGeocoder.on("result", function(result) {
-        //     addMarkerForLngLat(result.result.center, jumpTo: true, result.result.place_name);
-        // });
-
         function pinThatAddress(address) {
             geocode(address, MAPBOX_API_KEY).then(function(result) {
-                console.log(result);
-                const marker = new mapboxgl.Marker();
                 marker.setLngLat(result);
-                marker.addTo(map);
+                let lngLat = marker.getLngLat();
+                map.easeTo({
+                    center: [lngLat.lng, lngLat.lat]
+                });
 
-                // const popup = new mapboxgl.Popup();
-                // popup.setHTML(`<h3>${address}</h3>`);
-                // marker.setPopup(popup);
+                coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: &nbsp&nbsp&nbsp&nbsp&nbsp${lngLat.lat}`;
+                coordinates.style.display = 'block';
+                $('#coordinates').delay(2500).fadeOut(1000);
+
+                openWeather(lngLat.lng, lngLat.lat);
+
             }).catch(function(error) {
                 console.log("Boom");
             });
         }
+
+        marker.on('keypress', pinThatAddress);
+
 
         // pinThatAddress("North Star Mall");
         // pinThatAddress("Rackspace");
