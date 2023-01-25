@@ -304,27 +304,75 @@
             marker.addTo(map);
         },(markerDurationInit));
 
-        function pinThatAddress(address) {
-            geocode(address, MAPBOX_API_KEY).then(function(result) {
-                console.log(result);
-                const marker = new mapboxgl.Marker();
-                marker.setLngLat(result);
-                marker.addTo(map);
-
-                const popup = new mapboxgl.Popup();
-                popup.setHTML(`<h3>${address}</h3>`);
-                marker.setPopup(popup);
-
-
-
-            }).catch(function(error) {
-                console.log("Boom");
-            });
-        }
+        // function pinThatAddress(address) {
+        //     geocode(address, MAPBOX_API_KEY).then(function(result) {
+        //         console.log(result);
+        //         const marker = new mapboxgl.Marker();
+        //         marker.setLngLat(result);
+        //         marker.addTo(map);
+        //
+        //         const popup = new mapboxgl.Popup();
+        //         popup.setHTML(`<h3>${address}</h3>`);
+        //         marker.setPopup(popup);
+        //
+        //
+        //
+        //     }).catch(function(error) {
+        //         console.log("Boom");
+        //     });
+        // }
 
         // pinThatAddress("North Star Mall");
         // pinThatAddress("Rackspace");
         // pinThatAddress();
+
+        let proximityBuffer = 0.05;
+
+        const geocoder = new MapboxGeocoder({
+            // Initialize the geocoder
+            //think top initialization should apply
+            //accessToken: mapboxgl.accessToken, // Set the access token
+            //set above
+            //mapboxgl: mapboxgl, // Set the mapbox-gl instance
+            marker: false, // Do not use the default marker style
+            // let lngLat = marker.getLngLat();
+
+
+            placeholder: 'Search for places in Berkeley', // Placeholder text for the search bar
+            bbox: [lngLat.lng - proximityBuffer, lngLat.lat - proximityBuffer, lngLat.lng + proximityBuffer, lngLat.lat + proximityBuffer],
+            proximity: {
+                longitude: lngLat.lng,
+                latitude: lngLat.lat
+            }
+        });
+
+        // Add the geocoder to the map
+        map.addControl(geocoder);
+
+        map.on('load', () => {
+            map.addSource('single-point', {
+                'type': 'geojson',
+                'data': {
+                    'type': 'FeatureCollection',
+                    'features': []
+                }
+            });
+
+            map.addLayer({
+                'id': 'point',
+                'source': 'single-point',
+                'type': 'circle',
+                'paint': {
+                    'circle-radius': 10,
+                    'circle-color': '#448ee4'
+                }
+            });
+
+            geocoder.on('result', (event) => {
+                map.getSource('single-point').setData(event.result.geometry);
+            });
+        });
+
 
         // reverseGeocode({lng: -98.393114, lat: 29.507893}, MAPBOX_API_KEY).then(function(results) {
         //     // logs the address for The Alamo
