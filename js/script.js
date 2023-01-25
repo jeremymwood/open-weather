@@ -7,7 +7,7 @@
         $('body').prepend(d);
 
 
-        let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY" class="searchContainerParent"><div class="searchContainer m-0"><i class="fa-solid fa-magnifying-glass text-white" aria-hidden="true"></i><form><input class="search border border-2 border-white text-white rounded-3 bg-dark fs-6 px-5 py-1 mb-2" type="text" name="address" autocomplete="shipping street-address" placeholder="search..."></form></div></mapbox-address-autofill>');
+        let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY" class="searchContainerParent"><div class="searchContainer m-0"><i class="fa-solid fa-magnifying-glass text-white" aria-hidden="true"></i><form><input id="search" class="search border border-2 border-white text-white rounded-3 bg-dark fs-6 px-5 py-1 mb-2" type="text" name="address" autocomplete="shipping street-address" placeholder="search..."></form></div></mapbox-address-autofill>');
         $('header').append(e);
 
         // TODO:
@@ -304,16 +304,28 @@
             marker.addTo(map);
         },(markerDurationInit));
 
+        // document.getElementById("search").value = "Muscle Cars";
+        // let result = document.getElementById("search");
+        // console.log(result.value);
+
+        function sConsole(event) {
+            event.preventDefault();
+            let data = document.getElementById("search");
+            console.log(data.value);
+
+        }
+
         // function pinThatAddress(address) {
         //     geocode(address, MAPBOX_API_KEY).then(function(result) {
+        //         result = document.getElementById("search").value
         //         console.log(result);
-        //         const marker = new mapboxgl.Marker();
-        //         marker.setLngLat(result);
-        //         marker.addTo(map);
-        //
-        //         const popup = new mapboxgl.Popup();
-        //         popup.setHTML(`<h3>${address}</h3>`);
-        //         marker.setPopup(popup);
+        //         // const marker = new mapboxgl.Marker();
+        //         // marker.setLngLat(result);
+        //         // marker.addTo(map);
+        //         //
+        //         // const popup = new mapboxgl.Popup();
+        //         // popup.setHTML(`<h3>${address}</h3>`);
+        //         // marker.setPopup(popup);
         //
         //
         //
@@ -321,83 +333,10 @@
         //         console.log("Boom");
         //     });
         // }
-
+        //
         // pinThatAddress("North Star Mall");
         // pinThatAddress("Rackspace");
         // pinThatAddress();
-
-        let proximityBuffer = 0.05;
-
-        const geocoder = new MapboxGeocoder({
-            // Initialize the geocoder
-            //think top initialization should apply
-            //accessToken: mapboxgl.accessToken, // Set the access token
-            //set above
-            //mapboxgl: mapboxgl, // Set the mapbox-gl instance
-            marker: false, // Do not use the default marker style
-            // let lngLat = marker.getLngLat();
-
-
-            placeholder: 'Search for places in Berkeley', // Placeholder text for the search bar
-            bbox: [lngLat.lng - proximityBuffer, lngLat.lat - proximityBuffer, lngLat.lng + proximityBuffer, lngLat.lat + proximityBuffer],
-            proximity: {
-                longitude: lngLat.lng,
-                latitude: lngLat.lat
-            }
-        });
-
-        // Add the geocoder to the map
-        map.addControl(geocoder);
-
-        map.on('load', () => {
-            map.addSource('single-point', {
-                'type': 'geojson',
-                'data': {
-                    'type': 'FeatureCollection',
-                    'features': []
-                }
-            });
-
-            map.addLayer({
-                'id': 'point',
-                'source': 'single-point',
-                'type': 'circle',
-                'paint': {
-                    'circle-radius': 10,
-                    'circle-color': '#448ee4'
-                }
-            });
-
-            geocoder.on('result', (event) => {
-                map.getSource('single-point').setData(event.result.geometry);
-            });
-        });
-
-
-        // reverseGeocode({lng: -98.393114, lat: 29.507893}, MAPBOX_API_KEY).then(function(results) {
-        //     // logs the address for The Alamo
-        //     console.log(results);
-        // });
-        // function pinThatAddress(address) {
-        //      geocode(address, MAPBOX_API_KEY).then(function (address) {
-        //          //replace with setLngLat
-        //          // const marker = new mapboxgl.Marker();
-        //         marker.setLngLat(address);
-        //         marker.addTo(map);
-        //     });
-        // }
-        // pinThatAddress();
-        //
-        // mapboxsearch.autofill({
-        //     accessToken: 'MAPBOX_API_KEY'
-        // })
-
-        //addresses
-        //academy
-        // 2643 Northwest Loop 410, San Antonio, TX 78230
-
-        //walmart
-        // 1603 Vance Jackson Rd, San Antonio, TX 78213
 
         //nav button
         map.addControl(new mapboxgl.NavigationControl());
