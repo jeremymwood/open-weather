@@ -7,7 +7,7 @@
         $('body').prepend(d);
 
 
-        let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY" class="searchContainerParent"><div class="searchContainer m-0"><i class="fa-solid fa-magnifying-glass text-white" aria-hidden="true"></i><form><input id="search" class="search border border-2 border-white text-white rounded-3 bg-dark fs-6 px-5 py-1 mb-2" type="text" name="address" autocomplete="shipping street-address" placeholder="search..."></form></div></mapbox-address-autofill>');
+        let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY" class="searchContainerParent"><div class="searchContainer m-0"><i class="fa-solid fa-magnifying-glass text-white" aria-hidden="true"></i><form><input id="search" class="search border border-2 border-white text-white rounded-3 bg-dark fs-6 px-5 py-1 mb-2" type="text" name="address" autocomplete="shipping street-address" placeholder="search...">    <button id="myBtn" class="d-none" type="submit"></button>\n</form></div></mapbox-address-autofill>');
         $('header').append(e);
 
         // TODO:
@@ -321,13 +321,20 @@
         // document.getElementById("search").value = "Muscle Cars";
         // let result = document.getElementById("search");
         // console.log(result.value);
-
-        function sConsole(event) {
-            event.preventDefault();
+        //
+        // function sConsole(event) {
+        //     // event.preventDefault();
+        //
+        // }
             let data = document.getElementById("search");
-            console.log(data.value);
 
-        }
+            data.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    document.getElementById("myBtn").click();
+                }
+            });
+            console.log(data.value);
 
         // function pinThatAddress(address) {
         //     geocode(address, MAPBOX_API_KEY).then(function(result) {
