@@ -66,3 +66,7 @@ i {
 .searchContainer {
     position: relative;
 }
+.fa-solid {
+    position: absolute;
+    transform: translate(1em, .7em);
+}
