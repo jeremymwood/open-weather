@@ -80,23 +80,30 @@
                 const seconds = "0" + date.getSeconds();
                 const formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
                 const rawWind = Math.round(data.list[i].wind.deg);
+                console.log(rawWind);
 
                 //shorten with array and for loop
-                const windAbbreviations = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "NW", "NNW"];
-                let windMin = 0;
-                let windMax = 11.25;
-                let windIncrement = 22.5
+                const windAbbreviations = ["NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+                let windMin = 11.25;
+                let windMax = 33.75;
+                let windIncrement = 22.5;
 
-                function windDirection() {
+                function windDirection(azimuth) {
                     for (let i = 0; i < windAbbreviations.length; i++) {
-                        if (rawWind >= windMin && rawWind <= windMax) {
-                            return windAbbreviations[i];
+                        if (azimuth > windMin && azimuth < windMax) {
+                            console.log(`${windAbbreviations[i]}`);
+                        }
+                        if (azimuth < 11.25 || azimuth > 348.75) {
+                            console.log(`N`);
+                            break;
                         } else {
-                            windMin = windMin + windIncrement;
-                            windMax = windMax + windIncrement;
+                            windMin += windIncrement;
+                            windMax += windIncrement;
                         }
                     }
                 }
+
+                windDirection(347);
 
                 day0ID.innerHTML =`
                         ${dayOfWeek}
@@ -111,7 +118,7 @@
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()}
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}
                         <br />
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
@@ -130,7 +137,7 @@
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()}
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}
                         <br />
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
@@ -149,7 +156,7 @@
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()}
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}
                         <br />
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
@@ -168,7 +175,7 @@
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()}
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}
                         <br />
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
@@ -187,7 +194,7 @@
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()}
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}
                         <br />
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
