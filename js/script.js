@@ -69,19 +69,19 @@
                 const months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
 
                 let i = 0;
-                const unix_timestamp = data.list[i].dt;
-                const date = new Date(unix_timestamp * 1000);
-                const day = date.getDay();
-                const dayOfWeek = weekday[day];
-                const dayOfMonth = date.getDate();
-                const month = date.getMonth();
-                const namedMonth = months[month];
-                const year = date.getFullYear();
-                const hours = date.getHours();
-                const minutes = "0" + date.getMinutes();
-                const seconds = "0" + date.getSeconds();
-                const formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-                const rawWind = Math.round(data.list[i].wind.deg);
+                let unix_timestamp = data.list[i].dt;
+                let date = new Date(unix_timestamp * 1000);
+                let day = date.getDay();
+                let dayOfWeek = weekday[day];
+                let dayOfMonth = date.getDate();
+                let month = date.getMonth();
+                let namedMonth = months[month];
+                let year = date.getFullYear();
+                let hours = date.getHours();
+                let minutes = "0" + date.getMinutes();
+                let seconds = "0" + date.getSeconds();
+                let formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+                let rawWind = Math.round(data.list[i].wind.deg);
                 console.log(rawWind);
 
                 //shorten with array and for loop
@@ -133,8 +133,22 @@
                         <br />
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
-
-                i = 1;
+                let secondDayOffset = 6;
+                let dailyOffset = 8;
+                i += secondDayOffset;
+                unix_timestamp = data.list[i].dt;
+                date = new Date(unix_timestamp * 1000);
+                day = date.getDay();
+                dayOfWeek = weekday[day];
+                dayOfMonth = date.getDate();
+                month = date.getMonth();
+                namedMonth = months[month];
+                year = date.getFullYear();
+                hours = date.getHours();
+                minutes = "0" + date.getMinutes();
+                seconds = "0" + date.getSeconds();
+                formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+                rawWind = Math.round(data.list[i].wind.deg);
                 day1ID.innerHTML =`
                         ${dayOfWeek}
                         <br />
@@ -153,7 +167,20 @@
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
 
-                i = 2;
+                i += dailyOffset;
+                unix_timestamp = data.list[i].dt;
+                date = new Date(unix_timestamp * 1000);
+                day = date.getDay();
+                dayOfWeek = weekday[day];
+                dayOfMonth = date.getDate();
+                month = date.getMonth();
+                namedMonth = months[month];
+                year = date.getFullYear();
+                hours = date.getHours();
+                minutes = "0" + date.getMinutes();
+                seconds = "0" + date.getSeconds();
+                formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+                rawWind = Math.round(data.list[i].wind.deg);
                 day2ID.innerHTML =`
                         ${dayOfWeek}
                         <br />
@@ -172,7 +199,20 @@
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
 
-                i = 3;
+                i += dailyOffset;
+                unix_timestamp = data.list[i].dt;
+                date = new Date(unix_timestamp * 1000);
+                day = date.getDay();
+                dayOfWeek = weekday[day];
+                dayOfMonth = date.getDate();
+                month = date.getMonth();
+                namedMonth = months[month];
+                year = date.getFullYear();
+                hours = date.getHours();
+                minutes = "0" + date.getMinutes();
+                seconds = "0" + date.getSeconds();
+                formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+                rawWind = Math.round(data.list[i].wind.deg);
                 day3ID.innerHTML =`
                         ${dayOfWeek}
                         <br />
@@ -191,7 +231,20 @@
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
 
-                i = 4;
+                i += dailyOffset;
+                unix_timestamp = data.list[i].dt;
+                date = new Date(unix_timestamp * 1000);
+                day = date.getDay();
+                dayOfWeek = weekday[day];
+                dayOfMonth = date.getDate();
+                month = date.getMonth();
+                namedMonth = months[month];
+                year = date.getFullYear();
+                hours = date.getHours();
+                minutes = "0" + date.getMinutes();
+                seconds = "0" + date.getSeconds();
+                formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+                rawWind = Math.round(data.list[i].wind.deg);
                 day4ID.innerHTML =`
                         ${dayOfWeek}
                         <br />
