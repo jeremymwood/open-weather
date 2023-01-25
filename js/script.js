@@ -301,13 +301,14 @@
             marker.addTo(map);
         },(markerDurationInit));
 
-        // function pinThatAddress(address) {
-        //     geocode(address, MAPBOX_API_KEY).then(function (address) {
-        //         const marker = new mapboxgl.Marker();
-        //         marker.setLngLat(address);
-        //         marker.addTo(map);
-        //     });
-        // }
+        function pinThatAddress(address) {
+            geocode(address, MAPBOX_API_KEY).then(function (address) {
+                const marker = new mapboxgl.Marker();
+                marker.setLngLat(address);
+                marker.addTo(map);
+            });
+        }
+        pinThatAddress();
 
         //nav button
         map.addControl(new mapboxgl.NavigationControl());
