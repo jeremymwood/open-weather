@@ -1,17 +1,20 @@
 (function () {
     $(document).ready(function () {
-        let d = $('<div class="container-fluid border border-2 border-white text-white rounded-3 bg-dark fs-6 m-auto"><div id="testData" class="row"></div></div>');
-        $('body').prepend(d);
-
-        let c = $('<h1 class="text-white text-center pb-3">TetraCast</h1>');
+        let c = $('<div class="container-fluid border border-2 border-white text-white rounded-3 bg-dark fs-6 m-auto"><div id="testData" class="row"></div></div>');
         $('body').prepend(c);
 
+        let d = $('<header><h1 class="text-white text-center pb-3">TetraCast</h1></header>');
+        $('body').prepend(d);
+
+
+        let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY"><input class="rounded-3 px-3 py-1" type="text" name="address" autocomplete="shipping street-address" placeholder="search..."<i className="fa-solid fa-magnifying-glass"></i></mapbox-address-autofill>');
+        $('header').append(e);
+
         // TODO:
-        //5 day forecast
         //use reverse geocode for city and state
-        //general weather icons
-        //fix wind direction
         //readme
+        //fix wind direction or remove
+        //general weather icons
 
         //wind and temp widget
         //mobile responsive
