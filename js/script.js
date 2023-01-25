@@ -93,98 +93,76 @@
                     }
                 }
 
-                // testForecast.innerHTML = `
-                //     Today:
+                let i = 0;
+                testForecast.innerHTML =`
+                    Today:
+                    <br />
+                    Date: ${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}
+                    <br />
+                    Day of the week: ${dayOfWeek}
+                    <br />
+                    Feels like: ${Math.round(data.list[i].main.feels_like)}&#176;
+                    <br />
+                    Humidity: ${data.list[i].main.humidity}%
+                    <br />
+                    Temperature: ${Math.round(data.list[i].main.temp)}&#176
+                    <br />
+                    High: ${Math.round(data.list[i].main.temp_max)}&#176
+                    <br />
+                    Low: ${Math.round(data.list[i].main.temp_min)}&#176
+                    <br />
+                    General: ${data.list[i].weather[i].description}
+                    <br />
+                    Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[i].wind.gust)} mph)
+                `;
+
+                // fiveDayId.innerHTML =`
+                //     ${dayOfWeek}
                 //     <br />
-                //     Date: ${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}
+                //     ${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}
                 //     <br />
-                //     Day of the week: ${dayOfWeek}
-                //     <br />
-                //     Feels like: ${Math.round(data.list[0].main.feels_like)}&#176;
-                //     <br />
-                //     Humidity: ${data.list[0].main.humidity}%
-                //     <br />
-                //     Temperature: ${Math.round(data.list[0].main.temp)}&#176
-                //     <br />
-                //     High: ${Math.round(data.list[0].main.temp_max)}&#176
-                //     <br />
-                //     Low: ${Math.round(data.list[0].main.temp_min)}&#176
-                //     <br />
-                //     General: ${data.list[0].weather[0].description}
-                //     <br />
-                //     Wind: ${Math.round(data.list[0].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[0].wind.gust)} mph)
+                //     Temp: ${Math.round(data.list[i].main.temp)}°
                 // `;
 
 
                 // day0Forecast.innerHTML = `
                 //     ${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}
                 //     <br />
-                //     Feels like: ${Math.round(data.list[0].main.feels_like)}&#176;
+                //     Feels like: ${Math.round(data.list[0].main.feels_like)}°;
                 //     <br />
                 //     Humidity: ${data.list[0].main.humidity}%
                 //     <br />
-                //     Temperature: ${Math.round(data.list[0].main.temp)}&#176
+                //     Temperature: ${Math.round(data.list[0].main.temp)}°
                 //     <br />
-                //     High: ${Math.round(data.list[0].main.temp_max)}&#176
+                //     High: ${Math.round(data.list[0].main.temp_max)}°
                 //     <br />
-                //     Low: ${Math.round(data.list[0].main.temp_min)}&#176
+                //     Low: ${Math.round(data.list[0].main.temp_min)}°
                 //     <br />
                 //     General: ${data.list[0].weather[0].description}
                 //     <br />
                 //     Wind: ${Math.round(data.list[0].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[0].wind.gust)} mph)
                 // `;
 
-                for (let i = 0; i <= 4; i++) {
-                    // const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-                    // const months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
 
-                    let fiveDayId = 'day' + i + 'Forecast';
+                // let fiveDayDate = `${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}`;
+                // let fiveDayTemp = `Temp: ${Math.round(data.list[i].main.temp)}°`;
 
-                    let unix_timestamp = data.list[i].dt;
-                    let date = new Date(unix_timestamp * 1000);
-                    let day = date.getDay();
-                    let dayOfWeek = weekday[day];
-                    let dayOfMonth = date.getDate();
-                    let month = date.getMonth();
-                    let namedMonth = months[month];
-                    let year = date.getFullYear();
-                    let hours = date.getHours();
-                    let minutes = "0" + date.getMinutes();
-                    let seconds = "0" + date.getSeconds();
-                    let formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-                    let rawWind = Math.round(data.list[i].wind.deg);
+                // let fiveDayContent = `
+                //     ${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}
+                //     <br />
+                //     Feels like: ${Math.round(data.list[i].main.feels_like)}°;
+                //     <br />
+                //     Humidity: ${data.list[i].main.humidity}%
+                //     <br />
+                //     Temperature: ${Math.round(data.list[i].main.temp)}°
+                //     <br />
+                //     High: ${Math.round(data.list[i].main.temp_max)}°
+                //     <br />
+                //     Low: ${Math.round(data.list[i].main.temp_min)}°
+                //     <br />
+                //     Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[i].wind.gust)} mph)
+                // `;
 
-                    const windAbbreviations = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "NW", "NNW"];
-                    let windMin = 0;
-                    let windMax = 11.25;
-                    let windIncrement = 22.5
-
-                    let forecast = $('<div class="fiveDayForecast border border-2 border-white text-white text-center rounded-3 bg-dark fs-6 m-2 p-2 flex-grow-1"></div>');
-                    forecast.attr('id', fiveDayId);
-                    $('#fiveDayContainer').append(forecast);
-
-                    document.getElementById(fiveDayId).append(`day ${i + 1}`);
-
-
-
-                    let fiveDayContent = `
-                        ${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}
-                        <br />
-                        Feels like: ${Math.round(data.list[i].main.feels_like)}&#176;
-                        <br />
-                        Humidity: ${data.list[i].main.humidity}%
-                        <br />
-                        Temperature: ${Math.round(data.list[i].main.temp)}&#176
-                        <br />
-                        High: ${Math.round(data.list[i].main.temp_max)}&#176
-                        <br />
-                        Low: ${Math.round(data.list[i].main.temp_min)}&#176
-                        <br />                      
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[i].wind.gust)} mph)
-                    `;
-                    document.getElementById(fiveDayId).append(fiveDayContent);
-
-                }
             });
         };
 
@@ -192,6 +170,24 @@
 
         let fiveDayContainer = $('<div class="container m-auto d-flex" id="fiveDayContainer"></div>');
         $('body').append(fiveDayContainer);
+
+
+
+        function fiveDayIDMachina() {
+            for (let i = 0; i <= 4; i++) {
+                let fiveDayId = `day${i}ID`;
+                console.log(fiveDayId);
+
+                let forecast = $('<div class="singleDayForecast border border-2 border-white text-white text-center rounded-3 bg-dark fs-6 m-2 p-2 flex-grow-1"></div>');
+                forecast.attr('id', fiveDayId);
+                $('#fiveDayContainer').append(forecast);
+            }
+        }
+        fiveDayIDMachina();
+
+
+        // document.getElementById(fiveDayId).append(fiveDayDate);
+        // document.getElementById(fiveDayId).append(fiveDayTemp);
 
         let e = $('<div id="testForecast" class="currentData border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
         $('body').append(e);
