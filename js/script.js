@@ -321,16 +321,6 @@
         //     addMarkerForLngLat(result.result.center, jumpTo: true, result.result.place_name);
         // });
 
-        //search bar on enter
-        let data = document.getElementById("search");
-        $('#search').on('keypress', function (e) {
-            if (e.which == 13) {
-                e.preventDefault()
-                console.log(data.value);
-                data.value = "";
-            }
-        });
-
         function pinThatAddress(address) {
             geocode(address, MAPBOX_API_KEY).then(function(result) {
                 console.log(result);
@@ -346,9 +336,24 @@
             });
         }
 
-        pinThatAddress("North Star Mall");
-        pinThatAddress("Rackspace");
-        // pinThatAddress();
+        // pinThatAddress("North Star Mall");
+        // pinThatAddress("Rackspace");
+
+        //search bar on enter
+        let data = document.getElementById("search");
+        $('#search').on('keypress', function (e) {
+            if (e.which == 13) {
+                e.preventDefault()
+                pinThatAddress(`${data.value}`);
+                // console.log(data.value);
+
+                // const marker = new mapboxgl.Marker();
+                // marker.setLngLat(data.value);
+                // marker.addTo(map);
+
+                data.value = "";
+            }
+        });
 
         //nav button
         map.addControl(new mapboxgl.NavigationControl());
