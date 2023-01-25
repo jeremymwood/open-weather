@@ -301,6 +301,15 @@
             marker.addTo(map);
         },(markerDurationInit));
 
+        // function pinThatAddress(address) {
+        //     geocode(address, MAPBOX_API_KEY).then(function (address) {
+        //         const marker = new mapboxgl.Marker();
+        //         marker.setLngLat(address);
+        //         marker.addTo(map);
+        //     });
+        // }
+
+        //nav button
         map.addControl(new mapboxgl.NavigationControl());
 
         //TODO: sample popup
@@ -317,18 +326,5 @@
         //     `);
         //
         // marker.setPopup(popup);
-
-
-
     });
-
-
-    // function pinThatAddress(address) {
-    //     geocode(address, MAPBOX_API_KEY).then(function (address) {
-    //         const marker = new mapboxgl.Marker();
-    //         marker.setLngLat(address);
-    //         marker.addTo(map);
-    //     });
-    // }
-
 })();
