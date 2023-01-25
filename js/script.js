@@ -3,7 +3,7 @@
         let d = $('<div class="container-fluid border border-2 border-white text-white rounded-3 bg-dark fs-6 m-auto"><div id="testData" class="row"></div></div>');
         $('body').prepend(d);
 
-        let c = $('<h1 class="text-white text-center pb-3">Openweather API</h1>');
+        let c = $('<h1 class="text-white text-center pb-3">TetraCast</h1>');
         $('body').prepend(c);
 
         // TODO:
@@ -273,7 +273,7 @@
         function fiveDayIDMachina() {
             for (let i = 0; i <= 4; i++) {
                 let fiveDayId = `day${i}ID`;
-                let forecast = $('<div class="singleDayForecast border border-2 border-white text-white text-center rounded-3 bg-dark fs-6 p-2 w-100"></div>');
+                let forecast = $('<div class="singleDayForecast border border-2 border-white text-center rounded-3 bg-dark fs-6 p-2 w-100"></div>');
                 forecast.attr('id', fiveDayId);
                 $('#fiveDayContainer').append(forecast);
             }
