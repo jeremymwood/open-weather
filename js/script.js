@@ -7,7 +7,7 @@
         $('body').prepend(d);
 
 
-        let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY"><input class="rounded-3 px-3 py-1" type="text" name="address" autocomplete="shipping street-address" placeholder="search..."<i className="fa-solid fa-magnifying-glass"></i></mapbox-address-autofill>');
+        let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY" class"mb-2"><div class="searchContainer m-0"><input class="search border border-2 border-white text-white rounded-3 bg-dark fs-6 px-2 py-1 mb-2" type="text" name="address" autocomplete="shipping street-address" placeholder="search..."><i className="fa-solid fa-magnifying-glass text-white"></i></div></mapbox-address-autofill>');
         $('header').append(e);
 
         // TODO:
@@ -18,14 +18,11 @@
 
         //wind and temp widget
         //mobile responsive
-        //drag end event listener for marker
         //dropdown for light/dark mode
         //footer
-        //nav bar
         //toggle detailed 4 hour, daily, and 5 day forecast
         //temp graphs
         //template margins to access for innerHTMl
-        // fix latlong deck margin
 
         let startingLatitude = 29.515156939194544;
         let startingLongitude = -98.39371378157797;
@@ -283,8 +280,8 @@
         }
         fiveDayIDMachina();
 
-        let f = $('<div id="coordinates" class="coordinates border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
-        $('body').append(f);
+        let g = $('<div id="coordinates" class="coordinates border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
+        $('body').append(g);
 
         const coordinates = document.getElementById('coordinates');
         function onDragEnd() {

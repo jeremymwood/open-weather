@@ -52,10 +52,10 @@ root {
 #day4ID {
     margin-left: 0.25em;
 }
-.singleDayForecast {
+.singleDayForecast, .search {
     color: #949494;
 }
-.singleDayForecast:hover {
+.singleDayForecast:hover, .search:hover {
     box-shadow: 0 0 0.5em white;
     color: white;
 }
