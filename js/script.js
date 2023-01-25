@@ -304,6 +304,20 @@
             marker.addTo(map);
         },(markerDurationInit));
 
+        //***doc rob snippet
+        // let mapBoxGeocoder = undefined;
+        // mapBoxGeocoder = new MapBoxGeocoder({
+        //     accessToken: mapboxgl.accessToken,
+        //     mapboxgl: mapboxgl,
+        //     flyto: false,
+        //     marker: false
+        // });
+        // map.addControl(mapBoxGeocoder);
+        //
+        // mapBoxGeocoder.on("result", function(result) {
+        //     addMarkerForLngLat(result.result.center, jumpTo: true, result.result.place_name);
+        // });
+
         // document.getElementById("search").value = "Muscle Cars";
         // let result = document.getElementById("search");
         // console.log(result.value);
