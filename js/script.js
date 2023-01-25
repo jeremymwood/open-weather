@@ -15,6 +15,10 @@
         //readme
         //fix wind direction or remove
         //general weather icons
+        // add location, population and lat/long to map container
+        // remove or repurpose vanishing div... maybe for lat long
+        //hover card screen back text and prompt for detailed forecast?
+
 
         //wind and temp widget
         //mobile responsive
