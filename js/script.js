@@ -115,12 +115,12 @@
                         <br />
                         Low: ${Math.round(data.list[i].main.temp_min)}°
                         <br />
-                        General: ${data.list[i].weather[i].description}
+                        General: ${data.list[i].weather[0].description}
                         <br />
                         Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[i].wind.gust)} mph)
                         `;
 
-                let j = 1;
+                i = 1;
                 day1ID.innerHTML =`
                         Today:
                         <br />
@@ -128,19 +128,88 @@
                         <br />
                         Day of the week: ${dayOfWeek}
                         <br />
-                        Feels like: ${Math.round(data.list[j].main.feels_like)}°
+                        Feels like: ${Math.round(data.list[i].main.feels_like)}°
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Temperature: ${Math.round(data.list[j].main.temp)}°
+                        Temperature: ${Math.round(data.list[i].main.temp)}°
                         <br />
-                        High: ${Math.round(data.list[j].main.temp_max)}°
+                        High: ${Math.round(data.list[i].main.temp_max)}°
                         <br />
-                        Low: ${Math.round(data.list[j].main.temp_min)}°
+                        Low: ${Math.round(data.list[i].main.temp_min)}°
                         <br />
-                        General: ${data.list[j].weather[j].description}
+                        General: ${data.list[i].weather[0].description}
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[j].wind.gust)} mph)
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[i].wind.gust)} mph)
+                        `;
+
+                i = 2;
+                day2ID.innerHTML =`
+                        Today:
+                        <br />
+                        Date: ${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}
+                        <br />
+                        Day of the week: ${dayOfWeek}
+                        <br />
+                        Feels like: ${Math.round(data.list[i].main.feels_like)}°
+                        <br />
+                        Humidity: ${data.list[i].main.humidity}%
+                        <br />
+                        Temperature: ${Math.round(data.list[i].main.temp)}°
+                        <br />
+                        High: ${Math.round(data.list[i].main.temp_max)}°
+                        <br />
+                        Low: ${Math.round(data.list[i].main.temp_min)}°
+                        <br />
+                        General: ${data.list[i].weather[0].description}
+                        <br />
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[i].wind.gust)} mph)
+                        `;
+
+                i = 3;
+                day3ID.innerHTML =`
+                        Today:
+                        <br />
+                        Date: ${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}
+                        <br />
+                        Day of the week: ${dayOfWeek}
+                        <br />
+                        Feels like: ${Math.round(data.list[i].main.feels_like)}°
+                        <br />
+                        Humidity: ${data.list[i].main.humidity}%
+                        <br />
+                        Temperature: ${Math.round(data.list[i].main.temp)}°
+                        <br />
+                        High: ${Math.round(data.list[i].main.temp_max)}°
+                        <br />
+                        Low: ${Math.round(data.list[i].main.temp_min)}°
+                        <br />
+                        General: ${data.list[i].weather[0].description}
+                        <br />
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[i].wind.gust)} mph)
+                        `;
+
+                i = 4;
+                day4ID.innerHTML =`
+                        Today:
+                        <br />
+                        Date: ${dayOfWeek}, ${namedMonth} ${dayOfMonth}, ${year}
+                        <br />
+                        Day of the week: ${dayOfWeek}
+                        <br />
+                        Feels like: ${Math.round(data.list[i].main.feels_like)}°
+                        <br />
+                        Humidity: ${data.list[i].main.humidity}%
+                        <br />
+                        Temperature: ${Math.round(data.list[i].main.temp)}°
+                        <br />
+                        High: ${Math.round(data.list[i].main.temp_max)}°
+                        <br />
+                        Low: ${Math.round(data.list[i].main.temp_min)}°
+                        <br />
+                        General: ${data.list[i].weather[0].description}
+                        <br />
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${windDirection()} (Gust: ${Math.round(data.list[i].wind.gust)} mph)
                         `;
             });
         };
