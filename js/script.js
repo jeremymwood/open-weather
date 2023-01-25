@@ -311,15 +311,21 @@
                 popup.setHTML(`<h3>${address}</h3>`);
                 marker.setPopup(popup);
 
+
+
             }).catch(function(error) {
                 console.log("Boom");
             });
         }
 
-        pinThatAddress("North Star Mall");
-        pinThatAddress("Rackspace");
+        // pinThatAddress("North Star Mall");
+        // pinThatAddress("Rackspace");
+        // pinThatAddress();
 
-
+        // reverseGeocode({lng: -98.393114, lat: 29.507893}, MAPBOX_API_KEY).then(function(results) {
+        //     // logs the address for The Alamo
+        //     console.log(results);
+        // });
         // function pinThatAddress(address) {
         //      geocode(address, MAPBOX_API_KEY).then(function (address) {
         //          //replace with setLngLat

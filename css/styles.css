@@ -67,8 +67,8 @@ i {
     position: relative;
 }
 .search {
-    z-index: 0;
-    cursor: pointer;
+    /*z-index: 0;*/
+    /*cursor: pointer;*/
 }
 .fa-solid {
     position: absolute;
