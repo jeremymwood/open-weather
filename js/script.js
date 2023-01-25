@@ -47,10 +47,10 @@
         function openWeather(startingLongitude, startingLatitude) {
             $.get("http://api.openweathermap.org/data/2.5/forecast", {
                 APPID: OPENWEATHER_API_KEY,
-                lat:    startingLatitude,
-                lon:   startingLongitude,
+                lat: startingLatitude,
+                lon: startingLongitude,
                 units: "imperial"
-            }).done(function(data) {
+            }).done(function (data) {
 
                 // display all data
                 console.log(data);
@@ -68,8 +68,8 @@
                 </div>`;
 
                 //formatted time
-                const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-                const months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
+                const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
                 let i = 0;
                 let unix_timestamp = data.list[i].dt;
@@ -119,7 +119,7 @@
                 windDirection(325);
                 windDirection(359);
 
-                day0ID.innerHTML =`
+                day0ID.innerHTML = `
                         ${dayOfWeek}
                         <br />
                         ${namedMonth} ${dayOfMonth}, ${year}
@@ -152,7 +152,7 @@
                 seconds = "0" + date.getSeconds();
                 formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
                 rawWind = Math.round(data.list[i].wind.deg);
-                day1ID.innerHTML =`
+                day1ID.innerHTML = `
                         ${dayOfWeek}
                         <br />
                         ${namedMonth} ${dayOfMonth}, ${year}
@@ -184,7 +184,7 @@
                 seconds = "0" + date.getSeconds();
                 formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
                 rawWind = Math.round(data.list[i].wind.deg);
-                day2ID.innerHTML =`
+                day2ID.innerHTML = `
                         ${dayOfWeek}
                         <br />
                         ${namedMonth} ${dayOfMonth}, ${year}
@@ -216,7 +216,7 @@
                 seconds = "0" + date.getSeconds();
                 formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
                 rawWind = Math.round(data.list[i].wind.deg);
-                day3ID.innerHTML =`
+                day3ID.innerHTML = `
                         ${dayOfWeek}
                         <br />
                         ${namedMonth} ${dayOfMonth}, ${year}
@@ -248,7 +248,7 @@
                 seconds = "0" + date.getSeconds();
                 formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
                 rawWind = Math.round(data.list[i].wind.deg);
-                day4ID.innerHTML =`
+                day4ID.innerHTML = `
                         ${dayOfWeek}
                         <br />
                         ${namedMonth} ${dayOfMonth}, ${year}
@@ -281,12 +281,14 @@
                 $('#fiveDayContainer').append(forecast);
             }
         }
+
         fiveDayIDMachina();
 
         let g = $('<div id="coordinates" class="coordinates border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
         $('body').append(g);
 
         const coordinates = document.getElementById('coordinates');
+
         function onDragEnd() {
             let lngLat = marker.getLngLat();
             coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: &nbsp&nbsp&nbsp&nbsp&nbsp${lngLat.lat}`;
@@ -298,11 +300,12 @@
 
             openWeather(lngLat.lng, lngLat.lat);
         }
+
         marker.on('dragend', onDragEnd);
 
-        setTimeout(()=> {
+        setTimeout(() => {
             marker.addTo(map);
-        },(markerDurationInit));
+        }, (markerDurationInit));
 
         //***doc rob snippet
         // let mapBoxGeocoder = undefined;
@@ -318,23 +321,13 @@
         //     addMarkerForLngLat(result.result.center, jumpTo: true, result.result.place_name);
         // });
 
-        // document.getElementById("search").value = "Muscle Cars";
-        // let result = document.getElementById("search");
-        // console.log(result.value);
-        //
-        // function sConsole(event) {
-        //     // event.preventDefault();
-        //
-        // }
+        //search bar on enter
         let data = document.getElementById("search");
-
-        data.addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                $("#myBtn").click(function (event){
-                    event.preventDefault()
-                    console.log(data.value);
-                    data.value = "";
-                });
+        $('#search').on('keypress', function (e) {
+            if (e.which == 13) {
+                e.preventDefault()
+                console.log(data.value);
+                data.value = "";
             }
         });
 
