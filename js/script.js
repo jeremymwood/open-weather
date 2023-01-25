@@ -7,7 +7,7 @@
         $('body').prepend(d);
 
 
-        let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY" class"mb-2"><div class="searchContainer m-0"><i class="fa-solid fa-magnifying-glass text-white" aria-hidden="true"></i><input class="search border border-2 border-white text-white rounded-3 bg-dark fs-6 px-5 py-1 mb-2" type="text" name="address" autocomplete="shipping street-address" placeholder="search..."></div></mapbox-address-autofill>');
+        let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY" class="searchContainerParent"><div class="searchContainer m-0"><i class="fa-solid fa-magnifying-glass text-white" aria-hidden="true"></i><input class="search border border-2 border-white text-white rounded-3 bg-dark fs-6 px-5 py-1 mb-2" type="text" name="address" autocomplete="shipping street-address" placeholder="search..."></div></mapbox-address-autofill>');
         $('header').append(e);
 
         // TODO:
