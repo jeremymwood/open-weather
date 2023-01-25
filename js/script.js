@@ -7,7 +7,7 @@
         $('body').prepend(d);
 
 
-        let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY" class="searchContainerParent"><div class="searchContainer m-0"><i class="fa-solid fa-magnifying-glass text-white" aria-hidden="true"></i><input class="search border border-2 border-white text-white rounded-3 bg-dark fs-6 px-5 py-1 mb-2" type="text" name="address" autocomplete="shipping street-address" placeholder="search..."></div></mapbox-address-autofill>');
+        let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY" class="searchContainerParent"><div class="searchContainer m-0"><i class="fa-solid fa-magnifying-glass text-white" aria-hidden="true"></i><form><input class="search border border-2 border-white text-white rounded-3 bg-dark fs-6 px-5 py-1 mb-2" type="text" name="address" autocomplete="shipping street-address" placeholder="search..."></form></div></mapbox-address-autofill>');
         $('header').append(e);
 
         // TODO:
@@ -23,15 +23,14 @@
         //toggle detailed 4 hour, daily, and 5 day forecast
         //temp graphs
         //template margins to access for innerHTMl
-
-        let startingLatitude = 29.515156939194544;
-        let startingLongitude = -98.39371378157797;
+        let startingLatitude = 29.507103833705532;
+        let startingLongitude = -98.39395190355188;
 
         mapboxgl.accessToken = MAPBOX_API_KEY;
         const map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/dark-v10',
-            zoom: 10,
+            zoom: 12,
             center: [startingLongitude, startingLatitude]
         });
 
@@ -302,13 +301,45 @@
         },(markerDurationInit));
 
         function pinThatAddress(address) {
-            geocode(address, MAPBOX_API_KEY).then(function (address) {
+            geocode(address, MAPBOX_API_KEY).then(function(result) {
+                console.log(result);
                 const marker = new mapboxgl.Marker();
-                marker.setLngLat(address);
+                marker.setLngLat(result);
                 marker.addTo(map);
+
+                const popup = new mapboxgl.Popup();
+                popup.setHTML(`<h3>${address}</h3>`);
+                marker.setPopup(popup);
+
+            }).catch(function(error) {
+                console.log("Boom");
             });
         }
-        pinThatAddress();
+
+        pinThatAddress("North Star Mall");
+        pinThatAddress("Rackspace");
+
+
+        // function pinThatAddress(address) {
+        //      geocode(address, MAPBOX_API_KEY).then(function (address) {
+        //          //replace with setLngLat
+        //          // const marker = new mapboxgl.Marker();
+        //         marker.setLngLat(address);
+        //         marker.addTo(map);
+        //     });
+        // }
+        // pinThatAddress();
+        //
+        // mapboxsearch.autofill({
+        //     accessToken: 'MAPBOX_API_KEY'
+        // })
+
+        //addresses
+        //academy
+        // 2643 Northwest Loop 410, San Antonio, TX 78230
+
+        //walmart
+        // 1603 Vance Jackson Rd, San Antonio, TX 78213
 
         //nav button
         map.addControl(new mapboxgl.NavigationControl());
