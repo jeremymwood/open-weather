@@ -11,7 +11,6 @@
 
         // TODO:
         //readme
-        //fix wind direction or remove
         //general weather icons
         //hover card screen back text and prompt for detailed forecast?
         //style cards, h4, h5, etc...
@@ -23,13 +22,15 @@
         //wind and temp widget
         //mobile responsive
         //dropdown for light/dark mode
-        //footer
+        //hamburger nav
         //toggle detailed 4 hour, daily, and 5 day forecast
         //temp graphs
+        //clean up redundancies
         //template margins to access for innerHTMl
         //animate searchbar appearing out of magnifying glass
         //add pin to favorites
         //add lat long search
+
         let startingLatitude = 29.507103833705532;
         let startingLongitude = -98.39395190355188;
 

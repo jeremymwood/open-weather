@@ -167,7 +167,7 @@ header {
 }
 .site-footer a:hover
 {
-    color:#3366cc;
+    color:white;
     text-decoration:none;
 }
 .footer-links
@@ -185,7 +185,7 @@ header {
 }
 .footer-links a:active,.footer-links a:focus,.footer-links a:hover
 {
-    color:#3366cc;
+    color:white;
     text-decoration:none;
 }
 .footer-links.inline li
