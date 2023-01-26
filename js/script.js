@@ -3,7 +3,7 @@
         let c = $('<div class="container-fluid text-white fs-6 m-auto"><div id="liveLocation" class="row"></div></div>');
         $('body').prepend(c);
 
-        let d = $('<header><h1 class="text-white text-center pb-3">TetraCast</h1></header>');
+        let d = $('<header><h1 class="text-white text-center">TetraCast</h1></header>');
         $('body').prepend(d);
 
         let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY" class="searchContainerParent"><div class="searchContainer m-0"><i class="fa-solid fa-magnifying-glass text-white" aria-hidden="true"></i><form><input id="search" class="search border border-2 border-white text-white rounded-3 bg-dark fs-6 px-5 py-1 mb-2" type="text" name="address" autocomplete="shipping street-address" placeholder="search location...">    <button id="myBtn" class="d-none" type="submit">button</button>\n</form></div></mapbox-address-autofill>');
@@ -284,15 +284,15 @@
         let g = $('<div id="coordinates" class="coordinates text-white rounded-3 fs-6 m-auto"></div>');
         $('body').prepend(g);
 
-        let h = $('    <footer class="site-footer">\n' +
-            '        <div class="container-fluid">\n' +
+        let h = $('    <footer class="site-footer pt-4">\n' +
+            '        <div class="container-fluid p-0">\n' +
             '            <div class="row">\n' +
-            '                <div class="col-sm-12 col-md-6">\n' +
+            '                <div class="col-sm-12 col-md-6 m-0">\n' +
             '                    <h6>About</h6>\n' +
             '                    <p class="text-justify">TetraCast provides reliable weather forecasts on the go with a focus on customer service. We offer up-to-date weather data in four hour increments because hourly forecasts are excessive and that API option is cost prohibitive to our valued customers!</p>\n' +
             '                </div>\n' +
             '\n' +
-            '                <div class="col-xs-6 col-md-3">\n' +
+            '                <div class="col-xs-6 col-md-3 m-0">\n' +
             '                    <h6>Categories</h6>\n' +
             '                    <ul class="footer-links">\n' +
             '                        <li><a href="https://codeup.com/">C</a></li>\n' +
@@ -301,7 +301,7 @@
             '                    </ul>\n' +
             '                </div>\n' +
             '\n' +
-            '                <div class="col-xs-6 col-md-3">\n' +
+            '                <div class="col-xs-6 col-md-3 m-0">\n' +
             '                    <h6>Quick Links</h6>\n' +
             '                    <ul class="footer-links">\n' +
             '                        <li><a href="https://codeup.com/">About Us</a></li>\n' +
