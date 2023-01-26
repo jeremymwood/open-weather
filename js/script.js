@@ -1,8 +1,8 @@
 (function () {
     $(document).ready(function () {
 
-        let c = $('<div class="container-fluid border border-2 border-white text-white rounded-3 bg-dark fs-6 m-auto"><div id="testData" class="row"></div></div>');
-        $('#map').prepend(c);
+        let c = $('<div class="container-fluid text-white fs-6 m-auto"><div id="liveLocation" class="row"></div></div>');
+        $('body').prepend(c);
 
         let d = $('<header><h1 class="text-white text-center pb-3">TetraCast</h1></header>');
         $('body').prepend(d);
@@ -60,14 +60,9 @@
                 // display all data
                 console.log(data);
 
-                testData.innerHTML = `
+                liveLocation.innerHTML = `
                 <div class="m-0">
                 Location: ${data.city.name}, ${data.city.country}
-                </div>
-                <div class="m-0" id="coordinates">
-                Longitude: ${startingLongitude}
-                <br />
-                Latitude: &nbsp&nbsp&nbsp&nbsp&nbsp${startingLatitude}
                 </div>`;
                 // Population: ${data.city.population.toLocaleString('en-US')}
 
@@ -288,8 +283,8 @@
 
         fiveDayIDMachina();
 
-        // let g = $('<div id="coordinates" class="coordinates border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
-        // $('body').append(g);
+        let g = $('<div id="coordinates" class="coordinates border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
+        $('body').append(g);
 
         let h = $('    <footer class="site-footer">\n' +
             '        <div class="container-fluid">\n' +
@@ -341,7 +336,7 @@
 
 
 
-        const coordinates = document.getElementById('testData');
+        const coordinates = document.getElementById('coordinates');
 
         function onDragEnd() {
             let lngLat = marker.getLngLat();
