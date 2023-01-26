@@ -1,4 +1,4 @@
-# TetraCast
+# TriCast
 
 One paragraph project description goes here. If more explanation is needed, divide up into smaller chunks and add below.
 

@@ -3,7 +3,7 @@
         let c = $('<div class="container-fluid text-white fs-6 m-auto p-0"><div id="liveLocation" class="row"></div></div>');
         $('body').prepend(c);
 
-        let d = $('<header><h1 class="text-white text-center">TetraCast</h1></header>');
+        let d = $('<header><h1 class="text-white text-center">TriCast</h1></header>');
         $('body').prepend(d);
 
         let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY" class="searchContainerParent"><div class="searchContainer m-0"><i class="fa-solid fa-magnifying-glass text-white" aria-hidden="true"></i><form><input id="search" class="search border border-1 border-white text-white rounded-3 bg-dark fs-6 px-5 py-1 mb-2" type="text" name="address" autocomplete="shipping street-address" placeholder="search location...">    <button id="myBtn" class="d-none" type="submit">button</button>\n</form></div></mapbox-address-autofill>');
@@ -94,16 +94,16 @@
                     let arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
                     return arr[(val % 16)];
                 }
-
-                degToCompass(0);
-                degToCompass(22);
-                degToCompass(90);
-                degToCompass(135);
-                degToCompass(180);
-                degToCompass(225);
-                degToCompass(270);
-                degToCompass(325);
-                degToCompass(359);
+                //
+                // degToCompass(0);
+                // degToCompass(22);
+                // degToCompass(90);
+                // degToCompass(135);
+                // degToCompass(180);
+                // degToCompass(225);
+                // degToCompass(270);
+                // degToCompass(325);
+                // degToCompass(359);
 
                 //somewhat works and returns symbol
                 // let condition = `${data.list[i].weather[0].description}`;
@@ -305,7 +305,7 @@
             '        <div class="container-fluid d-flex p-0">\n' +
             '                <div class="footer40 m-0 p-2">\n' +
             '                    <h6>About</h6>\n' +
-            '                    <p class="text-justify">TetraCast provides reliable weather data in four hour increments because hourly forecasts are excessive and that API option is cost prohibitive to our valued customers!</p>\n' +
+            '                    <p class="text-justify">TriCast provides reliable weather data in three hour increments because hourly forecasts are excessive and that API option is cost prohibitive to our valued customers!</p>\n' +
             '                </div>\n' +
             '\n' +
             '                <div class="footer20 m-0 p-2">\n' +
@@ -332,7 +332,7 @@
             '                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>\n' +
             '                    </ul>\n' +
             '                    <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by\n' +
-            '                        <a href="#">TetraCast</a>.\n' +
+            '                        <a href="#">TriCast</a>.\n' +
             '                    </p>\n' +
             '                </div>\n' +
             '        </div>\n' +
