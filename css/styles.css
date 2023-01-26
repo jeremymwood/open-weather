@@ -20,6 +20,7 @@ root {
     margin: 1em 0;
 }
 #liveLocation {
+
     position: absolute;
     top: 6.5em;
     left: 2em;
@@ -177,7 +178,7 @@ header {
 }
 .site-footer .social-icons
 {
-    text-align:right
+    text-align:left
 }
 .site-footer .social-icons a
 {

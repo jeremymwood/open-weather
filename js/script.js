@@ -312,7 +312,7 @@
             '        <div class="container-fluid d-flex p-0">\n' +
             '                <div class="footer40 m-0 p-2">\n' +
             '                    <h6>About</h6>\n' +
-            '                    <p class="text-justify">TetraCast provides reliable weather forecasts on the go with a focus on customer service. We offer up-to-date weather data in four hour increments because hourly forecasts are excessive and that API option is cost prohibitive to our valued customers!</p>\n' +
+            '                    <p class="text-justify">TetraCast provides reliable weather data in four hour increments because hourly forecasts are excessive and that API option is cost prohibitive to our valued customers!</p>\n' +
             '                    <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by\n' +
             '                        <a href="#">TetraCast</a>.\n' +
             '                    </p>\n' +
@@ -321,8 +321,8 @@
             '                <div class="footer20 m-0 p-2">\n' +
             '                    <h6>Categories</h6>\n' +
             '                    <ul class="footer-links">\n' +
-            '                        <li><a href="https://codeup.com/">C</a></li>\n' +
-            '                        <li><a href="https://codeup.com/">UI Design</a></li>\n' +
+            '                        <li><a href="https://codeup.com/">Five Day Forecast</a></li>\n' +
+            '                        <li><a href="https://codeup.com/">Daily Forecast</a></li>\n' +
             '                        <li><a href="https://codeup.com/">Templates</a></li>\n' +
             '                    </ul>\n' +
             '                </div>\n' +
