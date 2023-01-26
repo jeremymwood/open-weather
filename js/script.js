@@ -11,7 +11,6 @@
 
         // TODO:
         //readme
-        // latlong fade bg
         //fix wind direction or remove
         //general weather icons
         //hover card screen back text and prompt for detailed forecast?
@@ -20,6 +19,7 @@
         //add badges
 
 
+        //latlong fade bg
         //wind and temp widget
         //mobile responsive
         //dropdown for light/dark mode
@@ -116,10 +116,29 @@
                 windDirection(325);
                 windDirection(359);
 
+                let condition = `${data.list[i].weather[0].description}`;
+
+                function conditionMachina(condition) {
+                    if (contdition = "clear sky") {
+                        console.log("clear sky")
+                        return '<i className="fa-solid fa-sun"></i>';
+                    }
+                    if (contdition = "few clouds") {
+                        console.log("few clouds")
+                        return '<i className="fa-solid fa-cloud-sun"></i>';
+                    }
+                    if (contdition = "light rain") {
+                        console.log("light rain")
+                        return '<i className="fa-solid fa-cloud-sun-rain"></i>';
+                    }
+                }
+
                 day0ID.innerHTML = `
                         ${dayOfWeek}
                         <br />
                         ${namedMonth} ${dayOfMonth}, ${year}
+                        <br />
+                        Conditions icon: ${conditionMachina(condition)}
                         <br />
                         Conditions: ${data.list[i].weather[0].description}
                         <br />
@@ -149,11 +168,23 @@
                 seconds = "0" + date.getSeconds();
                 formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
                 rawWind = Math.round(data.list[i].wind.deg);
+
+                // // clear sky
+                // <i className="fa-solid fa-sun"></i>
+                // // few clouds
+                // <i className="fa-solid fa-cloud-sun"></i>
+                // // light rain
+                // <i className="fa-solid fa-cloud-sun-rain"></i>
+
+                condition = `${data.list[i].weather[0].description}`;
+
                 day1ID.innerHTML = `
                         ${dayOfWeek}
                         <br />
                         ${namedMonth} ${dayOfMonth}, ${year}
                         <br />
+                        Conditions icon: ${conditionMachina(condition)}
+                        <br />
                         Conditions: ${data.list[i].weather[0].description}
                         <br />
                         High: ${Math.round(data.list[i].main.temp_max)}°
@@ -181,11 +212,16 @@
                 seconds = "0" + date.getSeconds();
                 formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
                 rawWind = Math.round(data.list[i].wind.deg);
+
+                condition = `${data.list[i].weather[0].description}`;
+
                 day2ID.innerHTML = `
                         ${dayOfWeek}
                         <br />
                         ${namedMonth} ${dayOfMonth}, ${year}
                         <br />
+                        Conditions icon: ${conditionMachina(condition)}
+                        <br />
                         Conditions: ${data.list[i].weather[0].description}
                         <br />
                         High: ${Math.round(data.list[i].main.temp_max)}°
@@ -213,11 +249,16 @@
                 seconds = "0" + date.getSeconds();
                 formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
                 rawWind = Math.round(data.list[i].wind.deg);
+
+                condition = `${data.list[i].weather[0].description}`;
+
                 day3ID.innerHTML = `
                         ${dayOfWeek}
                         <br />
                         ${namedMonth} ${dayOfMonth}, ${year}
                         <br />
+                        Conditions icon: ${conditionMachina(condition)}
+                        <br />
                         Conditions: ${data.list[i].weather[0].description}
                         <br />
                         High: ${Math.round(data.list[i].main.temp_max)}°
@@ -245,10 +286,15 @@
                 seconds = "0" + date.getSeconds();
                 formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
                 rawWind = Math.round(data.list[i].wind.deg);
+
+                condition = `${data.list[i].weather[0].description}`;
+
                 day4ID.innerHTML = `
                         ${dayOfWeek}
                         <br />
                         ${namedMonth} ${dayOfMonth}, ${year}
+                        <br />
+                        Conditions icon: ${conditionMachina(condition)}
                         <br />
                         Conditions: ${data.list[i].weather[0].description}
                         <br />
@@ -273,7 +319,7 @@
         function fiveDayIDMachina() {
             for (let i = 0; i <= 4; i++) {
                 let fiveDayId = `day${i}ID`;
-                let forecast = $('<div class="singleDayForecast border border-1 border-white text-center rounded-3 bg-dark fs-6 p-2 w-100"></div>');
+                let forecast = $('<div class="singleDayForecast border border-1 border-white rounded-3 bg-dark fs-6 p-2 w-100"></div>');
                 forecast.attr('id', fiveDayId);
                 $('#fiveDayContainer').append(forecast);
             }

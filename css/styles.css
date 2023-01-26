@@ -94,7 +94,7 @@ i {
 .search:hover {
     /*visibility: revert;*/
 }
-.fa-solid {
+.fa-solid, .fa-cloud-sun {
     position: absolute;
     transform: translate(1em, .7em);
     width: 1em;
