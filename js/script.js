@@ -154,9 +154,7 @@
                         <br />
                         Conditions: ${data.list[i].weather[0].description}
                         <br />
-                        High: ${Math.round(data.list[i].main.temp_max)}°
-                        <br />
-                        Low: ${Math.round(data.list[i].main.temp_min)}°
+                        High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
@@ -188,9 +186,7 @@
                         <br />
                         Conditions: ${data.list[i].weather[0].description}
                         <br />
-                        High: ${Math.round(data.list[i].main.temp_max)}°
-                        <br />
-                        Low: ${Math.round(data.list[i].main.temp_min)}°
+                        High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
@@ -221,9 +217,7 @@
                         <br />
                         Conditions: ${data.list[i].weather[0].description}
                         <br />
-                        High: ${Math.round(data.list[i].main.temp_max)}°
-                        <br />
-                        Low: ${Math.round(data.list[i].main.temp_min)}°
+                        High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
@@ -254,9 +248,7 @@
                         <br />
                         Conditions: ${data.list[i].weather[0].description}
                         <br />
-                        High: ${Math.round(data.list[i].main.temp_max)}°
-                        <br />
-                        Low: ${Math.round(data.list[i].main.temp_min)}°
+                        High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
@@ -287,9 +279,7 @@
                         <br />
                         Conditions: ${data.list[i].weather[0].description}
                         <br />
-                        High: ${Math.round(data.list[i].main.temp_max)}°
-                        <br />
-                        Low: ${Math.round(data.list[i].main.temp_min)}°
+                        High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
@@ -308,7 +298,7 @@
         function fiveDayIDMachina() {
             for (let i = 0; i <= 4; i++) {
                 let fiveDayId = `day${i}ID`;
-                let forecast = $('<div class="singleDayForecast border border-1 border-white rounded-3 bg-dark fs-6 p-2 w-100"></div>');
+                let forecast = $('<div class="singleDayForecast  rounded-3 bg-dark fs-6 p-2 w-100"></div>');
                 forecast.attr('id', fiveDayId);
                 $('#fiveDayContainer').append(forecast);
 
@@ -333,14 +323,13 @@
         let g = $('<div id="coordinates" class="coordinates text-white rounded-3 fs-6 m-0 rounded-3"></div>');
         $('body').prepend(g);
 
-        let h = $('        <footer class="site-footer pt-3">\n' +
+        let h = $('        ' +
+            '<hr class="border border-1 border-secondary mt-2 mb-0 opacity-100">' +
+            '<footer class="site-footer pt-3">\n' +
             '        <div class="container-fluid d-flex p-0">\n' +
             '                <div class="footer40 m-0 p-2">\n' +
             '                    <h6>About</h6>\n' +
             '                    <p class="text-justify">TetraCast provides reliable weather data in four hour increments because hourly forecasts are excessive and that API option is cost prohibitive to our valued customers!</p>\n' +
-            '                    <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by\n' +
-            '                        <a href="#">TetraCast</a>.\n' +
-            '                    </p>\n' +
             '                </div>\n' +
             '\n' +
             '                <div class="footer20 m-0 p-2">\n' +
@@ -366,6 +355,9 @@
             '                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>\n' +
             '                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>\n' +
             '                    </ul>\n' +
+            '                    <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by\n' +
+            '                        <a href="#">TetraCast</a>.\n' +
+            '                    </p>\n' +
             '                </div>\n' +
             '        </div>\n' +
             '    </footer>');
