@@ -94,9 +94,15 @@ i {
 .search:hover {
     /*visibility: revert;*/
 }
-.fa-solid, .fa-cloud-sun {
+.fa-solid {
     position: absolute;
     transform: translate(1em, .7em);
+    width: 1em;
+    height: 1em;
+}
+#conditionIconRainSun, #conditionIconClouds, #conditionIconClear {
+    /*position: absolute;*/
+    /*transform: translate(1em, .7em);*/
     width: 1em;
     height: 1em;
 }

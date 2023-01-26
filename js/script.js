@@ -121,15 +121,15 @@
                 function conditionMachina(condition) {
                     if (contdition = "clear sky") {
                         console.log("clear sky")
-                        return '<i className="fa-solid fa-sun"></i>';
+                        return '<i className="fa-solid fa-sun" id="conditionIconClear"></i>';
                     }
                     if (contdition = "few clouds") {
                         console.log("few clouds")
-                        return '<i className="fa-solid fa-cloud-sun"></i>';
+                        return '<i className="fa-solid fa-cloud-sun" id="conditionIconClouds"></i>';
                     }
                     if (contdition = "light rain") {
                         console.log("light rain")
-                        return '<i className="fa-solid fa-cloud-sun-rain"></i>';
+                        return '<i className="fa-solid fa-cloud-sun-rain" id="conditionIconRainSun"></i>';
                     }
                 }
 
@@ -328,29 +328,6 @@
         fiveDayIDMachina();
         let g = $('<div id="coordinates" class="coordinates text-white rounded-3 fs-6 m-0 rounded-3"></div>');
         $('body').prepend(g);
-
-        //////////////////////////
-
-        // let footerContainer = $('<div class="container-fluid m-auto p-0 d-flex justify-content-between" id="footerContainer"></div>');
-        // $('body').append(footerContainer);
-        //
-        // function fiveDayIDMachina() {
-        //     for (let i = 0; i <= 4; i++) {
-        //         let fiveDayId = `day${i}ID`;
-        //         let forecast = $('<div class="singleDayForecast border border-1 border-white text-center rounded-3 bg-dark fs-6 p-2 w-100"></div>');
-        //         forecast.attr('id', fiveDayId);
-        //         $('#footerContainer').append(forecast);
-        //     }
-        // }
-        //
-        // fiveDayIDMachina();
-        // let g = $('<div id="coordinates" class="coordinates text-white rounded-3 fs-6 m-auto"></div>');
-        // $('body').prepend(g);
-
-        //////////////////////////
-
-
-
 
         let h = $('        <footer class="site-footer pt-3">\n' +
             '        <div class="container-fluid d-flex p-0">\n' +
