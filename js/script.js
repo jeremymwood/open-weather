@@ -1,6 +1,6 @@
 (function () {
     $(document).ready(function () {
-        let c = $('<div class="container-fluid text-white fs-6 m-auto"><div id="liveLocation" class="row"></div></div>');
+        let c = $('<div class="container-fluid text-white fs-6 m-auto p-0"><div id="liveLocation" class="row"></div></div>');
         $('body').prepend(c);
 
         let d = $('<header><h1 class="text-white text-center">TetraCast</h1></header>');
@@ -59,7 +59,7 @@
                 console.log(data);
 
                 liveLocation.innerHTML = `
-                <div class="liveLocationBg rounded-5"><div class="m-0">
+                <div class="liveLocationBg rounded-3 m-0"><div class="m-0">
                 Location: ${data.city.name}, ${data.city.country}
                 </div></div>`;
                 // Population: ${data.city.population.toLocaleString('en-US')}
@@ -280,9 +280,8 @@
         }
 
         fiveDayIDMachina();
-        let g = $('<div id="coordinates" class="coordinates text-white rounded-3 fs-6 m-auto"></div>');
+        let g = $('<div id="coordinates" class="coordinates text-white rounded-3 fs-6 m-0 rounded-3"></div>');
         $('body').prepend(g);
-
 
         //////////////////////////
 
