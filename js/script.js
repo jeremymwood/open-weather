@@ -284,15 +284,41 @@
         let g = $('<div id="coordinates" class="coordinates text-white rounded-3 fs-6 m-auto"></div>');
         $('body').prepend(g);
 
-        let h = $('    <footer class="site-footer pt-4">\n' +
-            '        <div class="container-fluid p-0">\n' +
-            '            <div class="row">\n' +
-            '                <div class="col-sm-12 col-md-6 m-0">\n' +
+
+        //////////////////////////
+
+        // let footerContainer = $('<div class="container-fluid m-auto p-0 d-flex justify-content-between" id="footerContainer"></div>');
+        // $('body').append(footerContainer);
+        //
+        // function fiveDayIDMachina() {
+        //     for (let i = 0; i <= 4; i++) {
+        //         let fiveDayId = `day${i}ID`;
+        //         let forecast = $('<div class="singleDayForecast border border-2 border-white text-center rounded-3 bg-dark fs-6 p-2 w-100"></div>');
+        //         forecast.attr('id', fiveDayId);
+        //         $('#footerContainer').append(forecast);
+        //     }
+        // }
+        //
+        // fiveDayIDMachina();
+        // let g = $('<div id="coordinates" class="coordinates text-white rounded-3 fs-6 m-auto"></div>');
+        // $('body').prepend(g);
+
+        //////////////////////////
+
+
+
+
+        let h = $('        <footer class="site-footer pt-3">\n' +
+            '        <div class="container-fluid d-flex p-0">\n' +
+            '                <div class="footer40 m-0 p-2">\n' +
             '                    <h6>About</h6>\n' +
             '                    <p class="text-justify">TetraCast provides reliable weather forecasts on the go with a focus on customer service. We offer up-to-date weather data in four hour increments because hourly forecasts are excessive and that API option is cost prohibitive to our valued customers!</p>\n' +
+            '                    <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by\n' +
+            '                        <a href="#">TetraCast</a>.\n' +
+            '                    </p>\n' +
             '                </div>\n' +
             '\n' +
-            '                <div class="col-xs-6 col-md-3 m-0">\n' +
+            '                <div class="footer20 m-0 p-2">\n' +
             '                    <h6>Categories</h6>\n' +
             '                    <ul class="footer-links">\n' +
             '                        <li><a href="https://codeup.com/">C</a></li>\n' +
@@ -301,7 +327,7 @@
             '                    </ul>\n' +
             '                </div>\n' +
             '\n' +
-            '                <div class="col-xs-6 col-md-3 m-0">\n' +
+            '                <div class="footer20 m-0 p-2">\n' +
             '                    <h6>Quick Links</h6>\n' +
             '                    <ul class="footer-links">\n' +
             '                        <li><a href="https://codeup.com/">About Us</a></li>\n' +
@@ -309,25 +335,13 @@
             '                        <li><a href="https://codeup.com/">Privacy Policy</a></li>\n' +
             '                    </ul>\n' +
             '                </div>\n' +
-            '            </div>\n' +
-            '            <hr>\n' +
-            '        </div>\n' +
-            '        <div class="container-fluid">\n' +
-            '            <div class="row">\n' +
-            '                <div class="col-md-8 col-sm-6 col-xs-12">\n' +
-            '                    <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by\n' +
-            '                        <a href="#">TetraCast</a>.\n' +
-            '                    </p>\n' +
-            '                </div>\n' +
-            '\n' +
-            '                <div class="col-md-4 col-sm-6 col-xs-12">\n' +
+            '                <div class="footer20End m-0 p-2">\n' +
             '                    <ul class="social-icons">\n' +
             '                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>\n' +
             '                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>\n' +
             '                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>\n' +
             '                    </ul>\n' +
             '                </div>\n' +
-            '            </div>\n' +
             '        </div>\n' +
             '    </footer>');
         $('body').append(h);
