@@ -82,7 +82,6 @@
                 let seconds = "0" + date.getSeconds();
                 let formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
                 let rawWind = Math.round(data.list[i].wind.deg);
-                console.log(rawWind);
 
                 //shorten with array and for loop
                 const windAbbreviations = ["NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
@@ -90,31 +89,63 @@
                 let windMax = 33.75;
                 let windIncrement = 22.5;
 
-                function windDirection(azimuth) {
-                    for (let i = 0; i < windAbbreviations.length; i++) {
-                        if (azimuth > windMin && azimuth < windMax) {
-                            console.log(`${windAbbreviations[i]}`);
-                        }
-                        if (azimuth < 11.25 || azimuth > 348.75) {
-                            console.log(`N`);
-                            break;
-                        } else {
-                            windMin += windIncrement;
-                            windMax += windIncrement;
-                        }
-                    }
+                // function windDirection(azimuth) {
+                //     for (let i = 0; i < windAbbreviations.length; i++) {
+                //         if (azimuth < 11.25 || azimuth > 348.75) {
+                //             console.log(`N`);
+                //             break;
+                //         }
+                //         if (azimuth > windMin && azimuth < windMax) {
+                //             console.log(`${windAbbreviations[i]}`);
+                //             break;
+                //         } else {
+                //             windMin += windIncrement;
+                //             windMax += windIncrement;
+                //         }
+                //     }
+                // }
+
+                function degToCompass(num) {
+                    let val = Math.floor((num / 22.5) + 0.5);
+                    let arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+                    return arr[(val % 16)];
+                    // console.log(`${arr[(val % 16)]}`);
                 }
 
+                degToCompass(0);
+                degToCompass(22);
+                degToCompass(90);
+                degToCompass(135);
+                degToCompass(180);
+                degToCompass(225);
+                degToCompass(270);
+                degToCompass(325);
+                degToCompass(359);
+
+                // switch (expr) {
+                //     case 'Oranges':
+                //         console.log('Oranges are $0.59 a pound.');
+                //         break;
+                //     case 'Mangoes':
+                //     case 'Papayas':
+                //         console.log('Mangoes and papayas are $2.79 a pound.');
+                //         // Expected output: "Mangoes and papayas are $2.79 a pound."
+                //         break;
+                //     default:
+                //         console.log(`Sorry, we are out of ${expr}.`);
+                // }
+                // windDirection(rawWind);
+
                 // why does this fail after one occurrence?
-                windDirection(0);
-                windDirection(45);
-                windDirection(90);
-                windDirection(135);
-                windDirection(180);
-                windDirection(225);
-                windDirection(270);
-                windDirection(325);
-                windDirection(359);
+                // windDirection(0);
+                // windDirection(45);
+                // windDirection(90);
+                // windDirection(135);
+                // windDirection(180);
+                // windDirection(225);
+                // windDirection(270);
+                // windDirection(325);
+                // windDirection(359);
 
                 day0ID.innerHTML = `
                         ${dayOfWeek}
@@ -129,7 +160,7 @@
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}°
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}
                         <br />
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
@@ -163,7 +194,7 @@
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}°
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}
                         <br />
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
@@ -196,7 +227,7 @@
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}°
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}
                         <br />
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
@@ -229,7 +260,7 @@
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}°
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}
                         <br />
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
@@ -262,7 +293,7 @@
                         <br />
                         Humidity: ${data.list[i].main.humidity}%
                         <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph ${Math.round(data.list[i].wind.deg)}°
+                        Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}
                         <br />
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
