@@ -133,7 +133,7 @@
                         <br />
                         Gust: ${Math.round(data.list[i].wind.gust)} mph
                         `;
-                let secondDayOffset = 6;
+                let secondDayOffset = 8;
                 let dailyOffset = 8;
                 i += secondDayOffset;
                 unix_timestamp = data.list[i].dt;
