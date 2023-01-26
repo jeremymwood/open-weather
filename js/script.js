@@ -1,6 +1,5 @@
 (function () {
     $(document).ready(function () {
-
         let c = $('<div class="container-fluid text-white fs-6 m-auto"><div id="liveLocation" class="row"></div></div>');
         $('body').prepend(c);
 
@@ -282,9 +281,8 @@
         }
 
         fiveDayIDMachina();
-
-        let g = $('<div id="coordinates" class="coordinates border border-2 border-white text-white rounded-3 bg-dark fs-6 mt-2 p-2"></div>');
-        $('body').append(g);
+        let g = $('<div id="coordinates" class="coordinates text-white rounded-3 fs-6 m-auto"></div>');
+        $('body').prepend(g);
 
         let h = $('    <footer class="site-footer">\n' +
             '        <div class="container-fluid">\n' +

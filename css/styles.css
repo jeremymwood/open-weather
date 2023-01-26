@@ -25,6 +25,13 @@ root {
     left: 2em;
     z-index: 1;
 }
+#coordinates {
+    position: absolute;
+    top: 8em;
+    left: 2em;
+    z-index: 1;
+
+}
 .mapboxgl-ctrl-logo, .mapboxgl-ctrl {
     opacity: 20%;
 }
