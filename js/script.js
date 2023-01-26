@@ -6,15 +6,14 @@
         let d = $('<header><h1 class="text-white text-center">TetraCast</h1></header>');
         $('body').prepend(d);
 
-        let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY" class="searchContainerParent"><div class="searchContainer m-0"><i class="fa-solid fa-magnifying-glass text-white" aria-hidden="true"></i><form><input id="search" class="search border border-2 border-white text-white rounded-3 bg-dark fs-6 px-5 py-1 mb-2" type="text" name="address" autocomplete="shipping street-address" placeholder="search location...">    <button id="myBtn" class="d-none" type="submit">button</button>\n</form></div></mapbox-address-autofill>');
+        let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY" class="searchContainerParent"><div class="searchContainer m-0"><i class="fa-solid fa-magnifying-glass text-white" aria-hidden="true"></i><form><input id="search" class="search border border-1 border-white text-white rounded-3 bg-dark fs-6 px-5 py-1 mb-2" type="text" name="address" autocomplete="shipping street-address" placeholder="search location...">    <button id="myBtn" class="d-none" type="submit">button</button>\n</form></div></mapbox-address-autofill>');
         $('header').append(e);
 
         // TODO:
         //readme
+        // latlong fade bg
         //fix wind direction or remove
         //general weather icons
-        // add location, population and lat/long to map container
-        // remove or repurpose vanishing div... maybe for lat long
         //hover card screen back text and prompt for detailed forecast?
         //style cards, h4, h5, etc...
         //add popups
@@ -60,9 +59,9 @@
                 console.log(data);
 
                 liveLocation.innerHTML = `
-                <div class="m-0">
+                <div class="liveLocationBg rounded-5"><div class="m-0">
                 Location: ${data.city.name}, ${data.city.country}
-                </div>`;
+                </div></div>`;
                 // Population: ${data.city.population.toLocaleString('en-US')}
 
                 //formatted time
@@ -274,7 +273,7 @@
         function fiveDayIDMachina() {
             for (let i = 0; i <= 4; i++) {
                 let fiveDayId = `day${i}ID`;
-                let forecast = $('<div class="singleDayForecast border border-2 border-white text-center rounded-3 bg-dark fs-6 p-2 w-100"></div>');
+                let forecast = $('<div class="singleDayForecast border border-1 border-white text-center rounded-3 bg-dark fs-6 p-2 w-100"></div>');
                 forecast.attr('id', fiveDayId);
                 $('#fiveDayContainer').append(forecast);
             }
@@ -293,7 +292,7 @@
         // function fiveDayIDMachina() {
         //     for (let i = 0; i <= 4; i++) {
         //         let fiveDayId = `day${i}ID`;
-        //         let forecast = $('<div class="singleDayForecast border border-2 border-white text-center rounded-3 bg-dark fs-6 p-2 w-100"></div>');
+        //         let forecast = $('<div class="singleDayForecast border border-1 border-white text-center rounded-3 bg-dark fs-6 p-2 w-100"></div>');
         //         forecast.attr('id', fiveDayId);
         //         $('#footerContainer').append(forecast);
         //     }
