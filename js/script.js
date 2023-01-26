@@ -84,33 +84,15 @@
                 let formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
                 let rawWind = Math.round(data.list[i].wind.deg);
 
-                //shorten with array and for loop
                 const windAbbreviations = ["NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
                 let windMin = 11.25;
                 let windMax = 33.75;
                 let windIncrement = 22.5;
 
-                // function windDirection(azimuth) {
-                //     for (let i = 0; i < windAbbreviations.length; i++) {
-                //         if (azimuth < 11.25 || azimuth > 348.75) {
-                //             console.log(`N`);
-                //             break;
-                //         }
-                //         if (azimuth > windMin && azimuth < windMax) {
-                //             console.log(`${windAbbreviations[i]}`);
-                //             break;
-                //         } else {
-                //             windMin += windIncrement;
-                //             windMax += windIncrement;
-                //         }
-                //     }
-                // }
-
                 function degToCompass(num) {
                     let val = Math.floor((num / 22.5) + 0.5);
                     let arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
                     return arr[(val % 16)];
-                    // console.log(`${arr[(val % 16)]}`);
                 }
 
                 degToCompass(0);
@@ -123,30 +105,23 @@
                 degToCompass(325);
                 degToCompass(359);
 
-                // switch (expr) {
-                //     case 'Oranges':
-                //         console.log('Oranges are $0.59 a pound.');
-                //         break;
-                //     case 'Mangoes':
-                //     case 'Papayas':
-                //         console.log('Mangoes and papayas are $2.79 a pound.');
-                //         // Expected output: "Mangoes and papayas are $2.79 a pound."
-                //         break;
-                //     default:
-                //         console.log(`Sorry, we are out of ${expr}.`);
+                //somewhat works and returns symbol
+                // let condition = `${data.list[i].weather[0].description}`;
+                //
+                // function conditionMachina() {
+                //     if (condition === "clear sky") {
+                //         return '<i class="fa-solid fa-sun text-white" id="conditionIconClear"></i>';
+                //     }
+                //     if (condition === "few clouds") {
+                //         return '<i class="fa-solid fa-cloud-sun text-white" id="conditionIconClouds"></i>';
+                //     }
+                //     if (condition === "light rain") {
+                //         return '<i class="fa-solid fa-cloud-sun-rain text-white" id="conditionIconRainSun"></i>';
+                //     }
                 // }
-                // windDirection(rawWind);
 
-                // why does this fail after one occurrence?
-                // windDirection(0);
-                // windDirection(45);
-                // windDirection(90);
-                // windDirection(135);
-                // windDirection(180);
-                // windDirection(225);
-                // windDirection(270);
-                // windDirection(325);
-                // windDirection(359);
+                // Conditions: ${conditionMachina()}
+                //     <br />
 
                 day0ID.innerHTML = `
                         ${dayOfWeek}
@@ -307,13 +282,13 @@
                 //
                 // function conditionMachina() {
                 //     if (condition === "clear sky") {
-                //         return '<i className="fa-solid fa-sun text-white" id="conditionIconClear"></i>';
+                //         return '<i class="fa-solid fa-sun text-white" id="conditionIconClear"></i>';
                 //     }
                 //     if (condition === "few clouds") {
-                //         return '<i className="fa-solid fa-cloud-sun text-white" id="conditionIconClouds"></i>';
+                //         return '<i class="fa-solid fa-cloud-sun text-white" id="conditionIconClouds"></i>';
                 //     }
                 //     if (condition === "light rain") {
-                //         return '<i className="fa-solid fa-cloud-sun-rain text-white" id="conditionIconRainSun"></i>';
+                //         return '<i class="fa-solid fa-cloud-sun-rain text-white" id="conditionIconRainSun"></i>';
                 //     }
                 // }
                 // $(fiveDayId).append(conditionMachina);
