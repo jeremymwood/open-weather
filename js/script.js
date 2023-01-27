@@ -106,27 +106,27 @@
 
 
                 // somewhat works and returns symbol
-                let condition = `${data.list[i].weather[0].description}`;
+                // let condition = `${data.list[i].weather[0].description}`;
 
                 function conditionMachina(condition) {
                     if (condition === "clear sky") {
                         console.log("clear sky");
-                        return '<i class="fa-solid fa-sun text-white" id="conditionIconClear"></i>';
+                        return '<i class="forecast-icons fa-solid fa-sun text-white" id="conditionIconClear"></i>';
                     }
-                    if (condition === "few clouds") {
-                        console.log("few clouds");
-                        return '<i class="fa-solid fa-cloud-sun text-white" id="conditionIconClouds"></i>';
+                    if (condition === "overcast clouds") {
+                        console.log("overcast clouds");
+                        return '<i class="forecast-icons fa-solid fa-cloud-sun text-white" id="conditionIconClouds"></i>';
                     }
                     if (condition === "light rain") {
                         console.log("light rain");
-                        return '<i class="fa-solid fa-cloud-sun-rain text-white" id="conditionIconRainSun"></i>';
+                        return '<i class="forecast-icons fa-solid fa-cloud-sun-rain text-white" id="conditionIconRainSun"></i>';
                     }
                 }
 
-                console.log(`${data.list[3].weather[0].description}`);
-                conditionMachina("clear sky");
-                conditionMachina("few clouds");
-                conditionMachina("light rain");
+                // console.log(`${data.list[3].weather[0].description}`);
+                // conditionMachina("clear sky");
+                // conditionMachina("few clouds");
+                // conditionMachina("light rain");
 
                 let secondDayOffset = 8;
                 let dailyOffset = 8;
@@ -147,12 +147,13 @@
                     let formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
                     let rawWind = Math.round(data.list[j].wind.deg);
 
+                    let condition = `${data.list[i].weather[0].description}`;
+
                     let dayId = `day${i}ID`;
 
                     let fcHtml = `
-                        <p class="fcDayOfWeek text-white fs-5 m-0">${dayOfWeek}</p>
+                        <p class="fcDayOfWeek text-white fs-5 m-0">${dayOfWeek}${conditionMachina(condition)}</p>
                         <p class="fcDate m-0">${namedMonth} ${dayOfMonth}, ${year}</p>
-<!--                        <p class="fcConditionIcon m-0">${conditionMachina}</p>-->
                         <p class="fcConditionIcon m-0">(${data.list[i].weather[0].description})</p>
                         <p class="fcTemps m-0">High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°</p>
                         <p class="fcHumidity m-0">Humidity: ${data.list[i].main.humidity}%</p>

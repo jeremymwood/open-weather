@@ -105,6 +105,12 @@ i {
     width: 1em;
     height: 1em;
 }
+.forecast-icons {
+    position: absolute;
+    transform: translate(1em, .7em);
+    width: 1em;
+    height: 1em;
+}
 #conditionIconRainSun, #conditionIconClouds, #conditionIconClear {
     /*position: absolute;*/
     /*transform: translate(1em, .7em);*/
