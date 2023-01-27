@@ -93,16 +93,6 @@
                     let arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
                     return arr[(val % 16)];
                 }
-                //
-                // degToCompass(0);
-                // degToCompass(22);
-                // degToCompass(90);
-                // degToCompass(135);
-                // degToCompass(180);
-                // degToCompass(225);
-                // degToCompass(270);
-                // degToCompass(325);
-                // degToCompass(359);
 
                 //somewhat works and returns symbol
                 // let condition = `${data.list[i].weather[0].description}`;
@@ -144,26 +134,26 @@
                     let seconds = "0" + date.getSeconds();
                     let formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
                     let rawWind = Math.round(data.list[j].wind.deg);
-                    // i += dailyOffset;
 
                     let dayId = `day${i}ID`;
                     let singleDayForecast = $('<div class="singleDayForecast bg-dark fs-6 p-2 w-100"></div>');
                     singleDayForecast.attr('id', dayId);
                     $('#fiveDayContainer').append(singleDayForecast);
 
-                    let fcHtml = `${'<p class="fcDayOfWeek">dayOfWeek</p>' +
-                        '<p class="fcDate">${namedMonth} ${dayOfMonth}, ${year}</p>' +
-                        '<p class="fcConditionIcon">${data.list[i].weather[0].description}</p>' +
-                        '<p class="fcTemps">High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}</p>' +
-                        '<p class="fcHumidity">Humidity: ${data.list[i].main.humidity}%</p>' +
-                        '<p class="fcWind">Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}</p>' +
-                        '<p class="fcGust"> Gust: ${Math.round(data.list[i].wind.gust)} mph</p>'}`;
+                    //         let fiveDayId = `day${i}ID`;
+
+
+                    let fcHtml = `
+                        <p class="fcDayOfWeek">${dayOfWeek}</p>
+                        <p class="fcDate">${namedMonth} ${dayOfMonth}, ${year}</p>
+                        <p class="fcConditionIcon">${data.list[i].weather[0].description}</p>
+                        <p class="fcTemps">High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}</p>
+                        <p class="fcHumidity">Humidity: ${data.list[i].main.humidity}%</p>
+                        <p class="fcWind">Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}</p>
+                        <p class="fcGust"> Gust: ${Math.round(data.list[i].wind.gust)} mph</p>`;
+
                         document.getElementById(dayId).innerHTML = fcHtml;
-                        // $(dayId).append(fcHtml);
-
-                    j += secondDayOffset;
-
-                    console.log(j);
+                        j += secondDayOffset;
                 };
 
                 // day0ID.innerHTML = `
