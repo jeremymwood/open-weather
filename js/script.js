@@ -10,15 +10,19 @@
         $('header').append(e);
 
         // TODO:
-        //readme
-        //general weather icons
+        //general weather icons, switch statement
         //hover card screen back text and prompt for detailed forecast?
         //style cards, h4, h5, etc...
         //add popups
         //add badges
+        //readme
+        //github.io
+        //better name - consult beginner's guide to constructing the galaxy on the triad
 
 
         //latlong fade bg
+
+        // add state
         //wind and temp widget
         //mobile responsive
         //dropdown for light/dark mode
@@ -48,11 +52,11 @@
         const marker = new mapboxgl.Marker({"color": "red", draggable: true});
         marker.setLngLat([startingLongitude, startingLatitude]);
 
-        function openWeather(startingLongitude, startingLatitude) {
+        function weatherMachina(longitudeDie, latitudeDie) {
             $.get("http://api.openweathermap.org/data/2.5/forecast", {
                 APPID: OPENWEATHER_API_KEY,
-                lat: startingLatitude,
-                lon: startingLongitude,
+                lat: latitudeDie,
+                lon: longitudeDie,
                 units: "imperial"
             }).done(function (data) {
 
@@ -84,11 +88,6 @@
                 let formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
                 let rawWind = Math.round(data.list[i].wind.deg);
 
-                const windAbbreviations = ["NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
-                let windMin = 11.25;
-                let windMax = 33.75;
-                let windIncrement = 22.5;
-
                 function degToCompass(num) {
                     let val = Math.floor((num / 22.5) + 0.5);
                     let arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
@@ -107,7 +106,7 @@
 
                 //somewhat works and returns symbol
                 // let condition = `${data.list[i].weather[0].description}`;
-                //
+
                 // function conditionMachina() {
                 //     if (condition === "clear sky") {
                 //         return '<i class="fa-solid fa-sun text-white" id="conditionIconClear"></i>';
@@ -119,183 +118,227 @@
                 //         return '<i class="fa-solid fa-cloud-sun-rain text-white" id="conditionIconRainSun"></i>';
                 //     }
                 // }
-
+                //
                 // Conditions: ${conditionMachina()}
                 //     <br />
+                let fiveDayContainer = $('<div class="container-fluid m-auto p-0 d-flex justify-content-between" id="fiveDayContainer"></div>');
+                $('body').append(fiveDayContainer);
 
-                day0ID.innerHTML = `
-                        ${dayOfWeek}
-                        <br />
-                        ${namedMonth} ${dayOfMonth}, ${year}
-                        <br />
-                        Conditions: ${data.list[i].weather[0].description}
-                        <br />
-                        High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°
-                        <br />
-                        Humidity: ${data.list[i].main.humidity}%
-                        <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}
-                        <br />
-                        Gust: ${Math.round(data.list[i].wind.gust)} mph
-                        `;
                 let secondDayOffset = 8;
                 let dailyOffset = 8;
-                i += secondDayOffset;
-                unix_timestamp = data.list[i].dt;
-                date = new Date(unix_timestamp * 1000);
-                day = date.getDay();
-                dayOfWeek = weekday[day];
-                dayOfMonth = date.getDate();
-                month = date.getMonth();
-                namedMonth = months[month];
-                year = date.getFullYear();
-                hours = date.getHours();
-                minutes = "0" + date.getMinutes();
-                seconds = "0" + date.getSeconds();
-                formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-                rawWind = Math.round(data.list[i].wind.deg);
+                let j = 0;
 
-                day1ID.innerHTML = `
-                        ${dayOfWeek}
-                        <br />
-                        ${namedMonth} ${dayOfMonth}, ${year}
-                        <br />
-                        Conditions: ${data.list[i].weather[0].description}
-                        <br />
-                        High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°
-                        <br />
-                        Humidity: ${data.list[i].main.humidity}%
-                        <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}
-                        <br />
-                        Gust: ${Math.round(data.list[i].wind.gust)} mph
-                        `;
+                for (let i = 0; i <= 4; i++) {
+                    console.log(j);
 
-                i += dailyOffset;
-                unix_timestamp = data.list[i].dt;
-                date = new Date(unix_timestamp * 1000);
-                day = date.getDay();
-                dayOfWeek = weekday[day];
-                dayOfMonth = date.getDate();
-                month = date.getMonth();
-                namedMonth = months[month];
-                year = date.getFullYear();
-                hours = date.getHours();
-                minutes = "0" + date.getMinutes();
-                seconds = "0" + date.getSeconds();
-                formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-                rawWind = Math.round(data.list[i].wind.deg);
+                    let unix_timestamp = data.list[j].dt;
+                    let date = new Date(unix_timestamp * 1000);
+                    let day = date.getDay();
+                    let dayOfWeek = weekday[day];
+                    let dayOfMonth = date.getDate();
+                    let month = date.getMonth();
+                    let namedMonth = months[month];
+                    let year = date.getFullYear();
+                    let hours = date.getHours();
+                    let minutes = "0" + date.getMinutes();
+                    let seconds = "0" + date.getSeconds();
+                    let formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+                    let rawWind = Math.round(data.list[j].wind.deg);
+                    // i += dailyOffset;
 
-                day2ID.innerHTML = `
-                        ${dayOfWeek}
-                        <br />
-                        ${namedMonth} ${dayOfMonth}, ${year}
-                        <br />
-                        Conditions: ${data.list[i].weather[0].description}
-                        <br />
-                        High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°
-                        <br />
-                        Humidity: ${data.list[i].main.humidity}%
-                        <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}
-                        <br />
-                        Gust: ${Math.round(data.list[i].wind.gust)} mph
-                        `;
+                    let dayId = `day${i}ID`;
+                    let singleDayForecast = $('<div class="singleDayForecast bg-dark fs-6 p-2 w-100"></div>');
+                    singleDayForecast.attr('id', dayId);
+                    $('#fiveDayContainer').append(singleDayForecast);
 
-                i += dailyOffset;
-                unix_timestamp = data.list[i].dt;
-                date = new Date(unix_timestamp * 1000);
-                day = date.getDay();
-                dayOfWeek = weekday[day];
-                dayOfMonth = date.getDate();
-                month = date.getMonth();
-                namedMonth = months[month];
-                year = date.getFullYear();
-                hours = date.getHours();
-                minutes = "0" + date.getMinutes();
-                seconds = "0" + date.getSeconds();
-                formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-                rawWind = Math.round(data.list[i].wind.deg);
+                    let fcHtml = `${'<p class="fcDayOfWeek">dayOfWeek</p>' +
+                        '<p class="fcDate">${namedMonth} ${dayOfMonth}, ${year}</p>' +
+                        '<p class="fcConditionIcon">${data.list[i].weather[0].description}</p>' +
+                        '<p class="fcTemps">High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}</p>' +
+                        '<p class="fcHumidity">Humidity: ${data.list[i].main.humidity}%</p>' +
+                        '<p class="fcWind">Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}</p>' +
+                        '<p class="fcGust"> Gust: ${Math.round(data.list[i].wind.gust)} mph</p>'}`;
+                        document.getElementById(dayId).innerHTML = fcHtml;
+                        // $(dayId).append(fcHtml);
 
-                day3ID.innerHTML = `
-                        ${dayOfWeek}
-                        <br />
-                        ${namedMonth} ${dayOfMonth}, ${year}
-                        <br />
-                        Conditions: ${data.list[i].weather[0].description}
-                        <br />
-                        High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°
-                        <br />
-                        Humidity: ${data.list[i].main.humidity}%
-                        <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}
-                        <br />
-                        Gust: ${Math.round(data.list[i].wind.gust)} mph
-                        `;
+                    j += secondDayOffset;
 
-                i += dailyOffset;
-                unix_timestamp = data.list[i].dt;
-                date = new Date(unix_timestamp * 1000);
-                day = date.getDay();
-                dayOfWeek = weekday[day];
-                dayOfMonth = date.getDate();
-                month = date.getMonth();
-                namedMonth = months[month];
-                year = date.getFullYear();
-                hours = date.getHours();
-                minutes = "0" + date.getMinutes();
-                seconds = "0" + date.getSeconds();
-                formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-                rawWind = Math.round(data.list[i].wind.deg);
+                    console.log(j);
+                };
 
-                day4ID.innerHTML = `
-                        ${dayOfWeek}
-                        <br />
-                        ${namedMonth} ${dayOfMonth}, ${year}
-                        <br />
-                        Conditions: ${data.list[i].weather[0].description}
-                        <br />
-                        High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°
-                        <br />
-                        Humidity: ${data.list[i].main.humidity}%
-                        <br />
-                        Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}
-                        <br />
-                        Gust: ${Math.round(data.list[i].wind.gust)} mph
-                        `;
+                // day0ID.innerHTML = `
+                //         ${dayOfWeek}
+                //         <br />
+                //         ${namedMonth} ${dayOfMonth}, ${year}
+                //         <br />
+                //         Conditions: ${data.list[i].weather[0].description}
+                //         <br />
+                //         High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°
+                //         <br />
+                //         Humidity: ${data.list[i].main.humidity}%
+                //         <br />
+                //         Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}
+                //         <br />
+                //         Gust: ${Math.round(data.list[i].wind.gust)} mph
+                //         `;
+                // let secondDayOffset = 8;
+                // let dailyOffset = 8;
+                // i += secondDayOffset;
+                // unix_timestamp = data.list[i].dt;
+                // date = new Date(unix_timestamp * 1000);
+                // day = date.getDay();
+                // dayOfWeek = weekday[day];
+                // dayOfMonth = date.getDate();
+                // month = date.getMonth();
+                // namedMonth = months[month];
+                // year = date.getFullYear();
+                // hours = date.getHours();
+                // minutes = "0" + date.getMinutes();
+                // seconds = "0" + date.getSeconds();
+                // formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+                // rawWind = Math.round(data.list[i].wind.deg);
+                //
+                // day1ID.innerHTML = `
+                //         ${dayOfWeek}
+                //         <br />
+                //         ${namedMonth} ${dayOfMonth}, ${year}
+                //         <br />
+                //         Conditions: ${data.list[i].weather[0].description}
+                //         <br />
+                //         High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°
+                //         <br />
+                //         Humidity: ${data.list[i].main.humidity}%
+                //         <br />
+                //         Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}
+                //         <br />
+                //         Gust: ${Math.round(data.list[i].wind.gust)} mph
+                //         `;
+                //
+                // i += dailyOffset;
+                // unix_timestamp = data.list[i].dt;
+                // date = new Date(unix_timestamp * 1000);
+                // day = date.getDay();
+                // dayOfWeek = weekday[day];
+                // dayOfMonth = date.getDate();
+                // month = date.getMonth();
+                // namedMonth = months[month];
+                // year = date.getFullYear();
+                // hours = date.getHours();
+                // minutes = "0" + date.getMinutes();
+                // seconds = "0" + date.getSeconds();
+                // formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+                // rawWind = Math.round(data.list[i].wind.deg);
+                //
+                // day2ID.innerHTML = `
+                //         ${dayOfWeek}
+                //         <br />
+                //         ${namedMonth} ${dayOfMonth}, ${year}
+                //         <br />
+                //         Conditions: ${data.list[i].weather[0].description}
+                //         <br />
+                //         High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°
+                //         <br />
+                //         Humidity: ${data.list[i].main.humidity}%
+                //         <br />
+                //         Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}
+                //         <br />
+                //         Gust: ${Math.round(data.list[i].wind.gust)} mph
+                //         `;
+                //
+                // i += dailyOffset;
+                // unix_timestamp = data.list[i].dt;
+                // date = new Date(unix_timestamp * 1000);
+                // day = date.getDay();
+                // dayOfWeek = weekday[day];
+                // dayOfMonth = date.getDate();
+                // month = date.getMonth();
+                // namedMonth = months[month];
+                // year = date.getFullYear();
+                // hours = date.getHours();
+                // minutes = "0" + date.getMinutes();
+                // seconds = "0" + date.getSeconds();
+                // formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+                // rawWind = Math.round(data.list[i].wind.deg);
+                //
+                // day3ID.innerHTML = `
+                //         ${dayOfWeek}
+                //         <br />
+                //         ${namedMonth} ${dayOfMonth}, ${year}
+                //         <br />
+                //         Conditions: ${data.list[i].weather[0].description}
+                //         <br />
+                //         High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°
+                //         <br />
+                //         Humidity: ${data.list[i].main.humidity}%
+                //         <br />
+                //         Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}
+                //         <br />
+                //         Gust: ${Math.round(data.list[i].wind.gust)} mph
+                //         `;
+                //
+                // i += dailyOffset;
+                // unix_timestamp = data.list[i].dt;
+                // date = new Date(unix_timestamp * 1000);
+                // day = date.getDay();
+                // dayOfWeek = weekday[day];
+                // dayOfMonth = date.getDate();
+                // month = date.getMonth();
+                // namedMonth = months[month];
+                // year = date.getFullYear();
+                // hours = date.getHours();
+                // minutes = "0" + date.getMinutes();
+                // seconds = "0" + date.getSeconds();
+                // formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+                // rawWind = Math.round(data.list[i].wind.deg);
+                //
+                // day4ID.innerHTML = `
+                //         ${dayOfWeek}
+                //         <br />
+                //         ${namedMonth} ${dayOfMonth}, ${year}
+                //         <br />
+                //         Conditions: ${data.list[i].weather[0].description}
+                //         <br />
+                //         High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°
+                //         <br />
+                //         Humidity: ${data.list[i].main.humidity}%
+                //         <br />
+                //         Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}
+                //         <br />
+                //         Gust: ${Math.round(data.list[i].wind.gust)} mph
+                //         `;
             });
         };
 
-        openWeather(startingLongitude, startingLatitude);
+        weatherMachina(startingLongitude, startingLatitude);
 
-        let fiveDayContainer = $('<div class="container-fluid m-auto p-0 d-flex justify-content-between" id="fiveDayContainer"></div>');
-        $('body').append(fiveDayContainer);
-
-        function fiveDayIDMachina() {
-            for (let i = 0; i <= 4; i++) {
-                let fiveDayId = `day${i}ID`;
-                let forecast = $('<div class="singleDayForecast  rounded-3 bg-dark fs-6 p-2 w-100"></div>');
-                forecast.attr('id', fiveDayId);
-                $('#fiveDayContainer').append(forecast);
-
-                // let condition = `${data.list[i].weather[0].description}`;
-                //
-                // function conditionMachina() {
-                //     if (condition === "clear sky") {
-                //         return '<i class="fa-solid fa-sun text-white" id="conditionIconClear"></i>';
-                //     }
-                //     if (condition === "few clouds") {
-                //         return '<i class="fa-solid fa-cloud-sun text-white" id="conditionIconClouds"></i>';
-                //     }
-                //     if (condition === "light rain") {
-                //         return '<i class="fa-solid fa-cloud-sun-rain text-white" id="conditionIconRainSun"></i>';
-                //     }
-                // }
-                // $(fiveDayId).append(conditionMachina);
-            }
-        }
-
-        fiveDayIDMachina();
+        // let fiveDayContainer = $('<div class="container-fluid m-auto p-0 d-flex justify-content-between" id="fiveDayContainer"></div>');
+        // $('body').append(fiveDayContainer);
+        //
+        // function fiveDayIDMachina() {
+        //     for (let i = 0; i <= 4; i++) {
+        //         let fiveDayId = `day${i}ID`;
+        //         let forecast = $('<div class="singleDayForecast bg-dark fs-6 p-2 w-100"></div>');
+        //         forecast.attr('id', fiveDayId);
+        //         $('#fiveDayContainer').append(forecast);
+        //
+        //         // let condition = `${data.list[i].weather[0].description}`;
+        //         //
+        //         // function conditionMachina() {
+        //         //     if (condition === "clear sky") {
+        //         //         return '<i class="fa-solid fa-sun text-white" id="conditionIconClear"></i>';
+        //         //     }
+        //         //     if (condition === "few clouds") {
+        //         //         return '<i class="fa-solid fa-cloud-sun text-white" id="conditionIconClouds"></i>';
+        //         //     }
+        //         //     if (condition === "light rain") {
+        //         //         return '<i class="fa-solid fa-cloud-sun-rain text-white" id="conditionIconRainSun"></i>';
+        //         //     }
+        //         // }
+        //         // $(fiveDayId).append(conditionMachina);
+        //     }
+        // }
+        //
+        // fiveDayIDMachina();
         let g = $('<div id="coordinates" class="coordinates text-white rounded-3 fs-6 m-0 rounded-3"></div>');
         $('body').prepend(g);
 
@@ -331,7 +374,7 @@
             '                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>\n' +
             '                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>\n' +
             '                    </ul>\n' +
-            '                    <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by\n' +
+            '                    <p class="copyright-text mt-2">Copyright &copy; 2023 All Rights Reserved by\n' +
             '                        <a href="#">TriCast</a>.\n' +
             '                    </p>\n' +
             '                </div>\n' +
@@ -352,7 +395,7 @@
                 center: [lngLat.lng, lngLat.lat]
             });
 
-            openWeather(lngLat.lng, lngLat.lat);
+            weatherMachina(lngLat.lng, lngLat.lat);
         }
 
         marker.on('dragend', onDragEnd);
@@ -373,7 +416,7 @@
                 coordinates.style.display = 'block';
                 $('#coordinates').delay(2500).fadeOut(1000);
 
-                openWeather(lngLat.lng, lngLat.lat);
+                weatherMachina(lngLat.lng, lngLat.lat);
 
             }).catch(function(error) {
                 console.log("Boom");
