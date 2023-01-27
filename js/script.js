@@ -71,7 +71,12 @@
             }).done(function (data) {
 
                 // display all data
-                // console.log(data);
+                console.log(data);
+
+                //use for tri-hourly graphs
+                // for (let k = 0; k < 40; k++) {
+                //     console.log(data.list[k].dt_txt);
+                // }
 
                 liveLocation.innerHTML = `
                 <div class="liveLocationBg rounded-3 m-0"><div class="m-0">
@@ -105,28 +110,34 @@
                 }
 
 
-                // somewhat works and returns symbol
-                // let condition = `${data.list[i].weather[0].description}`;
-
-                function conditionMachina(condition) {
-                    if (condition === "clear sky") {
-                        console.log("clear sky");
-                        return '<i class="forecast-icons fa-solid fa-sun text-white flex-grow-1" id="conditionIconClear"></i>';
+                function conditionMachina(conditionMain) {
+                    if (conditionMain === "Clear") {
+                        return '<i class="forecast-icons fa-solid fa-sun text-white flex-grow-1 ps-2 pb-0"></i>';
                     }
-                    if (condition === "overcast clouds") {
-                        console.log("overcast clouds");
-                        return '<i class="forecast-icons fa-solid fa-cloud-sun text-white flex-grow-1" id="conditionIconClouds"></i>';
+                    if (conditionMain === "Clouds") {
+                        return '<i class="forecast-icons fa-solid fa-cloud text-white flex-grow-1 ps-2 pb-0"></i>';
                     }
-                    if (condition === "light rain") {
-                        console.log("light rain");
-                        return '<i class="forecast-icons fa-solid fa-cloud-sun-rain text-white flex-grow-1" id="conditionIconRainSun"></i>';
+                    if (conditionMain === "Tornado") {
+                        return '<i class="forecast-icons fa-solid tornado text-white flex-grow-1 ps-2 pb-0"></i>';
+                    }
+                    if (conditionMain === "Thunderstorm") {
+                        return '<i class="forecast-icons fa-solid fa-cloud-bolt text-white flex-grow-1 ps-2 pb-0"></i>';
+                    }
+                    if (conditionMain === "Rain") {
+                        return '<i class="forecast-icons fa-solid fa-cloud-sun-rain text-white flex-grow-1 ps-2 pb-0"></i>';
+                    }
+                    if (conditionMain === "Snow") {
+                        return '<i class="forecast-icons fa-solid fa-snowflake text-white flex-grow-1 ps-2 pb-0"></i>';
+                    } else {
+                        return '<i class="forecast-icons fa-solid fa-circle-question text-white flex-grow-1 ps-2 pb-0"></i>';
                     }
                 }
 
-                // console.log(`${data.list[3].weather[0].description}`);
-                // conditionMachina("clear sky");
-                // conditionMachina("few clouds");
-                // conditionMachina("light rain");
+                //rain
+                // add if high wind
+                // <i className="fa-solid fa-wind"></i>
+
+
 
                 let secondDayOffset = 8;
                 let dailyOffset = 8;
@@ -147,14 +158,23 @@
                     let formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
                     let rawWind = Math.round(data.list[j].wind.deg);
 
-                    let condition = `${data.list[i].weather[0].description}`;
+                    let conditionId = `${data.list[i].weather[0].id}`;
+                    let conditionMain = `${data.list[i].weather[0].main}`;
+                    let conditionDescription = `${data.list[i].weather[0].description}`;
+
+
+                    //use for tri-hourly graphs
+                    // for (let k = 0; k < 40; k++) {
+                    //     console.log(`${data.list[i].weather[0].description}`);
+                    // }
+
 
                     let dayId = `day${i}ID`;
 
                     let fcHtml = `
                         <div class="forecastHeader d-flex">
                             <p class="fcDayOfWeek text-white fs-5 m-0 flex-grow-2">${dayOfWeek}</p>
-                            ${conditionMachina(condition)}
+                            ${conditionMachina(conditionMain)}
                         </div>
                         ${namedMonth} ${dayOfMonth}, ${year}
                         <p class="fcConditionIcon m-0">(${data.list[i].weather[0].description})</p>

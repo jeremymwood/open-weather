@@ -99,14 +99,8 @@ i {
 .search:hover {
     /*visibility: revert;*/
 }
-.fa-solid {
+.fa-magnifying-glass {
     position: absolute;
-    transform: translate(1em, .7em);
-    width: 1em;
-    height: 1em;
-}
-.forecast-icons {
-    position: relative;
     transform: translate(1em, .7em);
     width: 1em;
     height: 1em;
