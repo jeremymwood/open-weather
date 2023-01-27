@@ -106,7 +106,7 @@ i {
     height: 1em;
 }
 .forecast-icons {
-    position: absolute;
+    position: relative;
     transform: translate(1em, .7em);
     width: 1em;
     height: 1em;

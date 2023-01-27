@@ -10,7 +10,6 @@
         $('header').append(e);
 
         // TODO:
-        //general weather icons, switch statement
         //hover card screen back text and prompt for detailed forecast?
         //style cards, h4, h5, etc...
         //add popups
@@ -18,6 +17,7 @@
         //readme
         //github.io
         //better name - consult beginner's guide to constructing the galaxy on the triad
+        //precipitation data?
 
 
         //latlong fade bg
@@ -111,15 +111,15 @@
                 function conditionMachina(condition) {
                     if (condition === "clear sky") {
                         console.log("clear sky");
-                        return '<i class="forecast-icons fa-solid fa-sun text-white" id="conditionIconClear"></i>';
+                        return '<i class="forecast-icons fa-solid fa-sun text-white flex-grow-1" id="conditionIconClear"></i>';
                     }
                     if (condition === "overcast clouds") {
                         console.log("overcast clouds");
-                        return '<i class="forecast-icons fa-solid fa-cloud-sun text-white" id="conditionIconClouds"></i>';
+                        return '<i class="forecast-icons fa-solid fa-cloud-sun text-white flex-grow-1" id="conditionIconClouds"></i>';
                     }
                     if (condition === "light rain") {
                         console.log("light rain");
-                        return '<i class="forecast-icons fa-solid fa-cloud-sun-rain text-white" id="conditionIconRainSun"></i>';
+                        return '<i class="forecast-icons fa-solid fa-cloud-sun-rain text-white flex-grow-1" id="conditionIconRainSun"></i>';
                     }
                 }
 
@@ -152,8 +152,11 @@
                     let dayId = `day${i}ID`;
 
                     let fcHtml = `
-                        <p class="fcDayOfWeek text-white fs-5 m-0">${dayOfWeek}${conditionMachina(condition)}</p>
-                        <p class="fcDate m-0">${namedMonth} ${dayOfMonth}, ${year}</p>
+                        <div class="forecastHeader d-flex">
+                            <p class="fcDayOfWeek text-white fs-5 m-0 flex-grow-2">${dayOfWeek}</p>
+                            ${conditionMachina(condition)}
+                        </div>
+                        ${namedMonth} ${dayOfMonth}, ${year}
                         <p class="fcConditionIcon m-0">(${data.list[i].weather[0].description})</p>
                         <p class="fcTemps m-0">High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°</p>
                         <p class="fcHumidity m-0">Humidity: ${data.list[i].main.humidity}%</p>
