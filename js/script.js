@@ -71,7 +71,7 @@
             }).done(function (data) {
 
                 // display all data
-                console.log(data);
+                // console.log(data);
 
                 liveLocation.innerHTML = `
                 <div class="liveLocationBg rounded-3 m-0"><div class="m-0">
@@ -104,32 +104,35 @@
                     return arr[(val % 16)];
                 }
 
-                //somewhat works and returns symbol
-                // let condition = `${data.list[i].weather[0].description}`;
 
-                // function conditionMachina() {
-                //     if (condition === "clear sky") {
-                //         return '<i class="fa-solid fa-sun text-white" id="conditionIconClear"></i>';
-                //     }
-                //     if (condition === "few clouds") {
-                //         return '<i class="fa-solid fa-cloud-sun text-white" id="conditionIconClouds"></i>';
-                //     }
-                //     if (condition === "light rain") {
-                //         return '<i class="fa-solid fa-cloud-sun-rain text-white" id="conditionIconRainSun"></i>';
-                //     }
-                // }
-                //
-                // Conditions: ${conditionMachina()}
-                //     <br />
+                // somewhat works and returns symbol
+                let condition = `${data.list[i].weather[0].description}`;
 
+                function conditionMachina(condition) {
+                    if (condition === "clear sky") {
+                        console.log("clear sky");
+                        return '<i class="fa-solid fa-sun text-white" id="conditionIconClear"></i>';
+                    }
+                    if (condition === "few clouds") {
+                        console.log("few clouds");
+                        return '<i class="fa-solid fa-cloud-sun text-white" id="conditionIconClouds"></i>';
+                    }
+                    if (condition === "light rain") {
+                        console.log("light rain");
+                        return '<i class="fa-solid fa-cloud-sun-rain text-white" id="conditionIconRainSun"></i>';
+                    }
+                }
+
+                console.log(`${data.list[3].weather[0].description}`);
+                conditionMachina("clear sky");
+                conditionMachina("few clouds");
+                conditionMachina("light rain");
 
                 let secondDayOffset = 8;
                 let dailyOffset = 8;
                 let j = 0;
 
                 for (let i = 0; i <= 4; i++) {
-                    console.log(j);
-
                     let unix_timestamp = data.list[j].dt;
                     let date = new Date(unix_timestamp * 1000);
                     let day = date.getDay();
@@ -149,6 +152,7 @@
                     let fcHtml = `
                         <p class="fcDayOfWeek text-white fs-5 m-0">${dayOfWeek}</p>
                         <p class="fcDate m-0">${namedMonth} ${dayOfMonth}, ${year}</p>
+<!--                        <p class="fcConditionIcon m-0">${conditionMachina}</p>-->
                         <p class="fcConditionIcon m-0">(${data.list[i].weather[0].description})</p>
                         <p class="fcTemps m-0">High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°</p>
                         <p class="fcHumidity m-0">Humidity: ${data.list[i].main.humidity}%</p>
@@ -163,49 +167,21 @@
 
         weatherMachina(startingLongitude, startingLatitude);
 
-        // let fiveDayContainer = $('<div class="container-fluid m-auto p-0 d-flex justify-content-between" id="fiveDayContainer"></div>');
-        // $('body').append(fiveDayContainer);
-        //
-        // function fiveDayIDMachina() {
-        //     for (let i = 0; i <= 4; i++) {
-        //         let fiveDayId = `day${i}ID`;
-        //         let forecast = $('<div class="singleDayForecast bg-dark fs-6 p-2 w-100"></div>');
-        //         forecast.attr('id', fiveDayId);
-        //         $('#fiveDayContainer').append(forecast);
-        //
-        //         // let condition = `${data.list[i].weather[0].description}`;
-        //         //
-        //         // function conditionMachina() {
-        //         //     if (condition === "clear sky") {
-        //         //         return '<i class="fa-solid fa-sun text-white" id="conditionIconClear"></i>';
-        //         //     }
-        //         //     if (condition === "few clouds") {
-        //         //         return '<i class="fa-solid fa-cloud-sun text-white" id="conditionIconClouds"></i>';
-        //         //     }
-        //         //     if (condition === "light rain") {
-        //         //         return '<i class="fa-solid fa-cloud-sun-rain text-white" id="conditionIconRainSun"></i>';
-        //         //     }
-        //         // }
-        //         // $(fiveDayId).append(conditionMachina);
-        //     }
-        // }
-        //
-        // fiveDayIDMachina();
         let g = $('<div id="coordinates" class="coordinates text-white rounded-3 fs-6 m-0 rounded-3"></div>');
         $('body').prepend(g);
 
         let h = $('        ' +
-            '<hr class="border border-1 border-secondary mt-2 mb-0 opacity-100">' +
+            '<hr class="border border-1 border-secondary mt-5 mb-0 opacity-100">' +
             '<footer class="site-footer pt-3">\n' +
             '        <div class="container-fluid d-flex p-0">\n' +
             '                <div class="footer40 m-0 p-2">\n' +
-            '                    <h6>About</h6>\n' +
-            '                    <p class="text-justify">TriCast provides reliable weather data in three hour increments because hourly forecasts are excessive and that API option is cost prohibitive to our valued customers!</p>\n' +
+            '                    <h6 class="mt-2 mb-0">About</h6>\n' +
+            '                    <p class="text-justify pt-3">TriCast provides reliable weather data in three hour increments because hourly forecasts are excessive and that API option is cost prohibitive to our valued customers!</p>\n' +
             '                </div>\n' +
             '\n' +
             '                <div class="footer20 m-0 p-2">\n' +
-            '                    <h6>Categories</h6>\n' +
-            '                    <ul class="footer-links">\n' +
+            '                    <h6 class="mt-2 mb-0">Categories</h6>\n' +
+            '                    <ul class="footer-links pt-3">\n' +
             '                        <li><a href="https://codeup.com/">Five Day Forecast</a></li>\n' +
             '                        <li><a href="https://codeup.com/">Daily Forecast</a></li>\n' +
             '                        <li><a href="https://codeup.com/">Templates</a></li>\n' +
@@ -213,8 +189,8 @@
             '                </div>\n' +
             '\n' +
             '                <div class="footer20 m-0 p-2">\n' +
-            '                    <h6>Quick Links</h6>\n' +
-            '                    <ul class="footer-links">\n' +
+            '                    <h6 class="mt-2 mb-0">Quick Links</h6>\n' +
+            '                    <ul class="footer-links pt-3">\n' +
             '                        <li><a href="https://codeup.com/">About Us</a></li>\n' +
             '                        <li><a href="https://codeup.com/">Contact Us</a></li>\n' +
             '                        <li><a href="https://codeup.com/">Privacy Policy</a></li>\n' +
@@ -222,9 +198,9 @@
             '                </div>\n' +
             '                <div class="footer20End m-0 p-2">\n' +
             '                    <ul class="social-icons">\n' +
-            '                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>\n' +
-            '                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>\n' +
-            '                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>\n' +
+            '                        <li class="m-0"><a class="facebook ms-0 me-2" href="#"><i class="fa fa-facebook m-0"></i></a></li>\n' +
+            '                        <li class="m-0"><a class="twitter ms-0 me-2" href="#"><i class="fa fa-twitter m-0"></i></a></li>\n' +
+            '                        <li class="m-0"><a class="linkedin ms-0 me-2" href="#"><i class="fa fa-linkedin m-0"></i></a></li>\n' +
             '                    </ul>\n' +
             '                    <p class="copyright-text mt-2">Copyright &copy; 2023 All Rights Reserved by\n' +
             '                        <a href="#">TriCast</a>.\n' +
