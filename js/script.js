@@ -55,6 +55,13 @@
         let fiveDayContainer = $('<div class="container-fluid m-auto p-0 d-flex justify-content-between" id="fiveDayContainer"></div>');
         $('body').append(fiveDayContainer);
 
+        for (let i = 0; i <= 4; i++) {
+            let dayId = `day${i}ID`;
+            let singleDayForecast = $('<div class="singleDayForecast bg-dark fs-6 p-2 w-100"></div>');
+            singleDayForecast.attr('id', dayId);
+            $('#fiveDayContainer').append(singleDayForecast);
+        }
+
         function weatherMachina(longitudeDie, latitudeDie) {
             $.get("http://api.openweathermap.org/data/2.5/forecast", {
                 APPID: OPENWEATHER_API_KEY,
@@ -138,15 +145,12 @@
                     let rawWind = Math.round(data.list[j].wind.deg);
 
                     let dayId = `day${i}ID`;
-                    let singleDayForecast = $('<div class="singleDayForecast bg-dark fs-6 p-2 w-100"></div>');
-                    singleDayForecast.attr('id', dayId);
-                    $('#fiveDayContainer').append(singleDayForecast);
 
                     let fcHtml = `
                         <p class="fcDayOfWeek text-white fs-5 m-0">${dayOfWeek}</p>
                         <p class="fcDate m-0">${namedMonth} ${dayOfMonth}, ${year}</p>
                         <p class="fcConditionIcon m-0">(${data.list[i].weather[0].description})</p>
-                        <p class="fcTemps m-0">High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}</p>
+                        <p class="fcTemps m-0">High: ${Math.round(data.list[i].main.temp_max)}°/ Low: ${Math.round(data.list[i].main.temp_min)}°</p>
                         <p class="fcHumidity m-0">Humidity: ${data.list[i].main.humidity}%</p>
                         <p class="fcWind m-0">Wind: ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}</p>
                         <p class="fcGust m-0"> Gust: ${Math.round(data.list[i].wind.gust)} mph</p>`;

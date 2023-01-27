@@ -22,13 +22,13 @@ root {
 #liveLocation {
 
     position: absolute;
-    top: 5.5em;
+    top: 6.5em;
     left: 2em;
     z-index: 2;
 }
 #coordinates {
     position: absolute;
-    top: 7em;
+    top: 8em;
     left: 2em;
     z-index: 2;
 
