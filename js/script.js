@@ -264,7 +264,7 @@
 
         function onDragEnd() {
             let lngLat = marker.getLngLat();
-            coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: &nbsp&nbsp&nbsp&nbsp&nbsp${lngLat.lat}`;
+            coordinates.innerHTML = `Longitude: ${lngLat.lng.toPrecision(8)}<br />Latitude: &nbsp&nbsp${lngLat.lat.toPrecision(8)}`;
             coordinates.style.display = 'block';
             $('#coordinates').delay(2500).fadeOut(1000);
             map.easeTo({

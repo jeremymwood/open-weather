@@ -20,13 +20,14 @@ root {
     margin: 1em 0;
 }
 #liveLocation {
-
+    font-family: 'Roboto Mono', monospace;
     position: absolute;
     top: 6.5em;
     left: 2em;
     z-index: 2;
 }
 #coordinates {
+    font-family: 'Roboto Mono', monospace;
     position: absolute;
     top: 8em;
     left: 2em;
