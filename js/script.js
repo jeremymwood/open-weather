@@ -6,8 +6,11 @@
         let d = $('<header><h1 class="text-white text-center">Vesicast Weather</h1></header>');
         $('body').prepend(d);
 
-        let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY" class="searchContainerParent"><div class="searchContainer m-0"><i class="fa-solid fa-magnifying-glass text-secondary" aria-hidden="true"></i><form><input id="search" class="search border border-1 border-white text-white rounded-3 bg-dark fs-6 ps-5 pe-1 py-1 mb-2" type="text" name="address" autocomplete="shipping street-address" placeholder="search location...">    <button id="myBtn" class="d-none" type="submit">button</button>\n</form></div></mapbox-address-autofill>');
+        let e = $('<mapbox-address-autofill access-token="MAPBOX_API_KEY" class="searchContainerParent"><div class="searchContainer m-0"><i class="fa-solid fa-magnifying-glass" aria-hidden="true" id="magnifying-glass"></i><form><input id="search" class="search border border-1 border-white rounded-3 bg-dark fs-6 ps-5 pe-1 py-1 mb-2" type="text" name="address" autocomplete="shipping street-address" placeholder="search location...">    <button id="myBtn" class="d-none" type="submit">button</button>\n</form></div></mapbox-address-autofill>');
         $('header').append(e);
+
+        let l = $('<i class="fa-solid fa-bars fs-1"></i>');
+        $('header').append(l);
 
         // TODO:
         //hover card screen back text and prompt for detailed forecast?
@@ -16,7 +19,6 @@
         //add badges
         //readme
         //github.io
-        //better name - consult beginner's guide to constructing the galaxy on the triad
         //precipitation data?
 
 
@@ -113,24 +115,24 @@
 
                 function conditionMachina(conditionMain) {
                     if (conditionMain === "Clear") {
-                        return '<i class="forecast-icons fa-solid fa-sun text-white flex-grow-1 ps-2 pb-0"></i>';
+                        return '<i class="forecast-icons fa-solid fa-sun text-white flex-grow-1 ps-2 pb-0 pt-1"></i>';
                     }
                     if (conditionMain === "Clouds") {
-                        return '<i class="forecast-icons fa-solid fa-cloud text-white flex-grow-1 ps-2 pb-0"></i>';
+                        return '<i class="forecast-icons fa-solid fa-cloud text-white flex-grow-1 ps-2 pb-0 pt-1"></i>';
                     }
                     if (conditionMain === "Tornado") {
-                        return '<i class="forecast-icons fa-solid tornado text-white flex-grow-1 ps-2 pb-0"></i>';
+                        return '<i class="forecast-icons fa-solid tornado text-white flex-grow-1 ps-2 pb-0 pt-1"></i>';
                     }
                     if (conditionMain === "Thunderstorm") {
-                        return '<i class="forecast-icons fa-solid fa-cloud-bolt text-white flex-grow-1 ps-2 pb-0"></i>';
+                        return '<i class="forecast-icons fa-solid fa-cloud-bolt text-white flex-grow-1 ps-2 pb-0 pt-1"></i>';
                     }
                     if (conditionMain === "Rain") {
-                        return '<i class="forecast-icons fa-solid fa-cloud-sun-rain text-white flex-grow-1 ps-2 pb-0"></i>';
+                        return '<i class="forecast-icons fa-solid fa-cloud-sun-rain text-white flex-grow-1 ps-2 pb-0 pt-1"></i>';
                     }
                     if (conditionMain === "Snow") {
-                        return '<i class="forecast-icons fa-solid fa-snowflake text-white flex-grow-1 ps-2 pb-0"></i>';
+                        return '<i class="forecast-icons fa-solid fa-snowflake text-white flex-grow-1 ps-2 pb-0 pt-1"></i>';
                     } else {
-                        return '<i class="forecast-icons fa-solid fa-circle-question text-white flex-grow-1 ps-2 pb-0"></i>';
+                        return '<i class="forecast-icons fa-solid fa-circle-question text-white flex-grow-1 ps-2 pb-0 pt-1"></i>';
                     }
                 }
 

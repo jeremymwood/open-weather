@@ -71,10 +71,10 @@ root {
 #day4ID {
     margin-left: 0.25em;
 }
-.singleDayForecast, .search {
-    color: #949494;
+.singleDayForecast, .search, .fa-magnifying-glass {
+    color: #6c757d;
 }
-.singleDayForecast:hover {
+.singleDayForecast:hover, .fa-bars:hover {
     /*box-shadow: 0 0 0.5em white;*/
     color: white;
     cursor: pointer;
@@ -88,14 +88,19 @@ i {
     height: 100%;
     width: 100%;
 }
+.fa-bars {
+    position: absolute;
+    /*top: .7em;*/
+    /*right: 1em;*/
+    transform: translate(95.5%, -90%);
+    /*width: 5em;*/
+    /*height: 100%;*/
+}
 .searchContainer {
     position: relative;
 }
-#search {
+#search  {
     width: 200px;
-}
-.search:hover {
-    /*visibility: revert;*/
 }
 .fa-magnifying-glass {
     position: absolute;
@@ -140,7 +145,7 @@ header {
     /*padding:45px 0 20px;*/
     font-size:15px;
     line-height:24px;
-    color:#737373;
+    color:#6c757d;
 }
 .site-footer hr
 {
@@ -161,7 +166,7 @@ header {
 }
 .site-footer a
 {
-    color:#737373;
+    color:#6c757d;
 }
 .site-footer a:hover
 {
@@ -179,7 +184,7 @@ header {
 }
 .footer-links a
 {
-    color:#737373
+    color:#6c757d
 }
 .footer-links a:active,.footer-links a:focus,.footer-links a:hover
 {
