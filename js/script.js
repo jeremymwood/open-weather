@@ -13,13 +13,14 @@
         $('header').append(l);
 
         // TODO:
-        //hover card screen back text and prompt for detailed forecast?
-        //style cards, h4, h5, etc...
         //add popups
         //add badges
         //readme
         //github.io
         //precipitation data?
+        //hover card screen back text and prompt for detailed forecast?
+        // show description, humidity and gust on container click
+            // sub wind for widget?
 
 
         //latlong fade bg
