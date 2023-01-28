@@ -72,7 +72,7 @@ root {
 #day4ID {
     margin-left: 0.25em;
 }
-.singleDayForecast, .search, .fa-magnifying-glass {
+.singleDayForecast, .search, .fa-magnifying-glass, .fa-bars {
     color: #6c757d;
 }
 .singleDayForecast:hover, .fa-bars:hover {

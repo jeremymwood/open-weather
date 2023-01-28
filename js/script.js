@@ -13,28 +13,25 @@
         $('header').append(l);
 
         // TODO:
-        //add popups
-        //add badges
-        //readme
-        //github.io
-        //precipitation data?
-        //hover card screen back text and prompt for detailed forecast?
+        // flex footer to bottom
+        //mobile responsive
+        //hamburger nav and modal
+        // dark and light mode
         // show description, humidity and gust on container click
+        //github.io
+        //latlong fade bg
+        //hover card screen back text and prompt for detailed forecast?
             // sub wind for widget?
 
-
-        //latlong fade bg
-
-        // add state
-        //wind and temp widget
-        //mobile responsive
-        //dropdown for light/dark mode
-        //hamburger nav
-        //toggle detailed 4 hour, daily, and 5 day forecast
+        //animate searchbar appearing out of magnifying glass
         //temp graphs
+        //toggle detailed 4 hour, daily, and 5 day forecast
+        //add popups
+        //precipitation data?
+        //add badges
+        //add state
         //clean up redundancies
         //template margins to access for innerHTMl
-        //animate searchbar appearing out of magnifying glass
         //add pin to favorites
         //add lat long search
 
@@ -219,7 +216,7 @@
         $('body').prepend(g);
 
         let h = $('        ' +
-            '<hr class="border border-1 border-secondary mt-5 mb-0 opacity-100">' +
+            '<hr class="border border-1 border-secondary mt-3 mb-0 opacity-100">' +
             '<footer class="site-footer pt-3">\n' +
             '        <div class="container-fluid d-flex p-0">\n' +
             '                <div class="footer40 m-0 p-2">\n' +
