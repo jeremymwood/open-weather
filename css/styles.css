@@ -72,6 +72,10 @@ root {
 #day4ID {
     margin-left: 0.25em;
 }
+.fa-bars {
+    width: auto;
+    /*margin: auto;*/
+}
 .singleDayForecast, .search, .fa-magnifying-glass, .fa-bars {
     color: #6c757d;
 }
@@ -93,7 +97,9 @@ i {
     position: absolute;
     /*top: .7em;*/
     /*right: 1em;*/
-    transform: translate(95.5%, -90%);
+    /*transform: translate(95.5%, -90%);*/
+    right: 0;
+    top: 0;
     /*width: 5em;*/
     /*height: 100%;*/
 }
