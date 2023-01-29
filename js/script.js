@@ -311,19 +311,20 @@
         //nav button
         map.addControl(new mapboxgl.NavigationControl());
 
-        // $('.fa-bars').click.addClass('newClass');
         $(function () {
             $('.fa-bars').click(function () {
                 $('#modal').addClass('active');
                 $('#modalBg').addClass('active');
             });
         });
+
         $(function () {
             $('.fa-xmark').click(function () {
                 $('#modal').removeClass('active');
                 $('#modalBg').removeClass('active');
             });
         });
+
 
         //TODO: sample popup
 

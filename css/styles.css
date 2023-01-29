@@ -52,7 +52,7 @@ body {
     background-color: white;
     visibility: hidden;
     opacity: 0.5;
-    transition: 200ms ease-in-out;
+    /*transition: 400ms ease-in-out;*/
     left: 50%;
     position: fixed;
     /*transform: translate(-50%, -50%) scale(0) rotate(30deg);*/
@@ -69,7 +69,6 @@ body {
     left: 25%;
     top: 25%;
     position: fixed;
-    transition: 200ms ease-in-out;
 
     /*transform: translate(-50%, -50%) scale(0) rotate(30deg);*/
     /*transition: 300ms ease-in-out;*/
