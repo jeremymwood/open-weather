@@ -51,7 +51,7 @@ body {
     height: 100vh;
     background-color: white;
     opacity: 50%;
-    display: flex;
+    /*display: flex;*/
     /*flex-direction: column;*/
     /*height: auto;*/
     left: 50%;
@@ -209,10 +209,12 @@ header {
     width: 0;
     height: 0;
 }
+footer  {
+    color: var(--iconGray);
+}
 .footer40 {
     width: 40%;
     margin-right: 0.25em;
-
 }
 .footer20 {
     width: 20%;

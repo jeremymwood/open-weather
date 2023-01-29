@@ -311,6 +311,8 @@
         //nav button
         map.addControl(new mapboxgl.NavigationControl());
 
+        $('.fa-bars').click.getElementById('modal').removeClass('d-none');
+
         //TODO: sample popup
 
         // const popup = new mapboxgl.Popup()
