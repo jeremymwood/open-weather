@@ -50,36 +50,34 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: white;
-    opacity: 50%;
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*height: auto;*/
+    visibility: hidden;
+    opacity: 0.5;
+    transition: 200ms ease-in-out;
     left: 50%;
-    /*max-width: 80%;*/
-    /*overflow: hidden;*/
-    /*padding: 0.75rem;*/
     position: fixed;
-    /*top: 50%;*/
     /*transform: translate(-50%, -50%) scale(0) rotate(30deg);*/
     /*transition: 300ms ease-in-out;*/
-    /*width: auto;*/
-    z-index: 1 ;
+    z-index: 1;
     transform: translate(-50%, -50%) scale(1);
-
 }
 #modal {
     width: 50vw;
     height: auto;
     /*height: 50vh;*/
-    opacity: 100%;
+    visibility: hidden;
     background-color: var(--bgGray);
     left: 25%;
     top: 25%;
     position: fixed;
+    transition: 200ms ease-in-out;
+
     /*transform: translate(-50%, -50%) scale(0) rotate(30deg);*/
     /*transition: 300ms ease-in-out;*/
     z-index: 2;
 
+}
+#modalBg.active, #modal.active {
+    visibility: visible;
 }
 .closeButton {
     background: transparent;
@@ -154,10 +152,10 @@ body {
     width: auto;
     /*margin: auto;*/
 }
-.singleDayForecast, .search, .fa-magnifying-glass, .fa-bars {
+.singleDayForecast, .search, .fa-magnifying-glass, .fa-bars, .fa-xmark {
     color: var(--iconGray);
 }
-.singleDayForecast:hover, .fa-bars:hover {
+.singleDayForecast:hover, .fa-bars:hover, .fa-xmark:hover {
     /*box-shadow: 0 0 0.5em white;*/
     color: white;
     cursor: pointer;
