@@ -1,5 +1,6 @@
 :root {
     --bgGray: rgba(33, 37, 41, 100);
+    --iconGray: rgba(108, 117, 125, 49);
 }
 
 * {
@@ -68,31 +69,34 @@ body {
 }
 #modal {
     width: 50vw;
-    height: 50vh;
-    /*margin: 1em 0;*/
+    height: auto;
+    /*height: 50vh;*/
     opacity: 100%;
     background-color: var(--bgGray);
-    /*border-radius: 0.75rem;*/
-    /*border: 0rem solid var(--salmon);*/
-    /*box-shadow: 0 0 0.75rem var(--salmon);*/
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*height: auto;*/
     left: 25%;
     top: 25%;
-    /*max-width: 80%;*/
-    /*overflow: hidden;*/
-    /*padding: 0.75rem;*/
     position: fixed;
-    /*top: 50%;*/
     /*transform: translate(-50%, -50%) scale(0) rotate(30deg);*/
     /*transition: 300ms ease-in-out;*/
-    /*width: auto;*/
     z-index: 2;
-    /*transform: translate(-50%, -50%) scale(1);*/
 
 }
-
+.closeButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 3rem;
+    font-weight: bold;
+    outline: none;
+    margin-left: auto;
+    padding: 0px;
+}
+.fa-xmark {
+    position: absolute;
+    right: 0%;
+    width: auto;
+    height: auto;
+}
 #liveLocation {
     font-family: 'Roboto Mono', monospace;
     position: absolute;
@@ -151,7 +155,7 @@ body {
     /*margin: auto;*/
 }
 .singleDayForecast, .search, .fa-magnifying-glass, .fa-bars {
-    color: #6c757d;
+    color: var(--iconGray);
 }
 .singleDayForecast:hover, .fa-bars:hover {
     /*box-shadow: 0 0 0.5em white;*/
@@ -246,7 +250,7 @@ header {
 }
 .site-footer a
 {
-    color:#6c757d;
+    color:var(--iconGray);
 }
 .site-footer a:hover
 {
@@ -264,7 +268,7 @@ header {
 }
 .footer-links a
 {
-    color:#6c757d
+    color:var(--iconGray)
 }
 .footer-links a:active,.footer-links a:focus,.footer-links a:hover
 {
@@ -326,13 +330,13 @@ header {
 {
     margin-right:15px;
     text-transform:uppercase;
-    color:#96a2b2;
+    color: var(--iconGray);
     font-weight:700;
     font-size:13px
 }
 .social-icons a{
     background-color:#eceeef;
-    color:#818a91;
+    color: var(--iconGray);
     font-size:16px;
     display:inline-block;
     line-height:44px;
@@ -368,10 +372,6 @@ header {
 .social-icons a.linkedin:hover
 {
     background-color:#007bb6
-}
-.social-icons a.dribbble:hover
-{
-    background-color:#ea4c89
 }
 @media (max-width:767px)
 {
