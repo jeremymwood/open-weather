@@ -57,9 +57,25 @@
 
         for (let i = 0; i <= 4; i++) {
             let dayId = `day${i}ID`;
+            let modalId = `singleDayModal${i}`;
             let singleDayForecast = $('<div class="singleDayForecast bg-dark fs-6 p-2 w-100"></div>');
             singleDayForecast.attr('id', dayId);
             $('#fiveDayContainer').append(singleDayForecast);
+
+            let singleDayModal = $(`
+                <div class="singleDayModal border border-2 border-white text-white text-center align-items-center rounded-3 my-4 p-3">
+                    <div class="modalTitle d-flex flex-row mb-2">
+                        <h1 class="m-0 justify-content-center m-auto">title</h1>
+                        <i class="fa-solid fa-xmark fs-1 pt-3 pe-3"></i>
+                    </div>
+                    <div class="modalOptions d-flex flex-column">
+                        <p>thing 1</p>
+                        <p>thing 2</p>
+                        <p>thing 3</p>
+                    </div>
+                </div>`);
+            singleDayModal.attr('id', modalId);
+            $('body').append(singleDayModal);
         }
 
         function weatherMachina(longitudeDie, latitudeDie) {
@@ -311,9 +327,17 @@
         //nav button
         map.addControl(new mapboxgl.NavigationControl());
 
+        // for hamburger modal
+        // $(function () {
+        //     $('.fa-bars').click(function () {
+        //         $('#modal').addClass('active');
+        //         $('#modalBg').addClass('active');
+        //     });
+        // });
+
         $(function () {
-            $('.fa-bars').click(function () {
-                $('#modal').addClass('active');
+            $('#day0Id').click(function () {
+                $('#singleDayModal0').addClass('active');
                 $('#modalBg').addClass('active');
             });
         });
