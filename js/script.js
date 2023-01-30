@@ -227,7 +227,8 @@
 
                         let fcHtmlModal = `
                         <div class="forecastHeader d-flex">
-                            <p class="fcDayOfWeek text-white fs-5 m-0 flex-grow-2">${dayOfWeek}</p>
+                            ${conditionMachina(conditionMain)}
+                            <p class="fcDayOfWeek text-white fs-5 m-0 d-flex justify-content-center">${dayOfWeek}</p>
                             ${conditionMachina(conditionMain)}
                         </div>
                         ${namedMonth} ${dayOfMonth}, ${year}
@@ -239,6 +240,7 @@
                             <p class="fcTemps m-0 ps-2">
                                 ${Math.round(data.list[i].main.temp_max)}°
                             </p>
+                            </p>
                             <p class="fcTemps m-0">
                                 <i class="forecast-icons fa-solid fa-temperature-arrow-down ps-3"></i>
                             </p>
@@ -247,7 +249,7 @@
                             </p>
                         </div>
                         <p class="fcHumidity m-0">Humidity: ${data.list[i].main.humidity}%</p>
-                        <div class="windContainer d-flex">
+                        <div class="windContainer d-flex justify-content-center">
                             <p class="fcWind m-0 pe-2">
                                 <i class="forecast-icons fa-solid fa-wind"></i>
                             </p>
