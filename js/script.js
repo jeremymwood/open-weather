@@ -13,7 +13,8 @@
         $('header').append(l);
 
         // TODO:
-        //populate modals
+        //create new branch for mobile and layout clean up
+        //remove bootstrap throughout
         //add modal close button
         // flex footer to bottom
         //mobile responsive
@@ -197,7 +198,6 @@
                             ${conditionMachina(conditionMain)}
                         </div>
                         ${namedMonth} ${dayOfMonth}, ${year}
-                        <p class="fcConditionIcon m-0">(${data.list[i].weather[0].description})
                         <div class="hiLo d-flex">
                             <p class="fcTemps m-0">
                                 <i class="forecast-icons fa-solid fa-temperature-arrow-up"></i>
@@ -211,17 +211,7 @@
                             <p class="fcTemps m-0 ps-2">
                                 ${Math.round(data.list[i].main.temp_min)}°
                             </p>
-                        </div>
-                        <p class="fcHumidity m-0">Humidity: ${data.list[i].main.humidity}%</p>
-                        <div class="windContainer d-flex">
-                            <p class="fcWind m-0 pe-2">
-                                <i class="forecast-icons fa-solid fa-wind"></i>
-                            </p>
-                            <p class="fcWind m-0">
-                                ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}
-                            </p>
-                        </div>
-                        <p class="fcGust m-0"> Gust: ${Math.round(data.list[i].wind.gust)} mph</p>`;
+                        </div>`;
 
                         document.getElementById(dayId).innerHTML = fcHtml;
                         // j += secondDayOffset;
@@ -272,9 +262,9 @@
         $('body').prepend(g);
 
         let h = $('        ' +
+            '<footer class="site-footer pt-3 m-0">\n' +
             '<hr class="border border-1 border-secondary mt-3 mb-0 opacity-100">' +
-            '<footer class="site-footer pt-3">\n' +
-            '        <div class="container-fluid d-flex p-0">\n' +
+            '<div class="container-fluid d-flex p-0">\n' +
             '                <div class="footer40 m-0 p-2">\n' +
             '                    <h6 class="mt-2 mb-0">About</h6>\n' +
             '                    <p class="text-justify pt-3">Vesicast Weather provides reliable weather data in three hour increments because hourly forecasts are excessive and that API option is cost prohibitive to our valued customers!</p>\n' +
