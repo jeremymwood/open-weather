@@ -13,6 +13,7 @@
         $('header').append(l);
 
         // TODO:
+        //populate modals
         // flex footer to bottom
         //mobile responsive
         //hamburger nav and modal
@@ -64,15 +65,15 @@
 
             let singleDayModal = $(`
                 <div class="singleDayModal border border-2 border-white text-white text-center align-items-center rounded-3 my-4 p-3">
-                    <div class="modalTitle d-flex flex-row mb-2">
-                        <h1 class="m-0 justify-content-center m-auto">title</h1>
-                        <i class="fa-solid fa-xmark fs-1 pt-3 pe-3"></i>
-                    </div>
-                    <div class="modalOptions d-flex flex-column">
-                        <p>thing 1</p>
-                        <p>thing 2</p>
-                        <p>thing 3</p>
-                    </div>
+<!--                    <div class="modalTitle d-flex flex-row mb-2">-->
+<!--                        <h1 class="m-0 justify-content-center m-auto">title</h1>-->
+<!--                        <i class="fa-solid fa-xmark fs-1 pt-3 pe-3"></i>-->
+<!--                    </div>-->
+<!--                    <div class="modalOptions d-flex flex-column">-->
+<!--                        <p>thing 1</p>-->
+<!--                        <p>thing 2</p>-->
+<!--                        <p>thing 3</p>-->
+<!--                    </div>-->
                 </div>`);
             singleDayModal.attr('id', modalId);
             $('body').append(singleDayModal);
@@ -187,6 +188,7 @@
 
 
                     let dayId = `day${i}ID`;
+                    let modalOptionsId = `singleDayModal${i}`;
 
                     let fcHtml = `
                         <div class="forecastHeader d-flex">
@@ -221,6 +223,7 @@
                         <p class="fcGust m-0"> Gust: ${Math.round(data.list[i].wind.gust)} mph</p>`;
 
                         document.getElementById(dayId).innerHTML = fcHtml;
+                        document.getElementById(modalOptionsId).innerHTML = fcHtml;
                         j += secondDayOffset;
                 };
             });
@@ -327,45 +330,33 @@
         //nav button
         map.addControl(new mapboxgl.NavigationControl());
 
-        $(function () {
-            $('.fa-bars').click(function () {
-                $('#modalMain').addClass('active');
-                $('#modalBg').addClass('active');
-            });
-            $('#day0ID').click(function () {
-                $('#singleDayModal0').addClass('active');
-                $('#modalBg').addClass('active');
-            });
-            $('#day1ID').click(function () {
-                $('#singleDayModal1').addClass('active');
-                $('#modalBg').addClass('active');
-            });
-            $('#day2ID').click(function () {
-                $('#singleDayModal2').addClass('active');
-                $('#modalBg').addClass('active');
-            });
-            $('#day3ID').click(function () {
-                $('#singleDayModal3').addClass('active');
-                $('#modalBg').addClass('active');
-            });
-            $('#day4ID').click(function () {
-                $('#singleDayModal4').addClass('active');
-                $('#modalBg').addClass('active');
-            });
+        $('.fa-bars').click(function () {
+            $('#modalMain').addClass('active');
+            $('#modalBg').addClass('active');
         });
-
-        // $(function () {
-        //     $('.fa-xmark').click(function () {
-        //         $('.singleDayModal, #modalMain').removeClass('active');
-        //         $('#modalBg').removeClass('active');
-        //     });
-        // });
-
-        $(function () {
-            $('#modalBg, .fa-xmark').click(function () {
-                $('.singleDayModal, #modalMain').removeClass('active');
-                $('#modalBg').removeClass('active');
-            });
+        $('#day0ID').click(function () {
+            $('#singleDayModal0').addClass('active');
+            $('#modalBg').addClass('active');
+        });
+        $('#day1ID').click(function () {
+            $('#singleDayModal1').addClass('active');
+            $('#modalBg').addClass('active');
+        });
+        $('#day2ID').click(function () {
+            $('#singleDayModal2').addClass('active');
+            $('#modalBg').addClass('active');
+        });
+        $('#day3ID').click(function () {
+            $('#singleDayModal3').addClass('active');
+            $('#modalBg').addClass('active');
+        });
+        $('#day4ID').click(function () {
+            $('#singleDayModal4').addClass('active');
+            $('#modalBg').addClass('active');
+        });
+        $('#modalBg, .fa-xmark').click(function () {
+            $('.singleDayModal, #modalMain').removeClass('active');
+            $('#modalBg').removeClass('active');
         });
 
 
