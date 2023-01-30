@@ -63,15 +63,13 @@ body {
     transition: 200ms ease-out;
 }
 /*.singleDayModal {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    justify-content: center;*/
 
 /*}*/
 #modalMain, #singleDayModal0, #singleDayModal1, #singleDayModal2, #singleDayModal3, #singleDayModal4 {
     box-shadow: 0 0 1em white;
     width: auto;
     height: auto;
+    padding: 4em;
     visibility: hidden;
     background-color: var(--bgGray);
     left: 50%;
@@ -79,10 +77,7 @@ body {
     transform: translate(-50%,-50%) scaleY(0);
     transition: 100ms ease-out;
     position: fixed;
-
-    /*transform: translate(-50%, -50%) scale(0) rotate(30deg);*/
     z-index: 2;
-
 }
 #modalBg.active, #modalMain.active, #singleDayModal0.active, #singleDayModal1.active, #singleDayModal2.active, #singleDayModal3.active, #singleDayModal4.active {
     visibility: visible;
@@ -104,6 +99,7 @@ body {
     position: absolute;
     right: 0%;
     top: 0;
+    z-index: 100;
     width: auto;
     height: auto;
 }

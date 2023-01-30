@@ -14,6 +14,7 @@
 
         // TODO:
         //populate modals
+        //add modal close button
         // flex footer to bottom
         //mobile responsive
         //hamburger nav and modal
@@ -228,7 +229,7 @@
                         let fcHtmlModal = `
                         <div class="forecastHeader d-flex">
                             ${conditionMachina(conditionMain)}
-                            <p class="fcDayOfWeek text-white fs-5 m-0 d-flex justify-content-center">${dayOfWeek}</p>
+                            <p class="fcDayOfWeek text-white fs-5 m-0 ps-2 d-flex justify-content-center">${dayOfWeek}</p>
                             ${conditionMachina(conditionMain)}
                         </div>
                         ${namedMonth} ${dayOfMonth}, ${year}
@@ -391,7 +392,7 @@
             $('#modalBg').addClass('active');
         });
         $('#modalBg, .fa-xmark').click(function () {
-            $('.singleDayModal, #modalMain').removeClass('active');
+            $('#modalMain, .singleDayModal').removeClass('active');
             $('#modalBg').removeClass('active');
         });
 
