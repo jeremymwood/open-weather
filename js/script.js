@@ -325,6 +325,13 @@
             });
         });
 
+        $(function () {
+            $('#modalBg').click(function () {
+                $('#modal').removeClass('active');
+                $('#modalBg').removeClass('active');
+            });
+        });
+
 
         //TODO: sample popup
 
