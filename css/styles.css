@@ -61,6 +61,9 @@ body {
     z-index: 1;
     transform: translate(-50%, -50%) scale(1);
 }
+/*.singleDayModal {*/
+
+/*}*/
 #modalMain, #singleDayModal0, #singleDayModal1, #singleDayModal2, #singleDayModal3, #singleDayModal4 {
     box-shadow: 0 0 1em white;
     width: 50vw;

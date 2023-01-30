@@ -223,7 +223,41 @@
                         <p class="fcGust m-0"> Gust: ${Math.round(data.list[i].wind.gust)} mph</p>`;
 
                         document.getElementById(dayId).innerHTML = fcHtml;
-                        document.getElementById(modalOptionsId).innerHTML = fcHtml;
+                        // j += secondDayOffset;
+
+                        let fcHtmlModal = `
+                        <div class="forecastHeader d-flex">
+                            <p class="fcDayOfWeek text-white fs-5 m-0 flex-grow-2">${dayOfWeek}</p>
+                            ${conditionMachina(conditionMain)}
+                        </div>
+                        ${namedMonth} ${dayOfMonth}, ${year}
+                        <p class="fcConditionIcon m-0">(${data.list[i].weather[0].description})
+                        <div class="hiLo d-flex justify-content-center">
+                            <p class="fcTemps m-0">
+                                <i class="forecast-icons fa-solid fa-temperature-arrow-up"></i>
+                            </p>
+                            <p class="fcTemps m-0 ps-2">
+                                ${Math.round(data.list[i].main.temp_max)}°
+                            </p>
+                            <p class="fcTemps m-0">
+                                <i class="forecast-icons fa-solid fa-temperature-arrow-down ps-3"></i>
+                            </p>
+                            <p class="fcTemps m-0 ps-2">
+                                ${Math.round(data.list[i].main.temp_min)}°
+                            </p>
+                        </div>
+                        <p class="fcHumidity m-0">Humidity: ${data.list[i].main.humidity}%</p>
+                        <div class="windContainer d-flex">
+                            <p class="fcWind m-0 pe-2">
+                                <i class="forecast-icons fa-solid fa-wind"></i>
+                            </p>
+                            <p class="fcWind m-0">
+                                ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}
+                            </p>
+                        </div>
+                        <p class="fcGust m-0"> Gust: ${Math.round(data.list[i].wind.gust)} mph</p>`;
+
+                        document.getElementById(modalOptionsId).innerHTML = fcHtmlModal;
                         j += secondDayOffset;
                 };
             });
