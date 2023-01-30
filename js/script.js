@@ -327,31 +327,43 @@
         //nav button
         map.addControl(new mapboxgl.NavigationControl());
 
-        // for hamburger modal
-        // $(function () {
-        //     $('.fa-bars').click(function () {
-        //         $('#modal').addClass('active');
-        //         $('#modalBg').addClass('active');
-        //     });
-        // });
-
         $(function () {
-            $('#day0Id').click(function () {
+            $('.fa-bars').click(function () {
+                $('#modalMain').addClass('active');
+                $('#modalBg').addClass('active');
+            });
+            $('#day0ID').click(function () {
                 $('#singleDayModal0').addClass('active');
+                $('#modalBg').addClass('active');
+            });
+            $('#day1ID').click(function () {
+                $('#singleDayModal1').addClass('active');
+                $('#modalBg').addClass('active');
+            });
+            $('#day2ID').click(function () {
+                $('#singleDayModal2').addClass('active');
+                $('#modalBg').addClass('active');
+            });
+            $('#day3ID').click(function () {
+                $('#singleDayModal3').addClass('active');
+                $('#modalBg').addClass('active');
+            });
+            $('#day4ID').click(function () {
+                $('#singleDayModal4').addClass('active');
                 $('#modalBg').addClass('active');
             });
         });
 
-        $(function () {
-            $('.fa-xmark').click(function () {
-                $('#modal').removeClass('active');
-                $('#modalBg').removeClass('active');
-            });
-        });
+        // $(function () {
+        //     $('.fa-xmark').click(function () {
+        //         $('.singleDayModal, #modalMain').removeClass('active');
+        //         $('#modalBg').removeClass('active');
+        //     });
+        // });
 
         $(function () {
-            $('#modalBg').click(function () {
-                $('#modal').removeClass('active');
+            $('#modalBg, .fa-xmark').click(function () {
+                $('.singleDayModal, #modalMain').removeClass('active');
                 $('#modalBg').removeClass('active');
             });
         });
