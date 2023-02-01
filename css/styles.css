@@ -4,9 +4,18 @@
 }
 
 * {
-
+    box-sizing: content-box;
+    border: 1px red dashed;
 }
 body {
+    display: flex;
+    flex-direction: column;
+}
+header {
+    flex-direction: row;
+}
+.searchContainerParent {
+
 }
 .my-label {
     /*width: 100px;*/
