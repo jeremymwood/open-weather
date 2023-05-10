@@ -61,7 +61,7 @@
         for (let i = 0; i <= 4; i++) {
             let dayId = `day${i}ID`;
             let modalId = `singleDayModal${i}`;
-            let singleDayForecast = $('<div class="singleDayForecast bg-dark fs-6 p-2 w-100"></div>');
+            let singleDayForecast = $('<div class="singleDayForecast bg-dark fs-4 p-2 w-100"></div>');
             singleDayForecast.attr('id', dayId);
             $('#fiveDayContainer').append(singleDayForecast);
 
@@ -194,7 +194,7 @@
 
                     let fcHtml = `
                         <div class="forecastHeader d-flex">
-                            <p class="fcDayOfWeek text-white fs-5 m-0 flex-grow-2">${dayOfWeek}</p>
+                            <p class="fcDayOfWeek text-white m-0 flex-grow-2">${dayOfWeek}</p>
                             ${conditionMachina(conditionMain)}
                         </div>
                         ${namedMonth} ${dayOfMonth}, ${year}
@@ -217,38 +217,38 @@
                         // j += secondDayOffset;
 
                         let fcHtmlModal = `
-                        <div class="forecastHeader d-flex">
+                        <div class="forecastHeader d-flex fs-1 mb-3">
                             ${conditionMachina(conditionMain)}
-                            <p class="fcDayOfWeek text-white fs-5 m-0 ps-2 d-flex justify-content-center">${dayOfWeek}</p>
+                            <p class="fcDayOfWeek text-white my-auto mx-3 ps-2 d-flex">${dayOfWeek}</p>
                             ${conditionMachina(conditionMain)}
                         </div>
-                        ${namedMonth} ${dayOfMonth}, ${year}
-                        <p class="fcConditionIcon m-0">(${data.list[i].weather[0].description})
+                        <p class="fs-4 m-0">${namedMonth} ${dayOfMonth}, ${year}</p>
+                        <p class="fcConditionIcon m-0 fs-4">(${data.list[i].weather[0].description})
                         <div class="hiLo d-flex justify-content-center">
-                            <p class="fcTemps m-0">
+                            <p class="fcTemps m-0 fs-4">
                                 <i class="forecast-icons fa-solid fa-temperature-arrow-up"></i>
                             </p>
-                            <p class="fcTemps m-0 ps-2">
+                            <p class="fcTemps m-0 ps-2 fs-4">
                                 ${Math.round(data.list[i].main.temp_max)}°
                             </p>
                             </p>
-                            <p class="fcTemps m-0">
+                            <p class="fcTemps m-0 fs-4">
                                 <i class="forecast-icons fa-solid fa-temperature-arrow-down ps-3"></i>
                             </p>
-                            <p class="fcTemps m-0 ps-2">
+                            <p class="fcTemps m-0 ps-2 fs-4">
                                 ${Math.round(data.list[i].main.temp_min)}°
                             </p>
                         </div>
-                        <p class="fcHumidity m-0">Humidity: ${data.list[i].main.humidity}%</p>
-                        <div class="windContainer d-flex justify-content-center">
+                        <p class="fcHumidity m-0 fs-4">Humidity: ${data.list[i].main.humidity}%</p>
+                        <div class="windContainer d-flex justify-content-center fs-4">
                             <p class="fcWind m-0 pe-2">
                                 <i class="forecast-icons fa-solid fa-wind"></i>
                             </p>
-                            <p class="fcWind m-0">
+                            <p class="fcWind m-0 fs-4">
                                 ${Math.round(data.list[i].wind.speed)} mph, ${degToCompass(rawWind)}
                             </p>
                         </div>
-                        <p class="fcGust m-0"> Gust: ${Math.round(data.list[i].wind.gust)} mph</p>`;
+                        <p class="fcGust m-0 fs-4"> Gust: ${Math.round(data.list[i].wind.gust)} mph</p>`;
 
                         document.getElementById(modalOptionsId).innerHTML = fcHtmlModal;
                         j += secondDayOffset;
