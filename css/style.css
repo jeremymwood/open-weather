@@ -55,6 +55,7 @@ body {
 
     /*transition: 400ms ease-in-out;*/
     left: 50%;
+    top: 50%;
     position: fixed;
     /*transform: translate(-50%, -50%) scale(0) rotate(30deg);*/
     /*transition: 300ms ease-in-out;*/
@@ -107,7 +108,7 @@ body {
     font-family: 'Roboto Mono', monospace;
     position: absolute;
     top: 6.5em;
-    left: 2em;
+    left: 1.7em;
     z-index: 2;
 }
 #coordinates {
@@ -210,7 +211,7 @@ header {
 
 }
 .searchContainer {
-    sition: absolute;
+    position: absolute;
     transform: translateY(-2.75em);
     width: 0;
     height: 0;
