@@ -82,7 +82,7 @@
         }
 
         function weatherMachina(longitudeDie, latitudeDie) {
-            $.get("http://api.openweathermap.org/data/2.5/forecast", {
+            $.get("https://api.openweathermap.org/data/2.5/forecast", {
                 APPID: OPENWEATHER_API_KEY,
                 lat: latitudeDie,
                 lon: longitudeDie,
